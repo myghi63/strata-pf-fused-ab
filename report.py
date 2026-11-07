@@ -24,8 +24,10 @@ import zlib
 from collections import Counter
 
 HERE = pathlib.Path(__file__).resolve().parent
-OUT = HERE / "out"
 sys.path.insert(0, str(HERE))
+# `python3 report.py [DIR]`: DIR holds out/ and arm*.server.log (default: this folder); report.md/json go there
+BASE = pathlib.Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else HERE
+OUT = BASE / "out"
 import longctx  # noqa: E402
 
 SERVER_LOOP_RE = re.compile(r"the thinking repeated the same passages|repeated reasoning detected|repeated one token")
@@ -106,7 +108,8 @@ def judge(rec: dict) -> dict:
     signals += [f"reasoning {t}" for t in mr["triggers"]] + [f"answer {t}" for t in mc["triggers"]]
     return {"finish": finish_of(rec), "tokens": tokens_of(rec), "answered": bool(content.strip()),
             "reasoning": mr, "answer": mc, "server_events": rec.get("server_events", []),
-            "signals": signals, "loop": bool(signals)}
+            "signals": signals, "loop": bool(signals), "server_cut": bool(server),
+            "heuristic": bool(mr["triggers"] or mc["triggers"])}
 
 
 def load(arm: str, phase: str) -> dict:
@@ -123,7 +126,7 @@ def common_prefix(a: str, b: str) -> int:
 
 
 def server_totals(arm: str) -> dict:
-    p = HERE / f"arm{arm}.server.log"
+    p = BASE / f"arm{arm}.server.log"
     txt = p.read_text(errors="replace") if p.exists() else ""
     return {"loop_stop": txt.count("the thinking repeated the same passages"),
             "loop_recover": txt.count("repeated reasoning detected"),
@@ -184,7 +187,7 @@ def main() -> int:
     modes = sorted({n.rsplit(".", 1)[1] for n in names})
     summary = []
     for mode in modes:
-        cnt = {"1": [0, 0, 0, 0], "0": [0, 0, 0, 0]}          # loops, total, hit length, answered
+        cnt = {"1": [0, 0, 0, 0, 0], "0": [0, 0, 0, 0, 0]}    # server cuts, total, hit length, answered, heuristic
         md += [f"### {mode}", "",
                "| prompt | arm1 finish | arm1 tokens | arm1 signals | arm0 finish | arm0 tokens | arm0 signals |",
                "| --- | --- | ---: | --- | --- | ---: | --- |"]
@@ -196,17 +199,22 @@ def main() -> int:
                     j = judge(rec)
                     row[a] = j
                     c = cnt[a]
-                    c[0] += j["loop"]; c[1] += 1; c[2] += j["finish"] == "length"; c[3] += j["answered"]
+                    c[0] += j["server_cut"]; c[1] += 1; c[2] += j["finish"] == "length"; c[3] += j["answered"]
+                    c[4] += j["heuristic"]
             js["loop"][name] = row
             cell = lambda a: (f"{row[a]['finish']} | {row[a]['tokens']} | {'; '.join(row[a]['signals']) or '-'}"
                               if a in row else "- | - | -")
             md.append(f"| {name.rsplit('.', 1)[0]} | {cell('1')} | {cell('0')} |")
         md.append("")
         for a in ("1", "0"):
-            l, n, ln, ans = cnt[a]
-            summary.append(f"| {mode} | {a} | **{l}/{n}** | {ln}/{n} | {ans}/{n} |")
-    md += ["### Summary", "", "| mode | arm | loops | hit max_tokens | wrote an answer |",
-           "| --- | --- | ---: | ---: | ---: |"] + summary + [""]
+            l, n, ln, ans, h = cnt[a]
+            summary.append(f"| {mode} | {a} | **{l}/{n}** | {h}/{n} | {ln}/{n} | {ans}/{n} |")
+    md += ["### Summary", "",
+           "| mode | arm | cut by the server's loop detector | text heuristics fired | hit max_tokens | wrote an answer |",
+           "| --- | --- | ---: | ---: | ---: | ---: |"] + summary + ["",
+           "The server's detector is the primary signal. The text heuristics are deliberately sensitive and also fire on "
+           "tasks whose correct output is repetitive (a 50-item JSON list, a numbered poem, a Fibonacci table); read "
+           "the flagged texts below before calling one a loop.", ""]
 
     # ---- repeatability probe
     md += ["## Greedy repeatability (same prompt, same server, 3 requests)", "",
@@ -229,6 +237,29 @@ def main() -> int:
            "them comes from decoding, not from the prompt path. The draft acceptance counts differ between "
            "requests; speculative decoding is the likely source, but this run does not isolate it "
            "(`--drafting off` would).", ""]
+
+    # ---- rep: one prompt N times with the server's default sampling
+    reps = {a: load(a, "rep") for a in ("1", "0")}
+    if any(reps.values()):
+        md += ["## Loop rate, one prompt repeated with the server's default sampling", "",
+               "No sampling fields in the request: the server applies the model card's (temperature 1.0, top_p 0.95, "
+               "top_k 20 with thinking), as for a client such as opencode. `coverage` is the server detector's "
+               "share of the recent reasoning inside passages seen three times (it cuts at 0.25).", "",
+               "| arm | runs | cut by the server | coverage of the cuts | other loop signals | wrote an answer |",
+               "| --- | ---: | ---: | --- | ---: | ---: |"]
+        js["rep"] = {}
+        for a in ("1", "0"):
+            rows = [judge(r) for _, r in sorted(reps[a].items())]
+            if not rows:
+                continue
+            cov = [float(m.group(1)) for j in rows for ev in j["server_events"]
+                   for m in [re.search(r"coverage=([0-9.]+)", ev)] if m]
+            cut = sum(any(SERVER_LOOP_RE.search(ev) for ev in j["server_events"]) for j in rows)
+            other = sum(bool(j["reasoning"]["triggers"] or j["answer"]["triggers"]) for j in rows)
+            js["rep"][a] = {"runs": rows, "cut": cut, "coverage": cov}
+            md.append(f"| {a} | {len(rows)} | {cut} | {', '.join(f'{c:.3f}' for c in cov) or '-'} | {other} | "
+                      f"{sum(j['answered'] for j in rows)}/{len(rows)} |")
+        md.append("")
 
     # ---- long context
     md += ["## Long context (~187K-token prompt, sampled, up to 60K tokens)", "",
@@ -268,8 +299,8 @@ def main() -> int:
     if not flagged:
         md += ["None.", ""]
 
-    (HERE / "report.md").write_text("\n".join(md), encoding="utf-8")
-    (HERE / "report.json").write_text(json.dumps(js, indent=2, ensure_ascii=False), encoding="utf-8")
+    (BASE / "report.md").write_text("\n".join(md), encoding="utf-8")
+    (BASE / "report.json").write_text(json.dumps(js, indent=2, ensure_ascii=False), encoding="utf-8")
     print("\n".join(md))
     return 0
 

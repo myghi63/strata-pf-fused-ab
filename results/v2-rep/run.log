@@ -1,0 +1,198 @@
+== reasoning_loop_recovery=stop in /home/myghi63/.local/share/strata/install/strata-iq3_s.json (restored at the end)
+== preset: iq3_s-256k-final
+== strata: /home/myghi63/.local/bin/strata
+
+================ arm 1 (STRATA_PF_FUSED=1) ================
+    Checking the engine for this computer…
+    Engine 0.1.57 (hip) is installed.
+    Getting Qwen3.8-Flash-Next IQ3_S ready (a download may be large; it continues where it stopped if interrupted)…
+    Getting your model ready
+    Checking your computer
+    Getting the helper packages ready
+    Checking the engine for this PC
+    Getting the model files: 83.6 of 83.6 GB
+    Preparing your model for Strata (one time)
+    Preparing the draft layer
+    Saving the model's settings
+    Qwen3.8-Flash-Next IQ3_S is ready.
+    Writing this launch's settings…
+    Settings are saved.
+    This preset is already tuned for this computer. Add --retune to measure again.
+    Starting the engine and loading the model. The first start can take a few minutes.
+    Loading the model… 15 s
+    Loading the model… 30 s
+    The model is loaded and answering.
+    Ready: http://127.0.0.1:8080, http://LAN-IP:8080
+    Strata is serving.
+
+Strata is serving.
+  This computer  http://127.0.0.1:8080/v1
+  Network        http://LAN-IP:8080/v1
+  Anthropic apps http://127.0.0.1:8080   (Claude Code: ANTHROPIC_BASE_URL, no /v1 at the end)
+  API key        sk-strata-REDACTED   (show it: strata launch --show-key --preset "iq3_s-256k-final")
+  Engine log     /home/myghi63/.local/state/strata/launch/iq3_s-256k-final.engine.log   (follow it: strata logs --follow)
+[!] DFlash2 answers one request at a time, so Strata set this model to one request at a time.
+  Watch it:    STRATA_API_KEY=$(strata launch --show-key) strata monitor --url http://127.0.0.1:8080 --credential-env STRATA_API_KEY
+  Connect an app:  strata connect opencode      Stop:  strata launch --stop --preset "iq3_s-256k-final"
+-- run config reasoning_loop_recovery: stop
+arm 1: model qwen3.8-flash-next-iq3_s, out /home/myghi63/strata-pf-fused-ab/out/arm1
+  REP   0 loop_words_a finish=stop tokens=5034 115s server:1
+  REP   1 loop_words_a finish=stop tokens=5048 104s server:1
+  REP   2 loop_words_a finish=length tokens=4608 92s server:2
+  REP   3 loop_words_a finish=stop tokens=4969 111s server:1
+  REP   4 loop_words_a finish=stop tokens=5037 108s server:1
+  REP   5 loop_words_a finish=stop tokens=5066 111s server:1
+  REP   6 loop_words_a finish=length tokens=3584 75s server:2
+  REP   7 loop_words_a finish=stop tokens=3878 75s
+done
+-- engine log: /home/myghi63/strata-pf-fused-ab/arm1.engine.log
+-- fused-expert marker lines: 1 (arm1 should be >=1, arm0 should be 0)
+
+================ arm 0 (STRATA_PF_FUSED=0) ================
+    Checking the engine for this computer…
+    Engine 0.1.57 (hip) is installed.
+    Getting Qwen3.8-Flash-Next IQ3_S ready (a download may be large; it continues where it stopped if interrupted)…
+    Getting your model ready
+    Checking your computer
+    Getting the helper packages ready
+    Checking the engine for this PC
+    Getting the model files: 83.6 of 83.6 GB
+    Preparing your model for Strata (one time)
+    Preparing the draft layer
+    Saving the model's settings
+    Qwen3.8-Flash-Next IQ3_S is ready.
+    Writing this launch's settings…
+    Settings are saved.
+    This preset is already tuned for this computer. Add --retune to measure again.
+    Starting the engine and loading the model. The first start can take a few minutes.
+    Loading the model… 15 s
+    Loading the model… 30 s
+    The model is loaded and answering.
+    Ready: http://127.0.0.1:8080, http://LAN-IP:8080
+    Strata is serving.
+
+Strata is serving.
+  This computer  http://127.0.0.1:8080/v1
+  Network        http://LAN-IP:8080/v1
+  Anthropic apps http://127.0.0.1:8080   (Claude Code: ANTHROPIC_BASE_URL, no /v1 at the end)
+  API key        sk-strata-REDACTED   (show it: strata launch --show-key --preset "iq3_s-256k-final")
+  Engine log     /home/myghi63/.local/state/strata/launch/iq3_s-256k-final.engine.log   (follow it: strata logs --follow)
+[!] DFlash2 answers one request at a time, so Strata set this model to one request at a time.
+  Watch it:    STRATA_API_KEY=$(strata launch --show-key) strata monitor --url http://127.0.0.1:8080 --credential-env STRATA_API_KEY
+  Connect an app:  strata connect opencode      Stop:  strata launch --stop --preset "iq3_s-256k-final"
+-- run config reasoning_loop_recovery: stop
+arm 0: model qwen3.8-flash-next-iq3_s, out /home/myghi63/strata-pf-fused-ab/out/arm0
+  REP   0 loop_words_a finish=stop tokens=4815 109s server:1
+  REP   1 loop_words_a finish=stop tokens=5051 103s server:1
+  REP   2 loop_words_a finish=length tokens=4096 82s server:2
+  REP   3 loop_words_a finish=stop tokens=5043 103s server:1
+  REP   4 loop_words_a finish=length tokens=4096 85s server:2
+  REP   5 loop_words_a finish=length tokens=4096 82s server:2
+  REP   6 loop_words_a finish=length tokens=4608 91s server:2
+  REP   7 loop_words_a finish=stop tokens=4938 109s server:1
+done
+-- engine log: /home/myghi63/strata-pf-fused-ab/arm0.engine.log
+-- fused-expert marker lines: 0 (arm1 should be >=1, arm0 should be 0)
+== restored /home/myghi63/.local/share/strata/install/strata-iq3_s.json
+
+================ analysis ================
+# STRATA_PF_FUSED A/B
+
+## Prompt speed (the KL requests)
+
+| arm | prompts | prompt tokens | mean tok/s | median tok/s | mean prompt ms |
+| --- | ---: | ---: | ---: | ---: | ---: |
+
+## Server loop detectors (whole server log of each arm)
+
+| arm | reasoning loop, stop | reasoning loop, recover | one token repeated |
+| --- | ---: | ---: | ---: |
+| 1 | 2 | 0 | 0 |
+| 0 | 4 | 0 | 0 |
+
+## Repetition loops (short prompts)
+
+### Summary
+
+| mode | arm | loops | hit max_tokens | wrote an answer |
+| --- | --- | ---: | ---: | ---: |
+
+## Greedy repeatability (same prompt, same server, 3 requests)
+
+| arm | identical pairs | common prefix (chars) 0-1 / 1-2 | draft accepted / drafted |
+| --- | ---: | --- | --- |
+
+The 2nd and 3rd requests reuse the cached prompt (conversation cache), so a difference between them comes from decoding, not from the prompt path. The draft acceptance counts differ between requests; speculative decoding is the likely source, but this run does not isolate it (`--drafting off` would).
+
+## Loop rate, one prompt repeated with the server's default sampling
+
+No sampling fields in the request: the server applies the model card's (temperature 1.0, top_p 0.95, top_k 20 with thinking), as for a client such as opencode. `coverage` is the server detector's share of the recent reasoning inside passages seen three times (it cuts at 0.25).
+
+| arm | runs | cut by the server | coverage of the cuts | other loop signals | wrote an answer |
+| --- | ---: | ---: | --- | ---: | ---: |
+| 1 | 8 | 2 | 0.349, 0.264 | 3 | 6/8 |
+| 0 | 8 | 4 | 0.358, 0.250, 0.343, 0.329 | 2 | 4/8 |
+
+## Long context (~187K-token prompt, sampled, up to 60K tokens)
+
+| arm | prompt tokens | prompt tok/s | output tokens | decode tok/s | finish | notes found / right chapter | chapters missing / repeated | loop signals |
+| --- | ---: | ---: | ---: | ---: | --- | --- | --- | --- |
+
+## Outputs flagged as loops (last 500 characters)
+
+None.
+
+# First-token KL, STRATA_PF_FUSED=1 vs =0
+
+Positions (prompts): **6**
+
+| direction | mean | median | max |
+| --- | ---: | ---: | ---: |
+| KL(fused \|\| mmq) | 0.008089 | 0.000650 | 0.044182 |
+| KL(mmq \|\| fused) | 0.016623 | 0.000642 | 0.092792 |
+
+**Top-1 same: 6/6**
+
+| prompt | KL(fused\|\|mmq) | KL(mmq\|\|fused) | top-1 same |
+| --- | ---: | ---: | :---: |
+| kl_en_consensus | 0.000000 | 0.000000 | yes |
+| kl_pt_navegacao | 0.000459 | 0.000433 | yes |
+| kl_code_asyncio | 0.044182 | 0.092792 | yes |
+| kl_math_svd | 0.000387 | 0.000403 | yes |
+| kl_agent_transcript | 0.002668 | 0.005256 | yes |
+| kl_json_api | 0.000841 | 0.000851 | yes |
+
+Reference from docs/AMD_HIP.md (STRATA_PF_FUSED, pooled 24 prompts): "First-token KL vs MMQ: IQ3_S 0.00284 vs 0.00332" (the doc does not say what each number is).
+
+== starting iq3_s-256k-final again
+    Checking the engine for this computer…
+    Engine 0.1.57 (hip) is installed.
+    Getting Qwen3.8-Flash-Next IQ3_S ready (a download may be large; it continues where it stopped if interrupted)…
+    Getting your model ready
+    Checking your computer
+    Getting the helper packages ready
+    Checking the engine for this PC
+    Getting the model files: 83.6 of 83.6 GB
+    Preparing your model for Strata (one time)
+    Preparing the draft layer
+    Saving the model's settings
+    Qwen3.8-Flash-Next IQ3_S is ready.
+    Writing this launch's settings…
+    Settings are saved.
+    This preset is already tuned for this computer. Add --retune to measure again.
+    Starting the engine and loading the model. The first start can take a few minutes.
+    Loading the model… 15 s
+    Loading the model… 30 s
+    The model is loaded and answering.
+    Ready: http://127.0.0.1:8080, http://LAN-IP:8080
+    Strata is serving.
+
+Strata is serving.
+  This computer  http://127.0.0.1:8080/v1
+  Network        http://LAN-IP:8080/v1
+  Anthropic apps http://127.0.0.1:8080   (Claude Code: ANTHROPIC_BASE_URL, no /v1 at the end)
+  API key        sk-strata-REDACTED   (show it: strata launch --show-key --preset "iq3_s-256k-final")
+  Engine log     /home/myghi63/.local/state/strata/launch/iq3_s-256k-final.engine.log   (follow it: strata logs --follow)
+[!] DFlash2 answers one request at a time, so Strata set this model to one request at a time.
+  Watch it:    STRATA_API_KEY=$(strata launch --show-key) strata monitor --url http://127.0.0.1:8080 --credential-env STRATA_API_KEY
+  Connect an app:  strata connect opencode      Stop:  strata launch --stop --preset "iq3_s-256k-final"

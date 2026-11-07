@@ -1,0 +1,2375 @@
+{
+  "speed_ratio": 1.6754959981228978,
+  "speeds": {
+    "1": [
+      {
+        "id": "kl_agent_transcript",
+        "tokens": 3853,
+        "cache_n": 0,
+        "prompt_ms": 3604.1,
+        "tok_s": 1069.1
+      },
+      {
+        "id": "kl_code_asyncio",
+        "tokens": 3853,
+        "cache_n": 0,
+        "prompt_ms": 3603.7,
+        "tok_s": 1069.2
+      },
+      {
+        "id": "kl_en_consensus",
+        "tokens": 3837,
+        "cache_n": 0,
+        "prompt_ms": 3631.5,
+        "tok_s": 1056.6
+      },
+      {
+        "id": "kl_json_api",
+        "tokens": 3886,
+        "cache_n": 0,
+        "prompt_ms": 3614.9,
+        "tok_s": 1075.0
+      },
+      {
+        "id": "kl_math_svd",
+        "tokens": 3893,
+        "cache_n": 0,
+        "prompt_ms": 3613.5,
+        "tok_s": 1077.3
+      },
+      {
+        "id": "kl_pt_navegacao",
+        "tokens": 3834,
+        "cache_n": 0,
+        "prompt_ms": 3551.6,
+        "tok_s": 1079.5
+      }
+    ],
+    "0": [
+      {
+        "id": "kl_agent_transcript",
+        "tokens": 3853,
+        "cache_n": 0,
+        "prompt_ms": 6067.3,
+        "tok_s": 635.0
+      },
+      {
+        "id": "kl_code_asyncio",
+        "tokens": 3853,
+        "cache_n": 0,
+        "prompt_ms": 6028.1,
+        "tok_s": 639.2
+      },
+      {
+        "id": "kl_en_consensus",
+        "tokens": 3837,
+        "cache_n": 0,
+        "prompt_ms": 6098.8,
+        "tok_s": 629.1
+      },
+      {
+        "id": "kl_json_api",
+        "tokens": 3886,
+        "cache_n": 0,
+        "prompt_ms": 6004.9,
+        "tok_s": 647.1
+      },
+      {
+        "id": "kl_math_svd",
+        "tokens": 3893,
+        "cache_n": 0,
+        "prompt_ms": 6052.9,
+        "tok_s": 643.2
+      },
+      {
+        "id": "kl_pt_navegacao",
+        "tokens": 3834,
+        "cache_n": 0,
+        "prompt_ms": 5970.6,
+        "tok_s": 642.1
+      }
+    ]
+  },
+  "server_totals": {
+    "1": {
+      "loop_stop": 2,
+      "loop_recover": 0,
+      "token_repeat": 0,
+      "recovery_mode": "reasoning_loop_recovery: \"stop\" in strata-<model>.json; remove it to turn this off)",
+      "log_found": true
+    },
+    "0": {
+      "loop_stop": 2,
+      "loop_recover": 0,
+      "token_repeat": 0,
+      "recovery_mode": "reasoning_loop_recovery: \"stop\" in strata-<model>.json; remove it to turn this off)",
+      "log_found": true
+    }
+  },
+  "loop": {
+    "loop_count_300.greedy0": {
+      "1": {
+        "finish": "stop",
+        "tokens": 1209,
+        "answered": true,
+        "reasoning": {
+          "chars": 407,
+          "words": 71,
+          "zlib_min": 0.6388,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "We need answer user's request. User in Portuguese: \"Conte de 1 a 300, um numero ",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 1091,
+          "words": 300,
+          "zlib_min": 0.4785,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "1",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      },
+      "0": {
+        "finish": "stop",
+        "tokens": 1707,
+        "answered": true,
+        "reasoning": {
+          "chars": 1426,
+          "words": 288,
+          "zlib_min": 0.5372,
+          "tail_period": null,
+          "top_line_n": 2,
+          "top_line": "1",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 1091,
+          "words": 300,
+          "zlib_min": 0.4785,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "1",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      }
+    },
+    "loop_dialogue_40.greedy0": {
+      "1": {
+        "finish": "stop",
+        "tokens": 1408,
+        "answered": true,
+        "reasoning": {
+          "chars": 2802,
+          "words": 529,
+          "zlib_min": 0.4748,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "We need answer user's request in Portuguese likely. User provided long context t",
+          "ngram6": 2,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 1443,
+          "words": 267,
+          "zlib_min": 0.5217,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "1. Ana: Estou com fome, mas não sei onde jantar.",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      },
+      "0": {
+        "finish": "stop",
+        "tokens": 1250,
+        "answered": true,
+        "reasoning": {
+          "chars": 2390,
+          "words": 431,
+          "zlib_min": 0.5136,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "We need answer user's request in Portuguese likely. User provided long context t",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 1524,
+          "words": 279,
+          "zlib_min": 0.5211,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "1. Ana: Estou com fome, mas não sei onde jantar.",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      }
+    },
+    "loop_essay_reading.greedy0": {
+      "1": {
+        "finish": "stop",
+        "tokens": 5074,
+        "answered": true,
+        "reasoning": {
+          "chars": 13739,
+          "words": 1869,
+          "zlib_min": 0.4602,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "We need answer user's request in Portuguese. User provided many texts and then a",
+          "ngram6": 2,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 4968,
+          "words": 749,
+          "zlib_min": 0.4536,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "A leitura é uma das experiências mais decisivas na formação de uma pessoa porque",
+          "ngram6": 2,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      },
+      "0": {
+        "finish": "stop",
+        "tokens": 5912,
+        "answered": true,
+        "reasoning": {
+          "chars": 15623,
+          "words": 2076,
+          "zlib_min": 0.4714,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "We need answer user's request in Portuguese. User provided many texts and then a",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 6276,
+          "words": 936,
+          "zlib_min": 0.4526,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "A leitura ocupa um lugar central na formação de uma pessoa porque não é apenas u",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [
+          "[strata] thinking budget reached (4608 tokens): wrapping up the thinking"
+        ],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      }
+    },
+    "loop_explain_compiler.greedy0": {
+      "1": {
+        "finish": "stop",
+        "tokens": 2506,
+        "answered": true,
+        "reasoning": {
+          "chars": 1210,
+          "words": 178,
+          "zlib_min": 0.4917,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "We need answer user's request in Portuguese? User wrote in Portuguese: \"Explique",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 8865,
+          "words": 1445,
+          "zlib_min": 0.4262,
+          "tail_period": null,
+          "top_line_n": 23,
+          "top_line": "```",
+          "ngram6": 5,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      },
+      "0": {
+        "finish": "stop",
+        "tokens": 2388,
+        "answered": true,
+        "reasoning": {
+          "chars": 1081,
+          "words": 162,
+          "zlib_min": 0.4995,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "We need answer user's request in Portuguese? User wrote in Portuguese: \"Explique",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 8280,
+          "words": 1338,
+          "zlib_min": 0.4292,
+          "tail_period": null,
+          "top_line_n": 20,
+          "top_line": "```",
+          "ngram6": 2,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      }
+    },
+    "loop_fibonacci.greedy0": {
+      "1": {
+        "finish": "stop",
+        "tokens": 5859,
+        "answered": true,
+        "reasoning": {
+          "chars": 7986,
+          "words": 1365,
+          "zlib_min": 0.4075,
+          "tail_period": null,
+          "top_line_n": 4,
+          "top_line": "1 (inicial)",
+          "ngram6": 4,
+          "ngram10": 3,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 1340,
+          "words": 294,
+          "zlib_min": 0.4082,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "1: 1 (inicial)",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [
+          "[strata] thinking budget reached (4608 tokens): wrapping up the thinking"
+        ],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      },
+      "0": {
+        "finish": "stop",
+        "tokens": 5668,
+        "answered": true,
+        "reasoning": {
+          "chars": 8462,
+          "words": 1472,
+          "zlib_min": 0.4057,
+          "tail_period": null,
+          "top_line_n": 8,
+          "top_line": "1 (inicial)",
+          "ngram6": 5,
+          "ngram10": 4,
+          "triggers": [
+            "line x8"
+          ]
+        },
+        "answer": {
+          "chars": 1149,
+          "words": 244,
+          "zlib_min": 0.4143,
+          "tail_period": null,
+          "top_line_n": 2,
+          "top_line": "1 (inicial)",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [
+          "[strata] thinking budget reached (4608 tokens): wrapping up the thinking"
+        ],
+        "signals": [
+          "reasoning line x8"
+        ],
+        "loop": true,
+        "server_cut": false,
+        "heuristic": true
+      }
+    },
+    "loop_json_50.greedy0": {
+      "1": {
+        "finish": "stop",
+        "tokens": 3326,
+        "answered": true,
+        "reasoning": {
+          "chars": 2567,
+          "words": 390,
+          "zlib_min": 0.4321,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "We need answer user's request. User in Portuguese: \"Gere um JSON valido com uma ",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 4705,
+          "words": 504,
+          "zlib_min": 0.1648,
+          "tail_period": null,
+          "top_line_n": 50,
+          "top_line": "{",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      },
+      "0": {
+        "finish": "stop",
+        "tokens": 3825,
+        "answered": true,
+        "reasoning": {
+          "chars": 4304,
+          "words": 729,
+          "zlib_min": 0.3342,
+          "tail_period": null,
+          "top_line_n": 2,
+          "top_line": "1 Notebook",
+          "ngram6": 2,
+          "ngram10": 2,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 4980,
+          "words": 538,
+          "zlib_min": 0.1694,
+          "tail_period": null,
+          "top_line_n": 50,
+          "top_line": "{",
+          "ngram6": 2,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      }
+    },
+    "loop_poem_sea.greedy0": {
+      "1": {
+        "finish": "stop",
+        "tokens": 3255,
+        "answered": true,
+        "reasoning": {
+          "chars": 8097,
+          "words": 1685,
+          "zlib_min": 0.3149,
+          "tail_period": null,
+          "top_line_n": 4,
+          "top_line": "1 O mar respira na beira do mundo,",
+          "ngram6": 14,
+          "ngram10": 4,
+          "triggers": [
+            "6-gram x14"
+          ]
+        },
+        "answer": {
+          "chars": 1530,
+          "words": 331,
+          "zlib_min": 0.5385,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "1. O mar respira na beira do mundo,",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [
+          "reasoning 6-gram x14"
+        ],
+        "loop": true,
+        "server_cut": false,
+        "heuristic": true
+      },
+      "0": {
+        "finish": "stop",
+        "tokens": 2236,
+        "answered": true,
+        "reasoning": {
+          "chars": 5287,
+          "words": 1092,
+          "zlib_min": 0.3321,
+          "tail_period": null,
+          "top_line_n": 4,
+          "top_line": "1 O mar respira na beira do mundo,",
+          "ngram6": 5,
+          "ngram10": 4,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 1411,
+          "words": 305,
+          "zlib_min": 0.5457,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "1. O mar respira na beira do mundo,",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      }
+    },
+    "loop_process_50.greedy0": {
+      "1": {
+        "finish": "stop",
+        "tokens": 3213,
+        "answered": true,
+        "reasoning": {
+          "chars": 7982,
+          "words": 1148,
+          "zlib_min": 0.4556,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "We need answer user's request in Portuguese likely. User provided several paragr",
+          "ngram6": 2,
+          "ngram10": 2,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 3703,
+          "words": 523,
+          "zlib_min": 0.4591,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "1. Definir a ideia central do livro: tema, promessa, público-alvo e objetivo da ",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      },
+      "0": {
+        "finish": "stop",
+        "tokens": 3549,
+        "answered": true,
+        "reasoning": {
+          "chars": 8156,
+          "words": 1158,
+          "zlib_min": 0.3994,
+          "tail_period": null,
+          "top_line_n": 2,
+          "top_line": "1 Ideia inicial",
+          "ngram6": 2,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 4513,
+          "words": 646,
+          "zlib_min": 0.4546,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "1. A ideia inicial surge a partir de uma experiência, um tema, uma pergunta ou u",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      }
+    },
+    "loop_summarize_cycle.greedy0": {
+      "1": {
+        "finish": "length",
+        "tokens": 6144,
+        "answered": true,
+        "reasoning": {
+          "chars": 19234,
+          "words": 3125,
+          "zlib_min": 0.3587,
+          "tail_period": null,
+          "top_line_n": 3,
+          "top_line": "Resumo (3)",
+          "ngram6": 4,
+          "ngram10": 3,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 6976,
+          "words": 1084,
+          "zlib_min": 0.3485,
+          "tail_period": null,
+          "top_line_n": 5,
+          "top_line": "#### Resumo de partida",
+          "ngram6": 2,
+          "ngram10": 2,
+          "triggers": []
+        },
+        "server_events": [
+          "[strata] thinking budget reached (4608 tokens): wrapping up the thinking"
+        ],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      },
+      "0": {
+        "finish": "stop",
+        "tokens": 6036,
+        "answered": true,
+        "reasoning": {
+          "chars": 17878,
+          "words": 2829,
+          "zlib_min": 0.3087,
+          "tail_period": null,
+          "top_line_n": 7,
+          "top_line": "Count 3.",
+          "ngram6": 7,
+          "ngram10": 7,
+          "triggers": [
+            "10-gram x7"
+          ]
+        },
+        "answer": {
+          "chars": 5951,
+          "words": 882,
+          "zlib_min": 0.3304,
+          "tail_period": null,
+          "top_line_n": 10,
+          "top_line": "Resumo (3 frases):",
+          "ngram6": 4,
+          "ngram10": 4,
+          "triggers": [
+            "line x10"
+          ]
+        },
+        "server_events": [
+          "[strata] thinking budget reached (4608 tokens): wrapping up the thinking"
+        ],
+        "signals": [
+          "reasoning 10-gram x7",
+          "answer line x10"
+        ],
+        "loop": true,
+        "server_cut": false,
+        "heuristic": true
+      }
+    },
+    "loop_table_40.greedy0": {
+      "1": {
+        "finish": "stop",
+        "tokens": 5261,
+        "answered": true,
+        "reasoning": {
+          "chars": 10360,
+          "words": 1779,
+          "zlib_min": 0.3594,
+          "tail_period": null,
+          "top_line_n": 2,
+          "top_line": "| Número | Cidade | População aproximada |",
+          "ngram6": 2,
+          "ngram10": 2,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 1312,
+          "words": 354,
+          "zlib_min": 0.4342,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "| Número | Cidade | População aproximada |",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [
+          "[strata] thinking budget reached (4608 tokens): wrapping up the thinking"
+        ],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      },
+      "0": {
+        "finish": "stop",
+        "tokens": 5258,
+        "answered": true,
+        "reasoning": {
+          "chars": 10321,
+          "words": 1645,
+          "zlib_min": 0.4083,
+          "tail_period": null,
+          "top_line_n": 2,
+          "top_line": "1 São Paulo 12,3M",
+          "ngram6": 2,
+          "ngram10": 2,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 1312,
+          "words": 354,
+          "zlib_min": 0.4453,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "| Número | Cidade | População aproximada |",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [
+          "[strata] thinking budget reached (4608 tokens): wrapping up the thinking"
+        ],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      }
+    },
+    "loop_tcp_steps.greedy0": {
+      "1": {
+        "finish": "stop",
+        "tokens": 5491,
+        "answered": true,
+        "reasoning": {
+          "chars": 18622,
+          "words": 3015,
+          "zlib_min": 0.315,
+          "tail_period": null,
+          "top_line_n": 13,
+          "top_line": "1. Estabelecimento de conexão.",
+          "ngram6": 7,
+          "ngram10": 7,
+          "triggers": [
+            "line x13",
+            "10-gram x7"
+          ]
+        },
+        "answer": {
+          "chars": 3535,
+          "words": 577,
+          "zlib_min": 0.4023,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "Abaixo, cada etapa aparece duas vezes: uma em frase curta e outra em frase longa",
+          "ngram6": 2,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [
+          "[strata] thinking budget reached (4608 tokens): wrapping up the thinking"
+        ],
+        "signals": [
+          "reasoning line x13",
+          "reasoning 10-gram x7"
+        ],
+        "loop": true,
+        "server_cut": false,
+        "heuristic": true
+      },
+      "0": {
+        "finish": "stop",
+        "tokens": 4146,
+        "answered": true,
+        "reasoning": {
+          "chars": 14914,
+          "words": 2369,
+          "zlib_min": 0.3608,
+          "tail_period": null,
+          "top_line_n": 3,
+          "top_line": "1. O cliente envia SYN.",
+          "ngram6": 5,
+          "ngram10": 4,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 2956,
+          "words": 471,
+          "zlib_min": 0.4264,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "1. O TCP identifica a conexão.",
+          "ngram6": 2,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      }
+    },
+    "loop_translate_30.greedy0": {
+      "1": {
+        "finish": "stop",
+        "tokens": 2650,
+        "answered": true,
+        "reasoning": {
+          "chars": 6920,
+          "words": 1140,
+          "zlib_min": 0.4051,
+          "tail_period": null,
+          "top_line_n": 2,
+          "top_line": "1 Inglês",
+          "ngram6": 2,
+          "ngram10": 2,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 913,
+          "words": 149,
+          "zlib_min": 0.6813,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "Inglês: The book is on the table.",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      },
+      "0": {
+        "finish": "stop",
+        "tokens": 2426,
+        "answered": true,
+        "reasoning": {
+          "chars": 6480,
+          "words": 1067,
+          "zlib_min": 0.3861,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "We need answer user's request in Portuguese? User: \"Traduza a frase 'O livro est",
+          "ngram6": 2,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 929,
+          "words": 150,
+          "zlib_min": 0.6933,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "inglês: The book is on the table.",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      }
+    },
+    "loop_while_python.greedy0": {
+      "1": {
+        "finish": "stop",
+        "tokens": 462,
+        "answered": true,
+        "reasoning": {
+          "chars": 632,
+          "words": 98,
+          "zlib_min": 0.5902,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "We need answer in Portuguese likely. User provided many paragraphs then asks: \"E",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 1048,
+          "words": 168,
+          "zlib_min": 0.4967,
+          "tail_period": null,
+          "top_line_n": 2,
+          "top_line": "```python",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      },
+      "0": {
+        "finish": "stop",
+        "tokens": 406,
+        "answered": true,
+        "reasoning": {
+          "chars": 444,
+          "words": 77,
+          "zlib_min": 0.6284,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "We need answer in Portuguese likely. User provided long context then asks: \"Escr",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 979,
+          "words": 158,
+          "zlib_min": 0.506,
+          "tail_period": null,
+          "top_line_n": 2,
+          "top_line": "```python",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      }
+    },
+    "loop_words_a.greedy0": {
+      "1": {
+        "finish": "length",
+        "tokens": 2560,
+        "answered": false,
+        "reasoning": {
+          "chars": 6163,
+          "words": 1094,
+          "zlib_min": 0.2166,
+          "tail_period": 30,
+          "top_line_n": 153,
+          "top_line": "62 afogar? no.",
+          "ngram6": 146,
+          "ngram10": 142,
+          "triggers": [
+            "line x153",
+            "tail period 30",
+            "10-gram x142",
+            "6-gram x146"
+          ]
+        },
+        "answer": {
+          "chars": 0,
+          "words": 0,
+          "zlib_min": 1.0,
+          "tail_period": null,
+          "top_line_n": 0,
+          "top_line": "",
+          "ngram6": 0,
+          "ngram10": 0,
+          "triggers": []
+        },
+        "server_events": [
+          "[strata] the thinking repeated the same passages (coverage=1.000) at 2560 tokens: ended as \"length\" (reasoning_loop_recovery: \"stop\" in strata-<model>.json; remove it to turn this off)",
+          "[strata] the reply reached max tokens while still thinking, so it has no answer: a thinking budget (reasoning_budget_tokens, in the request or in strata-<model>.json for every request) leaves room to answer"
+        ],
+        "signals": [
+          "server: the thinking repeated the same passages (coverage=1.000) at 2560 token",
+          "reasoning line x153",
+          "reasoning tail period 30",
+          "reasoning 10-gram x142",
+          "reasoning 6-gram x146"
+        ],
+        "loop": true,
+        "server_cut": true,
+        "heuristic": true
+      },
+      "0": {
+        "finish": "length",
+        "tokens": 3584,
+        "answered": false,
+        "reasoning": {
+          "chars": 9786,
+          "words": 1523,
+          "zlib_min": 0.3064,
+          "tail_period": null,
+          "top_line_n": 15,
+          "top_line": "62 acompanhar? no.",
+          "ngram6": 7,
+          "ngram10": 5,
+          "triggers": [
+            "line x15"
+          ]
+        },
+        "answer": {
+          "chars": 0,
+          "words": 0,
+          "zlib_min": 1.0,
+          "tail_period": null,
+          "top_line_n": 0,
+          "top_line": "",
+          "ngram6": 0,
+          "ngram10": 0,
+          "triggers": []
+        },
+        "server_events": [
+          "[strata] the thinking repeated the same passages (coverage=0.318) at 3584 tokens: ended as \"length\" (reasoning_loop_recovery: \"stop\" in strata-<model>.json; remove it to turn this off)",
+          "[strata] the reply reached max tokens while still thinking, so it has no answer: a thinking budget (reasoning_budget_tokens, in the request or in strata-<model>.json for every request) leaves room to answer"
+        ],
+        "signals": [
+          "server: the thinking repeated the same passages (coverage=0.318) at 3584 token",
+          "reasoning line x15"
+        ],
+        "loop": true,
+        "server_cut": true,
+        "heuristic": true
+      }
+    },
+    "loop_count_300.sampled1": {
+      "1": {
+        "finish": "stop",
+        "tokens": 1269,
+        "answered": true,
+        "reasoning": {
+          "chars": 640,
+          "words": 108,
+          "zlib_min": 0.5719,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "We need answer user's request. Need produce final answer: \"Conte de 1 a 300, um ",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 1091,
+          "words": 300,
+          "zlib_min": 0.4785,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "1",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      },
+      "0": {
+        "finish": "stop",
+        "tokens": 3256,
+        "answered": true,
+        "reasoning": {
+          "chars": 3437,
+          "words": 748,
+          "zlib_min": 0.4978,
+          "tail_period": null,
+          "top_line_n": 6,
+          "top_line": "...",
+          "ngram6": 3,
+          "ngram10": 3,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 1091,
+          "words": 300,
+          "zlib_min": 0.4785,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "1",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      }
+    },
+    "loop_dialogue_40.sampled1": {
+      "1": {
+        "finish": "stop",
+        "tokens": 1440,
+        "answered": true,
+        "reasoning": {
+          "chars": 3011,
+          "words": 544,
+          "zlib_min": 0.4699,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "We need answer in Portuguese likely, because user's request: \"Escreva um dialogo",
+          "ngram6": 2,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 1725,
+          "words": 314,
+          "zlib_min": 0.4774,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "1. Ana: Estou com fome, mas não sei onde jantar.",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      },
+      "0": {
+        "finish": "stop",
+        "tokens": 1330,
+        "answered": true,
+        "reasoning": {
+          "chars": 2751,
+          "words": 483,
+          "zlib_min": 0.4682,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "We need answer in Portuguese likely, because user's request: \"Escreva um dialogo",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 1538,
+          "words": 280,
+          "zlib_min": 0.4917,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "1. Ana: Você está com fome?",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      }
+    },
+    "loop_essay_reading.sampled1": {
+      "1": {
+        "finish": "stop",
+        "tokens": 5831,
+        "answered": true,
+        "reasoning": {
+          "chars": 15946,
+          "words": 2155,
+          "zlib_min": 0.4442,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "We need respond to user in Portuguese. User provided many paragraphs and asks: \"",
+          "ngram6": 3,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 5906,
+          "words": 874,
+          "zlib_min": 0.4504,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "**A leitura como formação de si e do mundo**",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [
+          "[strata] thinking budget reached (4608 tokens): wrapping up the thinking"
+        ],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      },
+      "0": {
+        "finish": "stop",
+        "tokens": 5747,
+        "answered": true,
+        "reasoning": {
+          "chars": 15306,
+          "words": 2069,
+          "zlib_min": 0.4491,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "We need respond to user in Portuguese. User asks: \"Escreva uma redacao de pelo m",
+          "ngram6": 2,
+          "ngram10": 2,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 5566,
+          "words": 838,
+          "zlib_min": 0.4549,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "A leitura é uma das experiências mais decisivas na formação de uma pessoa porque",
+          "ngram6": 2,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [
+          "[strata] thinking budget reached (4608 tokens): wrapping up the thinking"
+        ],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      }
+    },
+    "loop_explain_compiler.sampled1": {
+      "1": {
+        "finish": "stop",
+        "tokens": 2672,
+        "answered": true,
+        "reasoning": {
+          "chars": 1356,
+          "words": 206,
+          "zlib_min": 0.5125,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "We need answer user in Portuguese likely. User asks: \"Explique em detalhe como f",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 8909,
+          "words": 1472,
+          "zlib_min": 0.4298,
+          "tail_period": null,
+          "top_line_n": 23,
+          "top_line": "```",
+          "ngram6": 4,
+          "ngram10": 2,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      },
+      "0": {
+        "finish": "stop",
+        "tokens": 3211,
+        "answered": true,
+        "reasoning": {
+          "chars": 1406,
+          "words": 198,
+          "zlib_min": 0.5,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "We need answer user in Portuguese likely. User asks: \"Explique em detalhe como f",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 11208,
+          "words": 1783,
+          "zlib_min": 0.4138,
+          "tail_period": null,
+          "top_line_n": 32,
+          "top_line": "```",
+          "ngram6": 3,
+          "ngram10": 2,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      }
+    },
+    "loop_fibonacci.sampled1": {
+      "1": {
+        "finish": "stop",
+        "tokens": 5674,
+        "answered": true,
+        "reasoning": {
+          "chars": 8721,
+          "words": 1479,
+          "zlib_min": 0.433,
+          "tail_period": null,
+          "top_line_n": 4,
+          "top_line": "...",
+          "ngram6": 4,
+          "ngram10": 2,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 1157,
+          "words": 248,
+          "zlib_min": 0.3838,
+          "tail_period": null,
+          "top_line_n": 2,
+          "top_line": "1 = 1 (inicial)",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [
+          "[strata] thinking budget reached (4608 tokens): wrapping up the thinking"
+        ],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      },
+      "0": {
+        "finish": "stop",
+        "tokens": 5859,
+        "answered": true,
+        "reasoning": {
+          "chars": 9517,
+          "words": 1835,
+          "zlib_min": 0.4238,
+          "tail_period": null,
+          "top_line_n": 7,
+          "top_line": "...",
+          "ngram6": 4,
+          "ngram10": 3,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 1340,
+          "words": 294,
+          "zlib_min": 0.4015,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "1) 1 (inicial)",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [
+          "[strata] thinking budget reached (4608 tokens): wrapping up the thinking"
+        ],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      }
+    },
+    "loop_json_50.sampled1": {
+      "1": {
+        "finish": "stop",
+        "tokens": 2759,
+        "answered": true,
+        "reasoning": {
+          "chars": 2483,
+          "words": 395,
+          "zlib_min": 0.4313,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "We need answer user's request. They provided multiple texts and then: \"Gere um J",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 3832,
+          "words": 452,
+          "zlib_min": 0.1435,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "[",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": [
+            "zlib 0.144"
+          ]
+        },
+        "server_events": [],
+        "signals": [
+          "answer zlib 0.144"
+        ],
+        "loop": true,
+        "server_cut": false,
+        "heuristic": true
+      },
+      "0": {
+        "finish": "stop",
+        "tokens": 2985,
+        "answered": true,
+        "reasoning": {
+          "chars": 3016,
+          "words": 501,
+          "zlib_min": 0.3774,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "We need answer user's request. Need generate valid JSON with list of 50 objects ",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 3820,
+          "words": 452,
+          "zlib_min": 0.1465,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "[",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": [
+            "zlib 0.147"
+          ]
+        },
+        "server_events": [],
+        "signals": [
+          "answer zlib 0.147"
+        ],
+        "loop": true,
+        "server_cut": false,
+        "heuristic": true
+      }
+    },
+    "loop_poem_sea.sampled1": {
+      "1": {
+        "finish": "stop",
+        "tokens": 2779,
+        "answered": true,
+        "reasoning": {
+          "chars": 6673,
+          "words": 1298,
+          "zlib_min": 0.3705,
+          "tail_period": null,
+          "top_line_n": 2,
+          "top_line": "1. O mar respira na beira do cais,",
+          "ngram6": 9,
+          "ngram10": 4,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 1503,
+          "words": 318,
+          "zlib_min": 0.5377,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "1. O mar respira na beira do cais,",
+          "ngram6": 2,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      },
+      "0": {
+        "finish": "stop",
+        "tokens": 1149,
+        "answered": true,
+        "reasoning": {
+          "chars": 2289,
+          "words": 434,
+          "zlib_min": 0.5257,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "We need answer user's request. User language Portuguese: \"Escreva um poema com 4",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 1269,
+          "words": 258,
+          "zlib_min": 0.5802,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "1. O mar respira na borda do mundo,",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      }
+    },
+    "loop_process_50.sampled1": {
+      "1": {
+        "finish": "stop",
+        "tokens": 2664,
+        "answered": true,
+        "reasoning": {
+          "chars": 5794,
+          "words": 809,
+          "zlib_min": 0.4615,
+          "tail_period": null,
+          "top_line_n": 2,
+          "top_line": "12. Escrever outline...",
+          "ngram6": 3,
+          "ngram10": 2,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 4236,
+          "words": 596,
+          "zlib_min": 0.4587,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "1. Definir a ideia central do livro: tema, recorte, ângulo e objetivo principal ",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      },
+      "0": {
+        "finish": "stop",
+        "tokens": 2465,
+        "answered": true,
+        "reasoning": {
+          "chars": 4275,
+          "words": 649,
+          "zlib_min": 0.4211,
+          "tail_period": null,
+          "top_line_n": 2,
+          "top_line": "36 ISBN",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 5306,
+          "words": 797,
+          "zlib_min": 0.4491,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "1. A ideia inicial do livro nasce de uma experiência, um interesse, uma pergunta",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      }
+    },
+    "loop_summarize_cycle.sampled1": {
+      "1": {
+        "finish": "length",
+        "tokens": 6144,
+        "answered": true,
+        "reasoning": {
+          "chars": 19626,
+          "words": 3178,
+          "zlib_min": 0.3298,
+          "tail_period": null,
+          "top_line_n": 9,
+          "top_line": "Good.",
+          "ngram6": 3,
+          "ngram10": 3,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 6820,
+          "words": 1097,
+          "zlib_min": 0.3794,
+          "tail_period": null,
+          "top_line_n": 5,
+          "top_line": "Expansão em dez frases",
+          "ngram6": 4,
+          "ngram10": 3,
+          "triggers": []
+        },
+        "server_events": [
+          "[strata] thinking budget reached (4608 tokens): wrapping up the thinking"
+        ],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      },
+      "0": {
+        "finish": "stop",
+        "tokens": 5589,
+        "answered": true,
+        "reasoning": {
+          "chars": 17886,
+          "words": 2849,
+          "zlib_min": 0.3481,
+          "tail_period": null,
+          "top_line_n": 5,
+          "top_line": "...",
+          "ngram6": 4,
+          "ngram10": 3,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 3799,
+          "words": 538,
+          "zlib_min": 0.356,
+          "tail_period": null,
+          "top_line_n": 10,
+          "top_line": "Resumo (3 frases):",
+          "ngram6": 2,
+          "ngram10": 2,
+          "triggers": [
+            "line x10"
+          ]
+        },
+        "server_events": [
+          "[strata] thinking budget reached (4608 tokens): wrapping up the thinking"
+        ],
+        "signals": [
+          "answer line x10"
+        ],
+        "loop": true,
+        "server_cut": false,
+        "heuristic": true
+      }
+    },
+    "loop_table_40.sampled1": {
+      "1": {
+        "finish": "stop",
+        "tokens": 5247,
+        "answered": true,
+        "reasoning": {
+          "chars": 8885,
+          "words": 1295,
+          "zlib_min": 0.412,
+          "tail_period": null,
+          "top_line_n": 2,
+          "top_line": "Porto Alegre already.",
+          "ngram6": 2,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 1265,
+          "words": 311,
+          "zlib_min": 0.4502,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "| Número | Cidade | População aproximada |",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      },
+      "0": {
+        "finish": "stop",
+        "tokens": 4084,
+        "answered": true,
+        "reasoning": {
+          "chars": 8621,
+          "words": 1608,
+          "zlib_min": 0.3464,
+          "tail_period": null,
+          "top_line_n": 3,
+          "top_line": "1 São Paulo 12,3 milhões",
+          "ngram6": 3,
+          "ngram10": 3,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 1281,
+          "words": 346,
+          "zlib_min": 0.4465,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "| Nº | Cidade | População aproximada |",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      }
+    },
+    "loop_tcp_steps.sampled1": {
+      "1": {
+        "finish": "stop",
+        "tokens": 3912,
+        "answered": true,
+        "reasoning": {
+          "chars": 12290,
+          "words": 1975,
+          "zlib_min": 0.3303,
+          "tail_period": null,
+          "top_line_n": 9,
+          "top_line": "Longa: ...",
+          "ngram6": 5,
+          "ngram10": 5,
+          "triggers": [
+            "line x9"
+          ]
+        },
+        "answer": {
+          "chars": 3914,
+          "words": 646,
+          "zlib_min": 0.3671,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "1. Frase curta: O TCP identifica uma conexão pelos endereços IP, pelas portas e ",
+          "ngram6": 2,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [
+          "reasoning line x9"
+        ],
+        "loop": true,
+        "server_cut": false,
+        "heuristic": true
+      },
+      "0": {
+        "finish": "stop",
+        "tokens": 4057,
+        "answered": true,
+        "reasoning": {
+          "chars": 14379,
+          "words": 2288,
+          "zlib_min": 0.3637,
+          "tail_period": null,
+          "top_line_n": 3,
+          "top_line": "Longa: ...",
+          "ngram6": 8,
+          "ngram10": 4,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 3097,
+          "words": 498,
+          "zlib_min": 0.3869,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "1. O TCP abre a conexão com um handshake.",
+          "ngram6": 2,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      }
+    },
+    "loop_translate_30.sampled1": {
+      "1": {
+        "finish": "length",
+        "tokens": 3072,
+        "answered": false,
+        "reasoning": {
+          "chars": 9330,
+          "words": 1479,
+          "zlib_min": 0.3777,
+          "tail_period": null,
+          "top_line_n": 4,
+          "top_line": "1 Inglês: The book is on the table.",
+          "ngram6": 5,
+          "ngram10": 4,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 0,
+          "words": 0,
+          "zlib_min": 1.0,
+          "tail_period": null,
+          "top_line_n": 0,
+          "top_line": "",
+          "ngram6": 0,
+          "ngram10": 0,
+          "triggers": []
+        },
+        "server_events": [
+          "[strata] the thinking repeated the same passages (coverage=0.284) at 3072 tokens: ended as \"length\" (reasoning_loop_recovery: \"stop\" in strata-<model>.json; remove it to turn this off)",
+          "[strata] the reply reached max tokens while still thinking, so it has no answer: a thinking budget (reasoning_budget_tokens, in the request or in strata-<model>.json for every request) leaves room to answer"
+        ],
+        "signals": [
+          "server: the thinking repeated the same passages (coverage=0.284) at 3072 token"
+        ],
+        "loop": true,
+        "server_cut": true,
+        "heuristic": false
+      },
+      "0": {
+        "finish": "stop",
+        "tokens": 2609,
+        "answered": true,
+        "reasoning": {
+          "chars": 7242,
+          "words": 1157,
+          "zlib_min": 0.4512,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "We need answer user's request. User in Portuguese: \"Traduza a frase 'O livro est",
+          "ngram6": 3,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 923,
+          "words": 154,
+          "zlib_min": 0.6816,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "inglês: The book is on the table.",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      }
+    },
+    "loop_while_python.sampled1": {
+      "1": {
+        "finish": "stop",
+        "tokens": 429,
+        "answered": true,
+        "reasoning": {
+          "chars": 738,
+          "words": 120,
+          "zlib_min": 0.5447,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "We need respond to user in Portuguese. User provided long context and asks: \"Esc",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 808,
+          "words": 132,
+          "zlib_min": 0.5341,
+          "tail_period": null,
+          "top_line_n": 2,
+          "top_line": "```",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      },
+      "0": {
+        "finish": "stop",
+        "tokens": 470,
+        "answered": true,
+        "reasoning": {
+          "chars": 522,
+          "words": 82,
+          "zlib_min": 0.616,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "We need respond to user in Portuguese. User asks: \"Escreva um programa Python co",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 1154,
+          "words": 182,
+          "zlib_min": 0.4582,
+          "tail_period": null,
+          "top_line_n": 3,
+          "top_line": "```",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      }
+    },
+    "loop_words_a.sampled1": {
+      "1": {
+        "finish": "stop",
+        "tokens": 5041,
+        "answered": true,
+        "reasoning": {
+          "chars": 11898,
+          "words": 1943,
+          "zlib_min": 0.3715,
+          "tail_period": null,
+          "top_line_n": 5,
+          "top_line": "1 abacaxi",
+          "ngram6": 5,
+          "ngram10": 5,
+          "triggers": []
+        },
+        "answer": {
+          "chars": 1004,
+          "words": 120,
+          "zlib_min": 0.4403,
+          "tail_period": null,
+          "top_line_n": 1,
+          "top_line": "abacaxi",
+          "ngram6": 1,
+          "ngram10": 1,
+          "triggers": []
+        },
+        "server_events": [
+          "[strata] thinking budget reached (4608 tokens): wrapping up the thinking"
+        ],
+        "signals": [],
+        "loop": false,
+        "server_cut": false,
+        "heuristic": false
+      },
+      "0": {
+        "finish": "length",
+        "tokens": 3072,
+        "answered": false,
+        "reasoning": {
+          "chars": 8029,
+          "words": 1265,
+          "zlib_min": 0.2744,
+          "tail_period": null,
+          "top_line_n": 10,
+          "top_line": "Let's use \"absurdo\"? no.",
+          "ngram6": 7,
+          "ngram10": 5,
+          "triggers": [
+            "line x10"
+          ]
+        },
+        "answer": {
+          "chars": 0,
+          "words": 0,
+          "zlib_min": 1.0,
+          "tail_period": null,
+          "top_line_n": 0,
+          "top_line": "",
+          "ngram6": 0,
+          "ngram10": 0,
+          "triggers": []
+        },
+        "server_events": [
+          "[strata] the thinking repeated the same passages (coverage=0.398) at 3072 tokens: ended as \"length\" (reasoning_loop_recovery: \"stop\" in strata-<model>.json; remove it to turn this off)",
+          "[strata] the reply reached max tokens while still thinking, so it has no answer: a thinking budget (reasoning_budget_tokens, in the request or in strata-<model>.json for every request) leaves room to answer"
+        ],
+        "signals": [
+          "server: the thinking repeated the same passages (coverage=0.398) at 3072 token",
+          "reasoning line x10"
+        ],
+        "loop": true,
+        "server_cut": true,
+        "heuristic": true
+      }
+    }
+  },
+  "probe": {
+    "1": {
+      "identical_pairs": 0,
+      "prefix": [
+        222,
+        648
+      ],
+      "draft": [
+        "234/255",
+        "257/270",
+        "203/217"
+      ],
+      "cache_n": [
+        0,
+        3316,
+        3316
+      ]
+    },
+    "0": {
+      "identical_pairs": 0,
+      "prefix": [
+        222,
+        222
+      ],
+      "draft": [
+        "251/261",
+        "222/244",
+        "231/239"
+      ],
+      "cache_n": [
+        0,
+        3316,
+        3316
+      ]
+    }
+  },
+  "long": {
+    "1": {
+      "finish": "stop",
+      "tokens": 20427,
+      "answered": true,
+      "reasoning": {
+        "chars": 60200,
+        "words": 9633,
+        "zlib_min": 0.3669,
+        "tail_period": null,
+        "top_line_n": 4,
+        "top_line": "...",
+        "ngram6": 3,
+        "ngram10": 3,
+        "triggers": []
+      },
+      "answer": {
+        "chars": 11893,
+        "words": 1940,
+        "zlib_min": 0.475,
+        "tail_period": null,
+        "top_line_n": 2,
+        "top_line": "---",
+        "ngram6": 1,
+        "ngram10": 1,
+        "triggers": []
+      },
+      "server_events": [],
+      "signals": [],
+      "loop": false,
+      "server_cut": false,
+      "heuristic": false,
+      "score": {
+        "notes_found": 12,
+        "notes_chapter_ok": 12,
+        "notes": [
+          {
+            "note": 1,
+            "code": "amber-6305",
+            "chapter": 3,
+            "found": true,
+            "chapter_ok": true
+          },
+          {
+            "note": 2,
+            "code": "falcon-3471",
+            "chapter": 9,
+            "found": true,
+            "chapter_ok": true
+          },
+          {
+            "note": 3,
+            "code": "cobalt-7468",
+            "chapter": 16,
+            "found": true,
+            "chapter_ok": true
+          },
+          {
+            "note": 4,
+            "code": "willow-1791",
+            "chapter": 22,
+            "found": true,
+            "chapter_ok": true
+          },
+          {
+            "note": 5,
+            "code": "granite-2186",
+            "chapter": 32,
+            "found": true,
+            "chapter_ok": true
+          },
+          {
+            "note": 6,
+            "code": "saffron-9779",
+            "chapter": 36,
+            "found": true,
+            "chapter_ok": true
+          },
+          {
+            "note": 7,
+            "code": "harbor-2542",
+            "chapter": 42,
+            "found": true,
+            "chapter_ok": true
+          },
+          {
+            "note": 8,
+            "code": "quartz-6991",
+            "chapter": 48,
+            "found": true,
+            "chapter_ok": true
+          },
+          {
+            "note": 9,
+            "code": "ember-1950",
+            "chapter": 54,
+            "found": true,
+            "chapter_ok": true
+          },
+          {
+            "note": 10,
+            "code": "juniper-9313",
+            "chapter": 59,
+            "found": true,
+            "chapter_ok": true
+          },
+          {
+            "note": 11,
+            "code": "marlin-4517",
+            "chapter": 68,
+            "found": true,
+            "chapter_ok": true
+          },
+          {
+            "note": 12,
+            "code": "tundra-1614",
+            "chapter": 75,
+            "found": true,
+            "chapter_ok": true
+          }
+        ],
+        "chapters_missing": [],
+        "chapters_repeated": [],
+        "chapters_in_order": true
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 186578,
+        "prompt_ms": 178675.7,
+        "prompt_per_token_ms": 0.958,
+        "prompt_per_second": 1044.2,
+        "predicted_n": 20427,
+        "predicted_ms": 453797.8,
+        "predicted_per_token_ms": 22.216,
+        "predicted_per_second": 45.0,
+        "draft_n": 14732,
+        "draft_n_accepted": 12132
+      }
+    },
+    "0": {
+      "finish": "stop",
+      "tokens": 17728,
+      "answered": true,
+      "reasoning": {
+        "chars": 47939,
+        "words": 7634,
+        "zlib_min": 0.4043,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer user's request. Need parse provided text: beginning of Moby-Dick ",
+        "ngram6": 3,
+        "ngram10": 2,
+        "triggers": []
+      },
+      "answer": {
+        "chars": 14409,
+        "words": 2352,
+        "zlib_min": 0.4633,
+        "tail_period": null,
+        "top_line_n": 2,
+        "top_line": "---",
+        "ngram6": 2,
+        "ngram10": 2,
+        "triggers": []
+      },
+      "server_events": [],
+      "signals": [],
+      "loop": false,
+      "server_cut": false,
+      "heuristic": false,
+      "score": {
+        "notes_found": 12,
+        "notes_chapter_ok": 12,
+        "notes": [
+          {
+            "note": 1,
+            "code": "amber-6305",
+            "chapter": 3,
+            "found": true,
+            "chapter_ok": true
+          },
+          {
+            "note": 2,
+            "code": "falcon-3471",
+            "chapter": 9,
+            "found": true,
+            "chapter_ok": true
+          },
+          {
+            "note": 3,
+            "code": "cobalt-7468",
+            "chapter": 16,
+            "found": true,
+            "chapter_ok": true
+          },
+          {
+            "note": 4,
+            "code": "willow-1791",
+            "chapter": 22,
+            "found": true,
+            "chapter_ok": true
+          },
+          {
+            "note": 5,
+            "code": "granite-2186",
+            "chapter": 32,
+            "found": true,
+            "chapter_ok": true
+          },
+          {
+            "note": 6,
+            "code": "saffron-9779",
+            "chapter": 36,
+            "found": true,
+            "chapter_ok": true
+          },
+          {
+            "note": 7,
+            "code": "harbor-2542",
+            "chapter": 42,
+            "found": true,
+            "chapter_ok": true
+          },
+          {
+            "note": 8,
+            "code": "quartz-6991",
+            "chapter": 48,
+            "found": true,
+            "chapter_ok": true
+          },
+          {
+            "note": 9,
+            "code": "ember-1950",
+            "chapter": 54,
+            "found": true,
+            "chapter_ok": true
+          },
+          {
+            "note": 10,
+            "code": "juniper-9313",
+            "chapter": 59,
+            "found": true,
+            "chapter_ok": true
+          },
+          {
+            "note": 11,
+            "code": "marlin-4517",
+            "chapter": 68,
+            "found": true,
+            "chapter_ok": true
+          },
+          {
+            "note": 12,
+            "code": "tundra-1614",
+            "chapter": 75,
+            "found": true,
+            "chapter_ok": true
+          }
+        ],
+        "chapters_missing": [],
+        "chapters_repeated": [],
+        "chapters_in_order": true
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 186578,
+        "prompt_ms": 259658.0,
+        "prompt_per_token_ms": 1.392,
+        "prompt_per_second": 718.6,
+        "predicted_n": 17728,
+        "predicted_ms": 409066.3,
+        "predicted_per_token_ms": 23.075,
+        "predicted_per_second": 43.3,
+        "draft_n": 12805,
+        "draft_n_accepted": 9912
+      }
+    }
+  }
+}

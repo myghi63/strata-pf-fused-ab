@@ -1,0 +1,785 @@
+[strata] hipBLASLt tuning table: /home/myghi63/.local/state/strata/launch/gfx1101-hipblaslt-100200.txt (set by you; the engine checks it against this GPU and hipBLASLt)
+loading the model (the first start takes a minute or two) ...
+[strata] drafting: DFlash2 alone (--draft dflash2, --draft-conf 0.7)
+[strata] starting the engine: reading the model's weights ...
+[strata] loading the experts into RAM (about 55 GB) and locking part of them for the GPU.
+         YOUR PC CAN BE SLOW OR STOP RESPONDING FOR 1-3 MINUTES NOW - this is normal.
+         Please wait and don't close this window; the server says when it is ready.
+[strata] still starting (23 s) - please wait ...
+[strata] experts loaded: 46.84 GiB at 2.24 GiB/s (28 s so far)
+[strata] filling the GPU's expert cache (3043 experts, 5.83 GiB of VRAM) ...
+[strata] almost ready ...
+ready: http://127.0.0.1:8080/v1  (OpenAI: /v1/chat/completions, Anthropic: /v1/messages, context 262144 tokens, API key required)
+       open http://127.0.0.1:8080/ in a browser to chat; close this window to stop the model
+       from other devices: http://LAN-IP:8080/   (API: http://LAN-IP:8080/v1)
+[strata] done: 1 tokens in 1 s (no speed) (length, cancel=False), expert cache 41.1% hit (+34.2% of the routed experts over PCIe)
+[strata] the reply reached max tokens while still thinking, so it has no answer: a thinking budget (reasoning_budget_tokens, in the request or in strata-<model>.json for every request) leaves room to answer
+[strata] thinking limited to 4608 of max_tokens 6144 so the answer has room ("answer_room": false in the config turns this off)
+[strata] reading the prompt: 3,321 of 3,326 tokens, 3 s so far
+[strata] thinking: 27 of budget 4608 (max 6144) tokens, 36.2 tok/s, 4 s
+[strata] thinking: 76 of budget 4608 (max 6144) tokens, 43.4 tok/s, 5 s
+[strata] thinking: 119 of budget 4608 (max 6144) tokens, 42.5 tok/s, 6 s
+[strata] thinking: 161 of budget 4608 (max 6144) tokens, 42.2 tok/s, 7 s
+[strata] thinking: 201 of budget 4608 (max 6144) tokens, 41.6 tok/s, 8 s
+[strata] thinking: 242 of budget 4608 (max 6144) tokens, 41.3 tok/s, 9 s
+[strata] thinking: 282 of budget 4608 (max 6144) tokens, 40.9 tok/s, 10 s
+[strata] thinking: 333 of budget 4608 (max 6144) tokens, 42.0 tok/s, 11 s
+[strata] thinking: 367 of budget 4608 (max 6144) tokens, 41.0 tok/s, 12 s
+[strata] thinking: 407 of budget 4608 (max 6144) tokens, 40.7 tok/s, 14 s
+[strata] thinking: 450 of budget 4608 (max 6144) tokens, 40.8 tok/s, 15 s
+[strata] thinking: 490 of budget 4608 (max 6144) tokens, 40.7 tok/s, 16 s
+[strata] thinking: 531 of budget 4608 (max 6144) tokens, 40.4 tok/s, 17 s
+[strata] thinking: 587 of budget 4608 (max 6144) tokens, 41.5 tok/s, 18 s
+[strata] thinking: 634 of budget 4608 (max 6144) tokens, 41.8 tok/s, 19 s
+[strata] thinking: 675 of budget 4608 (max 6144) tokens, 41.7 tok/s, 20 s
+[strata] thinking: 744 of budget 4608 (max 6144) tokens, 43.2 tok/s, 21 s
+[strata] thinking: 785 of budget 4608 (max 6144) tokens, 43.0 tok/s, 22 s
+[strata] thinking: 860 of budget 4608 (max 6144) tokens, 44.5 tok/s, 23 s
+[strata] thinking: 918 of budget 4608 (max 6144) tokens, 45.1 tok/s, 24 s
+[strata] thinking: 969 of budget 4608 (max 6144) tokens, 45.4 tok/s, 25 s
+[strata] thinking: 1022 of budget 4608 (max 6144) tokens, 45.6 tok/s, 26 s
+[strata] thinking: 1088 of budget 4608 (max 6144) tokens, 46.4 tok/s, 27 s
+[strata] thinking: 1133 of budget 4608 (max 6144) tokens, 46.3 tok/s, 28 s
+[strata] thinking: 1170 of budget 4608 (max 6144) tokens, 45.9 tok/s, 29 s
+[strata] thinking: 1220 of budget 4608 (max 6144) tokens, 45.9 tok/s, 30 s
+[strata] thinking: 1277 of budget 4608 (max 6144) tokens, 46.3 tok/s, 31 s
+[strata] thinking: 1345 of budget 4608 (max 6144) tokens, 47.1 tok/s, 32 s
+[strata] thinking: 1411 of budget 4608 (max 6144) tokens, 47.7 tok/s, 33 s
+[strata] thinking: 1487 of budget 4608 (max 6144) tokens, 48.5 tok/s, 34 s
+[strata] thinking: 1565 of budget 4608 (max 6144) tokens, 49.3 tok/s, 35 s
+[strata] thinking: 1606 of budget 4608 (max 6144) tokens, 49.0 tok/s, 36 s
+[strata] thinking: 1645 of budget 4608 (max 6144) tokens, 48.7 tok/s, 37 s
+[strata] thinking: 1682 of budget 4608 (max 6144) tokens, 48.3 tok/s, 38 s
+[strata] thinking: 1747 of budget 4608 (max 6144) tokens, 48.7 tok/s, 39 s
+[strata] thinking: 1790 of budget 4608 (max 6144) tokens, 48.5 tok/s, 40 s
+[strata] thinking: 1861 of budget 4608 (max 6144) tokens, 49.0 tok/s, 41 s
+[strata] thinking: 1901 of budget 4608 (max 6144) tokens, 48.8 tok/s, 42 s
+[strata] thinking: 1943 of budget 4608 (max 6144) tokens, 48.6 tok/s, 44 s
+[strata] thinking: 1992 of budget 4608 (max 6144) tokens, 48.6 tok/s, 45 s
+[strata] thinking: 2035 of budget 4608 (max 6144) tokens, 48.4 tok/s, 46 s
+[strata] thinking: 2077 of budget 4608 (max 6144) tokens, 48.3 tok/s, 47 s
+[strata] thinking: 2121 of budget 4608 (max 6144) tokens, 48.1 tok/s, 48 s
+[strata] thinking: 2165 of budget 4608 (max 6144) tokens, 48.1 tok/s, 49 s
+[strata] thinking: 2212 of budget 4608 (max 6144) tokens, 48.0 tok/s, 50 s
+[strata] thinking: 2263 of budget 4608 (max 6144) tokens, 48.0 tok/s, 51 s
+[strata] thinking: 2295 of budget 4608 (max 6144) tokens, 47.7 tok/s, 52 s
+[strata] thinking: 2331 of budget 4608 (max 6144) tokens, 47.4 tok/s, 53 s
+[strata] thinking: 2382 of budget 4608 (max 6144) tokens, 47.5 tok/s, 54 s
+[strata] thinking: 2420 of budget 4608 (max 6144) tokens, 47.3 tok/s, 55 s
+[strata] thinking: 2466 of budget 4608 (max 6144) tokens, 47.2 tok/s, 56 s
+[strata] thinking: 2503 of budget 4608 (max 6144) tokens, 47.0 tok/s, 57 s
+[strata] thinking: 2538 of budget 4608 (max 6144) tokens, 46.7 tok/s, 58 s
+[strata] thinking: 2579 of budget 4608 (max 6144) tokens, 46.6 tok/s, 59 s
+[strata] thinking: 2639 of budget 4608 (max 6144) tokens, 46.8 tok/s, 60 s
+[strata] thinking: 2694 of budget 4608 (max 6144) tokens, 47.0 tok/s, 61 s
+[strata] thinking: 2755 of budget 4608 (max 6144) tokens, 47.2 tok/s, 62 s
+[strata] thinking: 2799 of budget 4608 (max 6144) tokens, 47.1 tok/s, 63 s
+[strata] thinking: 2835 of budget 4608 (max 6144) tokens, 46.9 tok/s, 64 s
+[strata] thinking: 2881 of budget 4608 (max 6144) tokens, 46.9 tok/s, 65 s
+[strata] thinking: 2931 of budget 4608 (max 6144) tokens, 46.9 tok/s, 66 s
+[strata] thinking: 2993 of budget 4608 (max 6144) tokens, 47.1 tok/s, 67 s
+[strata] thinking: 3035 of budget 4608 (max 6144) tokens, 47.1 tok/s, 68 s
+[strata] thinking: 3080 of budget 4608 (max 6144) tokens, 47.0 tok/s, 69 s
+[strata] thinking: 3123 of budget 4608 (max 6144) tokens, 46.9 tok/s, 70 s
+[strata] thinking: 3161 of budget 4608 (max 6144) tokens, 46.8 tok/s, 71 s
+[strata] thinking: 3202 of budget 4608 (max 6144) tokens, 46.7 tok/s, 72 s
+[strata] thinking: 3238 of budget 4608 (max 6144) tokens, 46.5 tok/s, 73 s
+[strata] thinking: 3277 of budget 4608 (max 6144) tokens, 46.4 tok/s, 74 s
+[strata] thinking: 3322 of budget 4608 (max 6144) tokens, 46.4 tok/s, 75 s
+[strata] thinking: 3366 of budget 4608 (max 6144) tokens, 46.3 tok/s, 76 s
+[strata] thinking: 3419 of budget 4608 (max 6144) tokens, 46.4 tok/s, 77 s
+[strata] thinking: 3468 of budget 4608 (max 6144) tokens, 46.4 tok/s, 78 s
+[strata] thinking: 3514 of budget 4608 (max 6144) tokens, 46.4 tok/s, 79 s
+[strata] thinking: 3563 of budget 4608 (max 6144) tokens, 46.4 tok/s, 80 s
+[strata] thinking: 3601 of budget 4608 (max 6144) tokens, 46.3 tok/s, 81 s
+[strata] thinking: 3650 of budget 4608 (max 6144) tokens, 46.3 tok/s, 82 s
+[strata] thinking: 3698 of budget 4608 (max 6144) tokens, 46.4 tok/s, 83 s
+[strata] thinking: 3748 of budget 4608 (max 6144) tokens, 46.4 tok/s, 84 s
+[strata] thinking: 3793 of budget 4608 (max 6144) tokens, 46.4 tok/s, 85 s
+[strata] thinking: 3837 of budget 4608 (max 6144) tokens, 46.3 tok/s, 86 s
+[strata] thinking: 3882 of budget 4608 (max 6144) tokens, 46.3 tok/s, 87 s
+[strata] thinking: 3929 of budget 4608 (max 6144) tokens, 46.3 tok/s, 88 s
+[strata] thinking: 3969 of budget 4608 (max 6144) tokens, 46.2 tok/s, 89 s
+[strata] thinking: 4020 of budget 4608 (max 6144) tokens, 46.3 tok/s, 90 s
+[strata] thinking: 4067 of budget 4608 (max 6144) tokens, 46.3 tok/s, 91 s
+[strata] thinking: 4111 of budget 4608 (max 6144) tokens, 46.2 tok/s, 92 s
+[strata] thinking: 4153 of budget 4608 (max 6144) tokens, 46.2 tok/s, 93 s
+[strata] thinking: 4194 of budget 4608 (max 6144) tokens, 46.1 tok/s, 94 s
+[strata] thinking: 4228 of budget 4608 (max 6144) tokens, 46.0 tok/s, 96 s
+[strata] thinking: 4265 of budget 4608 (max 6144) tokens, 45.9 tok/s, 97 s
+[strata] thinking: 4300 of budget 4608 (max 6144) tokens, 45.7 tok/s, 98 s
+[strata] thinking: 4338 of budget 4608 (max 6144) tokens, 45.6 tok/s, 99 s
+[strata] thinking: 4373 of budget 4608 (max 6144) tokens, 45.5 tok/s, 100 s
+[strata] thinking: 4415 of budget 4608 (max 6144) tokens, 45.4 tok/s, 101 s
+[strata] thinking: 4471 of budget 4608 (max 6144) tokens, 45.5 tok/s, 102 s
+[strata] thinking: 4530 of budget 4608 (max 6144) tokens, 45.6 tok/s, 103 s
+[strata] thinking: 4588 of budget 4608 (max 6144) tokens, 45.7 tok/s, 104 s
+[strata] thinking budget reached (4608 tokens): wrapping up the thinking
+[strata] thinking: 4626 of max 6144 tokens, 44.0 tok/s, 109 s
+[strata] answering: 4677 of max 6144 tokens, 44.1 tok/s, 110 s
+[strata] answering: 4736 of max 6144 tokens, 44.2 tok/s, 111 s
+[strata] answering: 4823 of max 6144 tokens, 44.6 tok/s, 112 s
+[strata] answering: 4896 of max 6144 tokens, 44.9 tok/s, 113 s
+[strata] answering: 4981 of max 6144 tokens, 45.2 tok/s, 114 s
+[strata] done: 5034 tokens in 115 s (47.1 tok/s) (stop, cancel=False), expert cache 83.6% hit (+11.6% of the routed experts over PCIe)
+[strata] thinking limited to 4608 of max_tokens 6144 so the answer has room ("answer_room": false in the config turns this off)
+[strata] thinking: 36 of budget 4608 (max 6144) tokens, 47.3 tok/s, 1 s
+[strata] thinking: 72 of budget 4608 (max 6144) tokens, 40.0 tok/s, 2 s
+[strata] thinking: 106 of budget 4608 (max 6144) tokens, 37.6 tok/s, 3 s
+[strata] thinking: 148 of budget 4608 (max 6144) tokens, 38.6 tok/s, 4 s
+[strata] thinking: 193 of budget 4608 (max 6144) tokens, 39.5 tok/s, 5 s
+[strata] thinking: 237 of budget 4608 (max 6144) tokens, 40.1 tok/s, 6 s
+[strata] thinking: 282 of budget 4608 (max 6144) tokens, 40.7 tok/s, 7 s
+[strata] thinking: 318 of budget 4608 (max 6144) tokens, 40.1 tok/s, 8 s
+[strata] thinking: 356 of budget 4608 (max 6144) tokens, 39.8 tok/s, 9 s
+[strata] thinking: 404 of budget 4608 (max 6144) tokens, 40.6 tok/s, 10 s
+[strata] thinking: 446 of budget 4608 (max 6144) tokens, 40.6 tok/s, 11 s
+[strata] thinking: 491 of budget 4608 (max 6144) tokens, 40.9 tok/s, 12 s
+[strata] thinking: 539 of budget 4608 (max 6144) tokens, 41.4 tok/s, 13 s
+[strata] thinking: 594 of budget 4608 (max 6144) tokens, 42.4 tok/s, 14 s
+[strata] thinking: 642 of budget 4608 (max 6144) tokens, 42.7 tok/s, 15 s
+[strata] thinking: 685 of budget 4608 (max 6144) tokens, 42.7 tok/s, 16 s
+[strata] thinking: 740 of budget 4608 (max 6144) tokens, 43.4 tok/s, 17 s
+[strata] thinking: 782 of budget 4608 (max 6144) tokens, 43.3 tok/s, 18 s
+[strata] thinking: 824 of budget 4608 (max 6144) tokens, 43.2 tok/s, 19 s
+[strata] thinking: 858 of budget 4608 (max 6144) tokens, 42.7 tok/s, 20 s
+[strata] thinking: 894 of budget 4608 (max 6144) tokens, 42.3 tok/s, 21 s
+[strata] thinking: 951 of budget 4608 (max 6144) tokens, 42.8 tok/s, 22 s
+[strata] thinking: 1001 of budget 4608 (max 6144) tokens, 43.1 tok/s, 24 s
+[strata] thinking: 1061 of budget 4608 (max 6144) tokens, 43.8 tok/s, 25 s
+[strata] thinking: 1126 of budget 4608 (max 6144) tokens, 44.6 tok/s, 26 s
+[strata] thinking: 1174 of budget 4608 (max 6144) tokens, 44.7 tok/s, 27 s
+[strata] thinking: 1236 of budget 4608 (max 6144) tokens, 45.3 tok/s, 28 s
+[strata] thinking: 1290 of budget 4608 (max 6144) tokens, 45.6 tok/s, 29 s
+[strata] thinking: 1348 of budget 4608 (max 6144) tokens, 45.9 tok/s, 30 s
+[strata] thinking: 1404 of budget 4608 (max 6144) tokens, 46.2 tok/s, 31 s
+[strata] thinking: 1450 of budget 4608 (max 6144) tokens, 46.2 tok/s, 32 s
+[strata] thinking: 1485 of budget 4608 (max 6144) tokens, 45.8 tok/s, 33 s
+[strata] thinking: 1535 of budget 4608 (max 6144) tokens, 45.9 tok/s, 34 s
+[strata] thinking: 1591 of budget 4608 (max 6144) tokens, 46.2 tok/s, 35 s
+[strata] thinking: 1655 of budget 4608 (max 6144) tokens, 46.7 tok/s, 36 s
+[strata] thinking: 1704 of budget 4608 (max 6144) tokens, 46.7 tok/s, 37 s
+[strata] thinking: 1738 of budget 4608 (max 6144) tokens, 46.3 tok/s, 38 s
+[strata] thinking: 1769 of budget 4608 (max 6144) tokens, 45.9 tok/s, 39 s
+[strata] thinking: 1807 of budget 4608 (max 6144) tokens, 45.7 tok/s, 40 s
+[strata] thinking: 1857 of budget 4608 (max 6144) tokens, 45.7 tok/s, 41 s
+[strata] thinking: 1912 of budget 4608 (max 6144) tokens, 45.9 tok/s, 42 s
+[strata] thinking: 1979 of budget 4608 (max 6144) tokens, 46.3 tok/s, 43 s
+[strata] thinking: 2048 of budget 4608 (max 6144) tokens, 46.9 tok/s, 44 s
+[strata] thinking: 2117 of budget 4608 (max 6144) tokens, 47.3 tok/s, 45 s
+[strata] thinking: 2185 of budget 4608 (max 6144) tokens, 47.7 tok/s, 46 s
+[strata] thinking: 2265 of budget 4608 (max 6144) tokens, 48.4 tok/s, 47 s
+[strata] thinking: 2334 of budget 4608 (max 6144) tokens, 48.8 tok/s, 48 s
+[strata] thinking: 2413 of budget 4608 (max 6144) tokens, 49.4 tok/s, 49 s
+[strata] thinking: 2454 of budget 4608 (max 6144) tokens, 49.2 tok/s, 50 s
+[strata] thinking: 2497 of budget 4608 (max 6144) tokens, 49.1 tok/s, 51 s
+[strata] thinking: 2537 of budget 4608 (max 6144) tokens, 48.9 tok/s, 52 s
+[strata] thinking: 2572 of budget 4608 (max 6144) tokens, 48.6 tok/s, 53 s
+[strata] thinking: 2606 of budget 4608 (max 6144) tokens, 48.3 tok/s, 54 s
+[strata] thinking: 2640 of budget 4608 (max 6144) tokens, 48.0 tok/s, 55 s
+[strata] thinking: 2678 of budget 4608 (max 6144) tokens, 47.9 tok/s, 56 s
+[strata] thinking: 2734 of budget 4608 (max 6144) tokens, 47.9 tok/s, 57 s
+[strata] thinking: 2791 of budget 4608 (max 6144) tokens, 48.0 tok/s, 58 s
+[strata] thinking: 2850 of budget 4608 (max 6144) tokens, 48.2 tok/s, 59 s
+[strata] thinking: 2914 of budget 4608 (max 6144) tokens, 48.4 tok/s, 60 s
+[strata] thinking: 2990 of budget 4608 (max 6144) tokens, 48.8 tok/s, 61 s
+[strata] thinking: 3057 of budget 4608 (max 6144) tokens, 49.1 tok/s, 63 s
+[strata] thinking: 3134 of budget 4608 (max 6144) tokens, 49.5 tok/s, 64 s
+[strata] thinking: 3210 of budget 4608 (max 6144) tokens, 49.9 tok/s, 65 s
+[strata] thinking: 3294 of budget 4608 (max 6144) tokens, 50.4 tok/s, 66 s
+[strata] thinking: 3345 of budget 4608 (max 6144) tokens, 50.4 tok/s, 67 s
+[strata] thinking: 3406 of budget 4608 (max 6144) tokens, 50.5 tok/s, 68 s
+[strata] thinking: 3484 of budget 4608 (max 6144) tokens, 50.9 tok/s, 69 s
+[strata] thinking: 3563 of budget 4608 (max 6144) tokens, 51.3 tok/s, 70 s
+[strata] thinking: 3643 of budget 4608 (max 6144) tokens, 51.7 tok/s, 71 s
+[strata] thinking: 3723 of budget 4608 (max 6144) tokens, 52.0 tok/s, 72 s
+[strata] thinking: 3808 of budget 4608 (max 6144) tokens, 52.4 tok/s, 73 s
+[strata] thinking: 3882 of budget 4608 (max 6144) tokens, 52.7 tok/s, 74 s
+[strata] thinking: 3966 of budget 4608 (max 6144) tokens, 53.1 tok/s, 75 s
+[strata] thinking: 4011 of budget 4608 (max 6144) tokens, 53.0 tok/s, 76 s
+[strata] thinking: 4053 of budget 4608 (max 6144) tokens, 52.8 tok/s, 77 s
+[strata] thinking: 4089 of budget 4608 (max 6144) tokens, 52.6 tok/s, 78 s
+[strata] thinking: 4122 of budget 4608 (max 6144) tokens, 52.3 tok/s, 79 s
+[strata] thinking: 4159 of budget 4608 (max 6144) tokens, 52.1 tok/s, 80 s
+[strata] thinking: 4206 of budget 4608 (max 6144) tokens, 52.1 tok/s, 81 s
+[strata] thinking: 4257 of budget 4608 (max 6144) tokens, 52.0 tok/s, 82 s
+[strata] thinking: 4293 of budget 4608 (max 6144) tokens, 51.8 tok/s, 83 s
+[strata] thinking: 4326 of budget 4608 (max 6144) tokens, 51.6 tok/s, 84 s
+[strata] thinking: 4363 of budget 4608 (max 6144) tokens, 51.4 tok/s, 85 s
+[strata] thinking: 4398 of budget 4608 (max 6144) tokens, 51.2 tok/s, 86 s
+[strata] thinking: 4439 of budget 4608 (max 6144) tokens, 51.0 tok/s, 87 s
+[strata] thinking: 4481 of budget 4608 (max 6144) tokens, 50.9 tok/s, 88 s
+[strata] thinking: 4528 of budget 4608 (max 6144) tokens, 50.8 tok/s, 89 s
+[strata] thinking: 4580 of budget 4608 (max 6144) tokens, 50.8 tok/s, 90 s
+[strata] thinking budget reached (4608 tokens): wrapping up the thinking
+[strata] thinking: 4626 of max 6144 tokens, 48.6 tok/s, 95 s
+[strata] answering: 4656 of max 6144 tokens, 48.4 tok/s, 96 s
+[strata] answering: 4714 of max 6144 tokens, 48.5 tok/s, 97 s
+[strata] answering: 4776 of max 6144 tokens, 48.6 tok/s, 99 s
+[strata] answering: 4824 of max 6144 tokens, 48.6 tok/s, 100 s
+[strata] answering: 4892 of max 6144 tokens, 48.8 tok/s, 101 s
+[strata] answering: 4952 of max 6144 tokens, 48.9 tok/s, 102 s
+[strata] answering: 5018 of max 6144 tokens, 49.0 tok/s, 103 s
+[strata] done: 5048 tokens in 103 s (51.1 tok/s) (stop, cancel=False), expert cache 81.1% hit (+13.9% of the routed experts over PCIe)
+[strata] thinking limited to 4608 of max_tokens 6144 so the answer has room ("answer_room": false in the config turns this off)
+[strata] thinking: 12 of budget 4608 (max 6144) tokens, 24.1 tok/s, 1 s
+[strata] thinking: 64 of budget 4608 (max 6144) tokens, 42.0 tok/s, 2 s
+[strata] thinking: 97 of budget 4608 (max 6144) tokens, 37.9 tok/s, 3 s
+[strata] thinking: 132 of budget 4608 (max 6144) tokens, 36.9 tok/s, 4 s
+[strata] thinking: 180 of budget 4608 (max 6144) tokens, 38.9 tok/s, 5 s
+[strata] thinking: 224 of budget 4608 (max 6144) tokens, 39.4 tok/s, 6 s
+[strata] thinking: 259 of budget 4608 (max 6144) tokens, 38.5 tok/s, 7 s
+[strata] thinking: 305 of budget 4608 (max 6144) tokens, 39.3 tok/s, 8 s
+[strata] thinking: 356 of budget 4608 (max 6144) tokens, 40.3 tok/s, 9 s
+[strata] thinking: 403 of budget 4608 (max 6144) tokens, 40.9 tok/s, 10 s
+[strata] thinking: 446 of budget 4608 (max 6144) tokens, 40.9 tok/s, 11 s
+[strata] thinking: 487 of budget 4608 (max 6144) tokens, 40.9 tok/s, 12 s
+[strata] thinking: 545 of budget 4608 (max 6144) tokens, 42.0 tok/s, 14 s
+[strata] thinking: 599 of budget 4608 (max 6144) tokens, 42.8 tok/s, 15 s
+[strata] thinking: 667 of budget 4608 (max 6144) tokens, 44.3 tok/s, 16 s
+[strata] thinking: 712 of budget 4608 (max 6144) tokens, 44.2 tok/s, 17 s
+[strata] thinking: 751 of budget 4608 (max 6144) tokens, 43.9 tok/s, 18 s
+[strata] thinking: 792 of budget 4608 (max 6144) tokens, 43.7 tok/s, 19 s
+[strata] thinking: 826 of budget 4608 (max 6144) tokens, 43.1 tok/s, 20 s
+[strata] thinking: 861 of budget 4608 (max 6144) tokens, 42.7 tok/s, 21 s
+[strata] thinking: 909 of budget 4608 (max 6144) tokens, 42.9 tok/s, 22 s
+[strata] thinking: 944 of budget 4608 (max 6144) tokens, 42.5 tok/s, 23 s
+[strata] thinking: 987 of budget 4608 (max 6144) tokens, 42.5 tok/s, 24 s
+[strata] thinking: 1022 of budget 4608 (max 6144) tokens, 42.2 tok/s, 25 s
+[strata] thinking: 1060 of budget 4608 (max 6144) tokens, 42.0 tok/s, 26 s
+[strata] thinking: 1105 of budget 4608 (max 6144) tokens, 42.0 tok/s, 27 s
+[strata] thinking: 1162 of budget 4608 (max 6144) tokens, 42.4 tok/s, 28 s
+[strata] thinking: 1232 of budget 4608 (max 6144) tokens, 43.3 tok/s, 29 s
+[strata] thinking: 1303 of budget 4608 (max 6144) tokens, 44.2 tok/s, 30 s
+[strata] thinking: 1365 of budget 4608 (max 6144) tokens, 44.8 tok/s, 31 s
+[strata] thinking: 1397 of budget 4608 (max 6144) tokens, 44.4 tok/s, 32 s
+[strata] thinking: 1438 of budget 4608 (max 6144) tokens, 44.2 tok/s, 33 s
+[strata] thinking: 1486 of budget 4608 (max 6144) tokens, 44.3 tok/s, 34 s
+[strata] thinking: 1530 of budget 4608 (max 6144) tokens, 44.3 tok/s, 35 s
+[strata] thinking: 1586 of budget 4608 (max 6144) tokens, 44.6 tok/s, 36 s
+[strata] thinking: 1643 of budget 4608 (max 6144) tokens, 44.9 tok/s, 37 s
+[strata] thinking: 1690 of budget 4608 (max 6144) tokens, 44.9 tok/s, 38 s
+[strata] thinking: 1757 of budget 4608 (max 6144) tokens, 45.4 tok/s, 39 s
+[strata] thinking: 1830 of budget 4608 (max 6144) tokens, 46.1 tok/s, 40 s
+[strata] thinking: 1902 of budget 4608 (max 6144) tokens, 46.7 tok/s, 41 s
+[strata] thinking: 1971 of budget 4608 (max 6144) tokens, 47.2 tok/s, 42 s
+[strata] thinking: 2019 of budget 4608 (max 6144) tokens, 47.1 tok/s, 43 s
+[strata] thinking: 2059 of budget 4608 (max 6144) tokens, 47.0 tok/s, 44 s
+[strata] thinking: 2091 of budget 4608 (max 6144) tokens, 46.6 tok/s, 45 s
+[strata] thinking: 2132 of budget 4608 (max 6144) tokens, 46.5 tok/s, 46 s
+[strata] thinking: 2168 of budget 4608 (max 6144) tokens, 46.2 tok/s, 47 s
+[strata] thinking: 2209 of budget 4608 (max 6144) tokens, 46.1 tok/s, 49 s
+[strata] thinking: 2262 of budget 4608 (max 6144) tokens, 46.1 tok/s, 50 s
+[strata] thinking: 2312 of budget 4608 (max 6144) tokens, 46.2 tok/s, 51 s
+[strata] thinking: 2382 of budget 4608 (max 6144) tokens, 46.6 tok/s, 52 s
+[strata] thinking: 2448 of budget 4608 (max 6144) tokens, 47.0 tok/s, 53 s
+[strata] thinking: 2518 of budget 4608 (max 6144) tokens, 47.4 tok/s, 54 s
+[strata] thinking: 2561 of budget 4608 (max 6144) tokens, 47.3 tok/s, 55 s
+[strata] thinking: 2601 of budget 4608 (max 6144) tokens, 47.1 tok/s, 56 s
+[strata] thinking: 2661 of budget 4608 (max 6144) tokens, 47.4 tok/s, 57 s
+[strata] thinking: 2710 of budget 4608 (max 6144) tokens, 47.4 tok/s, 58 s
+[strata] thinking: 2771 of budget 4608 (max 6144) tokens, 47.6 tok/s, 59 s
+[strata] thinking: 2805 of budget 4608 (max 6144) tokens, 47.4 tok/s, 60 s
+[strata] thinking: 2848 of budget 4608 (max 6144) tokens, 47.3 tok/s, 61 s
+[strata] thinking: 2907 of budget 4608 (max 6144) tokens, 47.4 tok/s, 62 s
+[strata] thinking: 2959 of budget 4608 (max 6144) tokens, 47.5 tok/s, 63 s
+[strata] thinking: 3003 of budget 4608 (max 6144) tokens, 47.4 tok/s, 64 s
+[strata] thinking: 3036 of budget 4608 (max 6144) tokens, 47.2 tok/s, 65 s
+[strata] thinking: 3086 of budget 4608 (max 6144) tokens, 47.2 tok/s, 66 s
+[strata] thinking: 3150 of budget 4608 (max 6144) tokens, 47.4 tok/s, 67 s
+[strata] thinking: 3215 of budget 4608 (max 6144) tokens, 47.7 tok/s, 68 s
+[strata] thinking: 3287 of budget 4608 (max 6144) tokens, 47.9 tok/s, 69 s
+[strata] thinking: 3357 of budget 4608 (max 6144) tokens, 48.2 tok/s, 70 s
+[strata] thinking: 3429 of budget 4608 (max 6144) tokens, 48.5 tok/s, 71 s
+[strata] thinking: 3481 of budget 4608 (max 6144) tokens, 48.6 tok/s, 72 s
+[strata] thinking: 3530 of budget 4608 (max 6144) tokens, 48.6 tok/s, 73 s
+[strata] thinking: 3580 of budget 4608 (max 6144) tokens, 48.5 tok/s, 74 s
+[strata] thinking: 3645 of budget 4608 (max 6144) tokens, 48.7 tok/s, 75 s
+[strata] thinking: 3692 of budget 4608 (max 6144) tokens, 48.7 tok/s, 76 s
+[strata] thinking: 3743 of budget 4608 (max 6144) tokens, 48.7 tok/s, 77 s
+[strata] thinking: 3777 of budget 4608 (max 6144) tokens, 48.5 tok/s, 78 s
+[strata] thinking: 3835 of budget 4608 (max 6144) tokens, 48.6 tok/s, 79 s
+[strata] thinking: 3905 of budget 4608 (max 6144) tokens, 48.9 tok/s, 80 s
+[strata] thinking: 3948 of budget 4608 (max 6144) tokens, 48.8 tok/s, 82 s
+[strata] thinking: 3984 of budget 4608 (max 6144) tokens, 48.6 tok/s, 83 s
+[strata] thinking: 4039 of budget 4608 (max 6144) tokens, 48.6 tok/s, 84 s
+[strata] thinking: 4101 of budget 4608 (max 6144) tokens, 48.8 tok/s, 85 s
+[strata] thinking: 4171 of budget 4608 (max 6144) tokens, 49.0 tok/s, 86 s
+[strata] thinking: 4240 of budget 4608 (max 6144) tokens, 49.2 tok/s, 87 s
+[strata] thinking: 4325 of budget 4608 (max 6144) tokens, 49.6 tok/s, 88 s
+[strata] thinking: 4405 of budget 4608 (max 6144) tokens, 49.9 tok/s, 89 s
+[strata] thinking: 4490 of budget 4608 (max 6144) tokens, 50.3 tok/s, 90 s
+[strata] thinking: 4580 of budget 4608 (max 6144) tokens, 50.7 tok/s, 91 s
+[strata] the thinking repeated the same passages (coverage=0.349) at 4608 tokens: ended as "length" (reasoning_loop_recovery: "stop" in strata-<model>.json; remove it to turn this off)
+[strata] done: 4608 tokens in 91 s (50.7 tok/s) (length, cancel=False), expert cache 79.9% hit (+14.5% of the routed experts over PCIe)
+[strata] the reply reached max tokens while still thinking, so it has no answer: a thinking budget (reasoning_budget_tokens, in the request or in strata-<model>.json for every request) leaves room to answer
+[strata] thinking limited to 4608 of max_tokens 6144 so the answer has room ("answer_room": false in the config turns this off)
+[strata] thinking: 12 of budget 4608 (max 6144) tokens, 25.7 tok/s, 1 s
+[strata] thinking: 68 of budget 4608 (max 6144) tokens, 45.2 tok/s, 2 s
+[strata] thinking: 104 of budget 4608 (max 6144) tokens, 40.3 tok/s, 3 s
+[strata] thinking: 147 of budget 4608 (max 6144) tokens, 41.0 tok/s, 4 s
+[strata] thinking: 185 of budget 4608 (max 6144) tokens, 40.2 tok/s, 5 s
+[strata] thinking: 226 of budget 4608 (max 6144) tokens, 40.2 tok/s, 6 s
+[strata] thinking: 265 of budget 4608 (max 6144) tokens, 39.9 tok/s, 7 s
+[strata] thinking: 306 of budget 4608 (max 6144) tokens, 39.9 tok/s, 8 s
+[strata] thinking: 344 of budget 4608 (max 6144) tokens, 39.4 tok/s, 9 s
+[strata] thinking: 398 of budget 4608 (max 6144) tokens, 40.8 tok/s, 10 s
+[strata] thinking: 451 of budget 4608 (max 6144) tokens, 41.8 tok/s, 11 s
+[strata] thinking: 506 of budget 4608 (max 6144) tokens, 42.9 tok/s, 12 s
+[strata] thinking: 548 of budget 4608 (max 6144) tokens, 42.8 tok/s, 13 s
+[strata] thinking: 587 of budget 4608 (max 6144) tokens, 42.5 tok/s, 14 s
+[strata] thinking: 635 of budget 4608 (max 6144) tokens, 42.7 tok/s, 15 s
+[strata] thinking: 693 of budget 4608 (max 6144) tokens, 43.6 tok/s, 16 s
+[strata] thinking: 755 of budget 4608 (max 6144) tokens, 44.7 tok/s, 17 s
+[strata] thinking: 798 of budget 4608 (max 6144) tokens, 44.6 tok/s, 18 s
+[strata] thinking: 840 of budget 4608 (max 6144) tokens, 44.4 tok/s, 19 s
+[strata] thinking: 880 of budget 4608 (max 6144) tokens, 44.1 tok/s, 21 s
+[strata] thinking: 916 of budget 4608 (max 6144) tokens, 43.7 tok/s, 22 s
+[strata] thinking: 948 of budget 4608 (max 6144) tokens, 43.2 tok/s, 23 s
+[strata] thinking: 989 of budget 4608 (max 6144) tokens, 43.0 tok/s, 24 s
+[strata] thinking: 1034 of budget 4608 (max 6144) tokens, 43.0 tok/s, 25 s
+[strata] thinking: 1096 of budget 4608 (max 6144) tokens, 43.8 tok/s, 26 s
+[strata] thinking: 1149 of budget 4608 (max 6144) tokens, 44.1 tok/s, 27 s
+[strata] thinking: 1208 of budget 4608 (max 6144) tokens, 44.6 tok/s, 28 s
+[strata] thinking: 1249 of budget 4608 (max 6144) tokens, 44.5 tok/s, 29 s
+[strata] thinking: 1289 of budget 4608 (max 6144) tokens, 44.2 tok/s, 30 s
+[strata] thinking: 1328 of budget 4608 (max 6144) tokens, 44.0 tok/s, 31 s
+[strata] thinking: 1370 of budget 4608 (max 6144) tokens, 44.0 tok/s, 32 s
+[strata] thinking: 1413 of budget 4608 (max 6144) tokens, 43.9 tok/s, 33 s
+[strata] thinking: 1444 of budget 4608 (max 6144) tokens, 43.5 tok/s, 34 s
+[strata] thinking: 1487 of budget 4608 (max 6144) tokens, 43.4 tok/s, 35 s
+[strata] thinking: 1545 of budget 4608 (max 6144) tokens, 43.7 tok/s, 36 s
+[strata] thinking: 1607 of budget 4608 (max 6144) tokens, 44.2 tok/s, 37 s
+[strata] thinking: 1675 of budget 4608 (max 6144) tokens, 44.8 tok/s, 38 s
+[strata] thinking: 1740 of budget 4608 (max 6144) tokens, 45.3 tok/s, 39 s
+[strata] thinking: 1775 of budget 4608 (max 6144) tokens, 45.0 tok/s, 40 s
+[strata] thinking: 1815 of budget 4608 (max 6144) tokens, 44.9 tok/s, 41 s
+[strata] thinking: 1854 of budget 4608 (max 6144) tokens, 44.7 tok/s, 42 s
+[strata] thinking: 1899 of budget 4608 (max 6144) tokens, 44.7 tok/s, 43 s
+[strata] thinking: 1939 of budget 4608 (max 6144) tokens, 44.6 tok/s, 44 s
+[strata] thinking: 1979 of budget 4608 (max 6144) tokens, 44.5 tok/s, 45 s
+[strata] thinking: 2015 of budget 4608 (max 6144) tokens, 44.3 tok/s, 46 s
+[strata] thinking: 2056 of budget 4608 (max 6144) tokens, 44.2 tok/s, 47 s
+[strata] thinking: 2096 of budget 4608 (max 6144) tokens, 44.0 tok/s, 48 s
+[strata] thinking: 2129 of budget 4608 (max 6144) tokens, 43.8 tok/s, 49 s
+[strata] thinking: 2168 of budget 4608 (max 6144) tokens, 43.7 tok/s, 50 s
+[strata] thinking: 2218 of budget 4608 (max 6144) tokens, 43.8 tok/s, 51 s
+[strata] thinking: 2272 of budget 4608 (max 6144) tokens, 44.0 tok/s, 52 s
+[strata] thinking: 2308 of budget 4608 (max 6144) tokens, 43.8 tok/s, 53 s
+[strata] thinking: 2344 of budget 4608 (max 6144) tokens, 43.6 tok/s, 54 s
+[strata] thinking: 2379 of budget 4608 (max 6144) tokens, 43.5 tok/s, 55 s
+[strata] thinking: 2414 of budget 4608 (max 6144) tokens, 43.3 tok/s, 56 s
+[strata] thinking: 2453 of budget 4608 (max 6144) tokens, 43.2 tok/s, 57 s
+[strata] thinking: 2494 of budget 4608 (max 6144) tokens, 43.2 tok/s, 58 s
+[strata] thinking: 2539 of budget 4608 (max 6144) tokens, 43.2 tok/s, 59 s
+[strata] thinking: 2584 of budget 4608 (max 6144) tokens, 43.2 tok/s, 60 s
+[strata] thinking: 2640 of budget 4608 (max 6144) tokens, 43.3 tok/s, 61 s
+[strata] thinking: 2697 of budget 4608 (max 6144) tokens, 43.5 tok/s, 63 s
+[strata] thinking: 2762 of budget 4608 (max 6144) tokens, 43.9 tok/s, 64 s
+[strata] thinking: 2825 of budget 4608 (max 6144) tokens, 44.1 tok/s, 65 s
+[strata] thinking: 2867 of budget 4608 (max 6144) tokens, 44.1 tok/s, 66 s
+[strata] thinking: 2901 of budget 4608 (max 6144) tokens, 43.9 tok/s, 67 s
+[strata] thinking: 2940 of budget 4608 (max 6144) tokens, 43.8 tok/s, 68 s
+[strata] thinking: 2983 of budget 4608 (max 6144) tokens, 43.8 tok/s, 69 s
+[strata] thinking: 3033 of budget 4608 (max 6144) tokens, 43.9 tok/s, 70 s
+[strata] thinking: 3069 of budget 4608 (max 6144) tokens, 43.8 tok/s, 71 s
+[strata] thinking: 3115 of budget 4608 (max 6144) tokens, 43.8 tok/s, 72 s
+[strata] thinking: 3181 of budget 4608 (max 6144) tokens, 44.1 tok/s, 73 s
+[strata] thinking: 3246 of budget 4608 (max 6144) tokens, 44.3 tok/s, 74 s
+[strata] thinking: 3318 of budget 4608 (max 6144) tokens, 44.7 tok/s, 75 s
+[strata] thinking: 3380 of budget 4608 (max 6144) tokens, 44.9 tok/s, 76 s
+[strata] thinking: 3421 of budget 4608 (max 6144) tokens, 44.8 tok/s, 77 s
+[strata] thinking: 3457 of budget 4608 (max 6144) tokens, 44.7 tok/s, 78 s
+[strata] thinking: 3501 of budget 4608 (max 6144) tokens, 44.7 tok/s, 79 s
+[strata] thinking: 3559 of budget 4608 (max 6144) tokens, 44.8 tok/s, 80 s
+[strata] thinking: 3607 of budget 4608 (max 6144) tokens, 44.9 tok/s, 81 s
+[strata] thinking: 3655 of budget 4608 (max 6144) tokens, 44.9 tok/s, 82 s
+[strata] thinking: 3701 of budget 4608 (max 6144) tokens, 44.9 tok/s, 83 s
+[strata] thinking: 3738 of budget 4608 (max 6144) tokens, 44.8 tok/s, 84 s
+[strata] thinking: 3781 of budget 4608 (max 6144) tokens, 44.8 tok/s, 85 s
+[strata] thinking: 3820 of budget 4608 (max 6144) tokens, 44.7 tok/s, 86 s
+[strata] thinking: 3866 of budget 4608 (max 6144) tokens, 44.7 tok/s, 87 s
+[strata] thinking: 3917 of budget 4608 (max 6144) tokens, 44.7 tok/s, 88 s
+[strata] thinking: 3962 of budget 4608 (max 6144) tokens, 44.7 tok/s, 89 s
+[strata] thinking: 3990 of budget 4608 (max 6144) tokens, 44.5 tok/s, 90 s
+[strata] thinking: 4047 of budget 4608 (max 6144) tokens, 44.7 tok/s, 91 s
+[strata] thinking: 4111 of budget 4608 (max 6144) tokens, 44.9 tok/s, 92 s
+[strata] thinking: 4168 of budget 4608 (max 6144) tokens, 45.0 tok/s, 93 s
+[strata] thinking: 4217 of budget 4608 (max 6144) tokens, 45.0 tok/s, 94 s
+[strata] thinking: 4250 of budget 4608 (max 6144) tokens, 44.9 tok/s, 95 s
+[strata] thinking: 4321 of budget 4608 (max 6144) tokens, 45.2 tok/s, 96 s
+[strata] thinking: 4393 of budget 4608 (max 6144) tokens, 45.4 tok/s, 97 s
+[strata] thinking: 4474 of budget 4608 (max 6144) tokens, 45.7 tok/s, 98 s
+[strata] thinking: 4549 of budget 4608 (max 6144) tokens, 46.0 tok/s, 99 s
+[strata] thinking: 4597 of budget 4608 (max 6144) tokens, 46.0 tok/s, 100 s
+[strata] thinking budget reached (4608 tokens): wrapping up the thinking
+[strata] thinking: 4626 of max 6144 tokens, 44.3 tok/s, 105 s
+[strata] answering: 4663 of max 6144 tokens, 44.2 tok/s, 106 s
+[strata] answering: 4732 of max 6144 tokens, 44.5 tok/s, 107 s
+[strata] answering: 4807 of max 6144 tokens, 44.7 tok/s, 108 s
+[strata] answering: 4870 of max 6144 tokens, 44.9 tok/s, 109 s
+[strata] answering: 4928 of max 6144 tokens, 45.0 tok/s, 110 s
+[strata] done: 4969 tokens in 111 s (46.7 tok/s) (stop, cancel=False), expert cache 81.1% hit (+13.4% of the routed experts over PCIe)
+[strata] thinking limited to 4608 of max_tokens 6144 so the answer has room ("answer_room": false in the config turns this off)
+[strata] thinking: 12 of budget 4608 (max 6144) tokens, 24.8 tok/s, 1 s
+[strata] thinking: 67 of budget 4608 (max 6144) tokens, 43.6 tok/s, 2 s
+[strata] thinking: 103 of budget 4608 (max 6144) tokens, 40.4 tok/s, 3 s
+[strata] thinking: 137 of budget 4608 (max 6144) tokens, 38.5 tok/s, 4 s
+[strata] thinking: 172 of budget 4608 (max 6144) tokens, 37.5 tok/s, 5 s
+[strata] thinking: 211 of budget 4608 (max 6144) tokens, 37.6 tok/s, 6 s
+[strata] thinking: 255 of budget 4608 (max 6144) tokens, 38.5 tok/s, 7 s
+[strata] thinking: 297 of budget 4608 (max 6144) tokens, 38.8 tok/s, 8 s
+[strata] thinking: 340 of budget 4608 (max 6144) tokens, 39.0 tok/s, 9 s
+[strata] thinking: 385 of budget 4608 (max 6144) tokens, 39.5 tok/s, 10 s
+[strata] thinking: 423 of budget 4608 (max 6144) tokens, 39.3 tok/s, 11 s
+[strata] thinking: 459 of budget 4608 (max 6144) tokens, 38.9 tok/s, 12 s
+[strata] thinking: 528 of budget 4608 (max 6144) tokens, 41.0 tok/s, 13 s
+[strata] thinking: 577 of budget 4608 (max 6144) tokens, 41.5 tok/s, 14 s
+[strata] thinking: 637 of budget 4608 (max 6144) tokens, 42.7 tok/s, 15 s
+[strata] thinking: 701 of budget 4608 (max 6144) tokens, 44.0 tok/s, 16 s
+[strata] thinking: 740 of budget 4608 (max 6144) tokens, 43.7 tok/s, 18 s
+[strata] thinking: 774 of budget 4608 (max 6144) tokens, 43.1 tok/s, 19 s
+[strata] thinking: 813 of budget 4608 (max 6144) tokens, 42.8 tok/s, 20 s
+[strata] thinking: 865 of budget 4608 (max 6144) tokens, 43.2 tok/s, 21 s
+[strata] thinking: 917 of budget 4608 (max 6144) tokens, 43.6 tok/s, 22 s
+[strata] thinking: 974 of budget 4608 (max 6144) tokens, 44.1 tok/s, 23 s
+[strata] thinking: 1016 of budget 4608 (max 6144) tokens, 44.1 tok/s, 24 s
+[strata] thinking: 1061 of budget 4608 (max 6144) tokens, 44.0 tok/s, 25 s
+[strata] thinking: 1104 of budget 4608 (max 6144) tokens, 44.0 tok/s, 26 s
+[strata] thinking: 1141 of budget 4608 (max 6144) tokens, 43.7 tok/s, 27 s
+[strata] thinking: 1187 of budget 4608 (max 6144) tokens, 43.8 tok/s, 28 s
+[strata] thinking: 1237 of budget 4608 (max 6144) tokens, 44.0 tok/s, 29 s
+[strata] thinking: 1271 of budget 4608 (max 6144) tokens, 43.6 tok/s, 30 s
+[strata] thinking: 1317 of budget 4608 (max 6144) tokens, 43.6 tok/s, 31 s
+[strata] thinking: 1366 of budget 4608 (max 6144) tokens, 43.8 tok/s, 32 s
+[strata] thinking: 1423 of budget 4608 (max 6144) tokens, 44.1 tok/s, 33 s
+[strata] thinking: 1472 of budget 4608 (max 6144) tokens, 44.2 tok/s, 34 s
+[strata] thinking: 1514 of budget 4608 (max 6144) tokens, 44.1 tok/s, 35 s
+[strata] thinking: 1555 of budget 4608 (max 6144) tokens, 44.0 tok/s, 36 s
+[strata] thinking: 1601 of budget 4608 (max 6144) tokens, 44.0 tok/s, 37 s
+[strata] thinking: 1641 of budget 4608 (max 6144) tokens, 43.9 tok/s, 38 s
+[strata] thinking: 1683 of budget 4608 (max 6144) tokens, 43.9 tok/s, 39 s
+[strata] thinking: 1755 of budget 4608 (max 6144) tokens, 44.6 tok/s, 40 s
+[strata] thinking: 1808 of budget 4608 (max 6144) tokens, 44.8 tok/s, 41 s
+[strata] thinking: 1871 of budget 4608 (max 6144) tokens, 45.2 tok/s, 42 s
+[strata] thinking: 1914 of budget 4608 (max 6144) tokens, 45.1 tok/s, 43 s
+[strata] thinking: 1960 of budget 4608 (max 6144) tokens, 45.1 tok/s, 44 s
+[strata] thinking: 2000 of budget 4608 (max 6144) tokens, 45.0 tok/s, 45 s
+[strata] thinking: 2066 of budget 4608 (max 6144) tokens, 45.4 tok/s, 46 s
+[strata] thinking: 2118 of budget 4608 (max 6144) tokens, 45.5 tok/s, 47 s
+[strata] thinking: 2164 of budget 4608 (max 6144) tokens, 45.5 tok/s, 48 s
+[strata] thinking: 2209 of budget 4608 (max 6144) tokens, 45.5 tok/s, 49 s
+[strata] thinking: 2245 of budget 4608 (max 6144) tokens, 45.3 tok/s, 50 s
+[strata] thinking: 2307 of budget 4608 (max 6144) tokens, 45.6 tok/s, 51 s
+[strata] thinking: 2349 of budget 4608 (max 6144) tokens, 45.5 tok/s, 52 s
+[strata] thinking: 2406 of budget 4608 (max 6144) tokens, 45.8 tok/s, 53 s
+[strata] thinking: 2465 of budget 4608 (max 6144) tokens, 46.0 tok/s, 54 s
+[strata] thinking: 2495 of budget 4608 (max 6144) tokens, 45.7 tok/s, 55 s
+[strata] thinking: 2544 of budget 4608 (max 6144) tokens, 45.7 tok/s, 56 s
+[strata] thinking: 2603 of budget 4608 (max 6144) tokens, 45.9 tok/s, 57 s
+[strata] thinking: 2664 of budget 4608 (max 6144) tokens, 46.2 tok/s, 58 s
+[strata] thinking: 2716 of budget 4608 (max 6144) tokens, 46.3 tok/s, 59 s
+[strata] thinking: 2778 of budget 4608 (max 6144) tokens, 46.5 tok/s, 60 s
+[strata] thinking: 2840 of budget 4608 (max 6144) tokens, 46.8 tok/s, 61 s
+[strata] thinking: 2908 of budget 4608 (max 6144) tokens, 47.0 tok/s, 62 s
+[strata] thinking: 2980 of budget 4608 (max 6144) tokens, 47.4 tok/s, 63 s
+[strata] thinking: 3032 of budget 4608 (max 6144) tokens, 47.5 tok/s, 64 s
+[strata] thinking: 3090 of budget 4608 (max 6144) tokens, 47.6 tok/s, 65 s
+[strata] thinking: 3128 of budget 4608 (max 6144) tokens, 47.4 tok/s, 66 s
+[strata] thinking: 3175 of budget 4608 (max 6144) tokens, 47.4 tok/s, 68 s
+[strata] thinking: 3222 of budget 4608 (max 6144) tokens, 47.4 tok/s, 69 s
+[strata] thinking: 3258 of budget 4608 (max 6144) tokens, 47.2 tok/s, 70 s
+[strata] thinking: 3321 of budget 4608 (max 6144) tokens, 47.4 tok/s, 71 s
+[strata] thinking: 3369 of budget 4608 (max 6144) tokens, 47.4 tok/s, 72 s
+[strata] thinking: 3431 of budget 4608 (max 6144) tokens, 47.5 tok/s, 73 s
+[strata] thinking: 3472 of budget 4608 (max 6144) tokens, 47.4 tok/s, 74 s
+[strata] thinking: 3529 of budget 4608 (max 6144) tokens, 47.6 tok/s, 75 s
+[strata] thinking: 3562 of budget 4608 (max 6144) tokens, 47.3 tok/s, 76 s
+[strata] thinking: 3605 of budget 4608 (max 6144) tokens, 47.3 tok/s, 77 s
+[strata] thinking: 3649 of budget 4608 (max 6144) tokens, 47.2 tok/s, 78 s
+[strata] thinking: 3693 of budget 4608 (max 6144) tokens, 47.1 tok/s, 79 s
+[strata] thinking: 3741 of budget 4608 (max 6144) tokens, 47.1 tok/s, 80 s
+[strata] thinking: 3788 of budget 4608 (max 6144) tokens, 47.1 tok/s, 81 s
+[strata] thinking: 3836 of budget 4608 (max 6144) tokens, 47.1 tok/s, 82 s
+[strata] thinking: 3869 of budget 4608 (max 6144) tokens, 46.9 tok/s, 83 s
+[strata] thinking: 3903 of budget 4608 (max 6144) tokens, 46.8 tok/s, 84 s
+[strata] thinking: 3945 of budget 4608 (max 6144) tokens, 46.7 tok/s, 85 s
+[strata] thinking: 3998 of budget 4608 (max 6144) tokens, 46.7 tok/s, 86 s
+[strata] thinking: 4047 of budget 4608 (max 6144) tokens, 46.7 tok/s, 87 s
+[strata] thinking: 4102 of budget 4608 (max 6144) tokens, 46.8 tok/s, 88 s
+[strata] thinking: 4163 of budget 4608 (max 6144) tokens, 47.0 tok/s, 89 s
+[strata] thinking: 4231 of budget 4608 (max 6144) tokens, 47.2 tok/s, 90 s
+[strata] thinking: 4302 of budget 4608 (max 6144) tokens, 47.4 tok/s, 91 s
+[strata] thinking: 4378 of budget 4608 (max 6144) tokens, 47.7 tok/s, 92 s
+[strata] thinking: 4454 of budget 4608 (max 6144) tokens, 48.0 tok/s, 93 s
+[strata] thinking: 4528 of budget 4608 (max 6144) tokens, 48.2 tok/s, 94 s
+[strata] thinking: 4570 of budget 4608 (max 6144) tokens, 48.2 tok/s, 95 s
+[strata] thinking budget reached (4608 tokens): wrapping up the thinking
+[strata] thinking: 4626 of max 6144 tokens, 46.2 tok/s, 101 s
+[strata] answering: 4655 of max 6144 tokens, 46.0 tok/s, 102 s
+[strata] answering: 4723 of max 6144 tokens, 46.2 tok/s, 103 s
+[strata] answering: 4787 of max 6144 tokens, 46.4 tok/s, 104 s
+[strata] answering: 4854 of max 6144 tokens, 46.6 tok/s, 105 s
+[strata] answering: 4928 of max 6144 tokens, 46.8 tok/s, 106 s
+[strata] answering: 4988 of max 6144 tokens, 47.0 tok/s, 107 s
+[strata] done: 5037 tokens in 108 s (48.8 tok/s) (stop, cancel=False), expert cache 80.4% hit (+14.2% of the routed experts over PCIe)
+[strata] thinking limited to 4608 of max_tokens 6144 so the answer has room ("answer_room": false in the config turns this off)
+[strata] thinking: 16 of budget 4608 (max 6144) tokens, 34.1 tok/s, 1 s
+[strata] thinking: 67 of budget 4608 (max 6144) tokens, 44.9 tok/s, 2 s
+[strata] thinking: 102 of budget 4608 (max 6144) tokens, 40.8 tok/s, 3 s
+[strata] thinking: 142 of budget 4608 (max 6144) tokens, 40.3 tok/s, 4 s
+[strata] thinking: 179 of budget 4608 (max 6144) tokens, 39.4 tok/s, 5 s
+[strata] thinking: 215 of budget 4608 (max 6144) tokens, 38.7 tok/s, 6 s
+[strata] thinking: 260 of budget 4608 (max 6144) tokens, 39.5 tok/s, 7 s
+[strata] thinking: 302 of budget 4608 (max 6144) tokens, 39.8 tok/s, 8 s
+[strata] thinking: 351 of budget 4608 (max 6144) tokens, 40.8 tok/s, 9 s
+[strata] thinking: 388 of budget 4608 (max 6144) tokens, 40.4 tok/s, 10 s
+[strata] thinking: 436 of budget 4608 (max 6144) tokens, 41.1 tok/s, 11 s
+[strata] thinking: 469 of budget 4608 (max 6144) tokens, 40.4 tok/s, 12 s
+[strata] thinking: 499 of budget 4608 (max 6144) tokens, 39.5 tok/s, 13 s
+[strata] thinking: 537 of budget 4608 (max 6144) tokens, 39.3 tok/s, 14 s
+[strata] thinking: 579 of budget 4608 (max 6144) tokens, 39.4 tok/s, 15 s
+[strata] thinking: 638 of budget 4608 (max 6144) tokens, 40.5 tok/s, 16 s
+[strata] thinking: 692 of budget 4608 (max 6144) tokens, 41.3 tok/s, 17 s
+[strata] thinking: 733 of budget 4608 (max 6144) tokens, 41.3 tok/s, 18 s
+[strata] thinking: 770 of budget 4608 (max 6144) tokens, 41.0 tok/s, 19 s
+[strata] thinking: 808 of budget 4608 (max 6144) tokens, 40.8 tok/s, 20 s
+[strata] thinking: 849 of budget 4608 (max 6144) tokens, 40.8 tok/s, 21 s
+[strata] thinking: 887 of budget 4608 (max 6144) tokens, 40.6 tok/s, 22 s
+[strata] thinking: 923 of budget 4608 (max 6144) tokens, 40.3 tok/s, 23 s
+[strata] thinking: 977 of budget 4608 (max 6144) tokens, 40.8 tok/s, 25 s
+[strata] thinking: 1038 of budget 4608 (max 6144) tokens, 41.5 tok/s, 26 s
+[strata] thinking: 1097 of budget 4608 (max 6144) tokens, 42.1 tok/s, 27 s
+[strata] thinking: 1134 of budget 4608 (max 6144) tokens, 41.9 tok/s, 28 s
+[strata] thinking: 1172 of budget 4608 (max 6144) tokens, 41.7 tok/s, 29 s
+[strata] thinking: 1212 of budget 4608 (max 6144) tokens, 41.6 tok/s, 30 s
+[strata] thinking: 1248 of budget 4608 (max 6144) tokens, 41.4 tok/s, 31 s
+[strata] thinking: 1281 of budget 4608 (max 6144) tokens, 41.1 tok/s, 32 s
+[strata] thinking: 1317 of budget 4608 (max 6144) tokens, 40.9 tok/s, 33 s
+[strata] thinking: 1355 of budget 4608 (max 6144) tokens, 40.8 tok/s, 34 s
+[strata] thinking: 1390 of budget 4608 (max 6144) tokens, 40.6 tok/s, 35 s
+[strata] thinking: 1439 of budget 4608 (max 6144) tokens, 40.9 tok/s, 36 s
+[strata] thinking: 1498 of budget 4608 (max 6144) tokens, 41.4 tok/s, 37 s
+[strata] thinking: 1538 of budget 4608 (max 6144) tokens, 41.3 tok/s, 38 s
+[strata] thinking: 1572 of budget 4608 (max 6144) tokens, 41.1 tok/s, 39 s
+[strata] thinking: 1606 of budget 4608 (max 6144) tokens, 40.8 tok/s, 40 s
+[strata] thinking: 1663 of budget 4608 (max 6144) tokens, 41.2 tok/s, 41 s
+[strata] thinking: 1722 of budget 4608 (max 6144) tokens, 41.6 tok/s, 42 s
+[strata] thinking: 1787 of budget 4608 (max 6144) tokens, 42.1 tok/s, 43 s
+[strata] thinking: 1849 of budget 4608 (max 6144) tokens, 42.5 tok/s, 44 s
+[strata] thinking: 1908 of budget 4608 (max 6144) tokens, 42.9 tok/s, 45 s
+[strata] thinking: 1946 of budget 4608 (max 6144) tokens, 42.7 tok/s, 46 s
+[strata] thinking: 1979 of budget 4608 (max 6144) tokens, 42.5 tok/s, 47 s
+[strata] thinking: 2029 of budget 4608 (max 6144) tokens, 42.6 tok/s, 48 s
+[strata] thinking: 2075 of budget 4608 (max 6144) tokens, 42.7 tok/s, 49 s
+[strata] thinking: 2130 of budget 4608 (max 6144) tokens, 42.9 tok/s, 50 s
+[strata] thinking: 2172 of budget 4608 (max 6144) tokens, 42.9 tok/s, 51 s
+[strata] thinking: 2219 of budget 4608 (max 6144) tokens, 42.9 tok/s, 52 s
+[strata] thinking: 2257 of budget 4608 (max 6144) tokens, 42.8 tok/s, 53 s
+[strata] thinking: 2298 of budget 4608 (max 6144) tokens, 42.8 tok/s, 54 s
+[strata] thinking: 2332 of budget 4608 (max 6144) tokens, 42.6 tok/s, 55 s
+[strata] thinking: 2370 of budget 4608 (max 6144) tokens, 42.5 tok/s, 56 s
+[strata] thinking: 2431 of budget 4608 (max 6144) tokens, 42.8 tok/s, 57 s
+[strata] thinking: 2476 of budget 4608 (max 6144) tokens, 42.8 tok/s, 58 s
+[strata] thinking: 2521 of budget 4608 (max 6144) tokens, 42.8 tok/s, 59 s
+[strata] thinking: 2570 of budget 4608 (max 6144) tokens, 42.9 tok/s, 60 s
+[strata] thinking: 2631 of budget 4608 (max 6144) tokens, 43.2 tok/s, 61 s
+[strata] thinking: 2681 of budget 4608 (max 6144) tokens, 43.3 tok/s, 62 s
+[strata] thinking: 2743 of budget 4608 (max 6144) tokens, 43.6 tok/s, 63 s
+[strata] thinking: 2794 of budget 4608 (max 6144) tokens, 43.7 tok/s, 64 s
+[strata] thinking: 2852 of budget 4608 (max 6144) tokens, 43.9 tok/s, 66 s
+[strata] thinking: 2885 of budget 4608 (max 6144) tokens, 43.7 tok/s, 67 s
+[strata] thinking: 2919 of budget 4608 (max 6144) tokens, 43.6 tok/s, 68 s
+[strata] thinking: 2967 of budget 4608 (max 6144) tokens, 43.6 tok/s, 69 s
+[strata] thinking: 3022 of budget 4608 (max 6144) tokens, 43.8 tok/s, 70 s
+[strata] thinking: 3075 of budget 4608 (max 6144) tokens, 43.9 tok/s, 71 s
+[strata] thinking: 3142 of budget 4608 (max 6144) tokens, 44.2 tok/s, 72 s
+[strata] thinking: 3213 of budget 4608 (max 6144) tokens, 44.5 tok/s, 73 s
+[strata] thinking: 3290 of budget 4608 (max 6144) tokens, 45.0 tok/s, 74 s
+[strata] thinking: 3366 of budget 4608 (max 6144) tokens, 45.4 tok/s, 75 s
+[strata] thinking: 3424 of budget 4608 (max 6144) tokens, 45.5 tok/s, 76 s
+[strata] thinking: 3464 of budget 4608 (max 6144) tokens, 45.4 tok/s, 77 s
+[strata] thinking: 3509 of budget 4608 (max 6144) tokens, 45.4 tok/s, 78 s
+[strata] thinking: 3568 of budget 4608 (max 6144) tokens, 45.6 tok/s, 79 s
+[strata] thinking: 3603 of budget 4608 (max 6144) tokens, 45.5 tok/s, 80 s
+[strata] thinking: 3640 of budget 4608 (max 6144) tokens, 45.3 tok/s, 81 s
+[strata] thinking: 3699 of budget 4608 (max 6144) tokens, 45.5 tok/s, 82 s
+[strata] thinking: 3744 of budget 4608 (max 6144) tokens, 45.5 tok/s, 83 s
+[strata] thinking: 3806 of budget 4608 (max 6144) tokens, 45.7 tok/s, 84 s
+[strata] thinking: 3864 of budget 4608 (max 6144) tokens, 45.8 tok/s, 85 s
+[strata] thinking: 3904 of budget 4608 (max 6144) tokens, 45.7 tok/s, 86 s
+[strata] thinking: 3944 of budget 4608 (max 6144) tokens, 45.6 tok/s, 87 s
+[strata] thinking: 3994 of budget 4608 (max 6144) tokens, 45.7 tok/s, 88 s
+[strata] thinking: 4042 of budget 4608 (max 6144) tokens, 45.7 tok/s, 89 s
+[strata] thinking: 4089 of budget 4608 (max 6144) tokens, 45.7 tok/s, 90 s
+[strata] thinking: 4135 of budget 4608 (max 6144) tokens, 45.6 tok/s, 91 s
+[strata] thinking: 4197 of budget 4608 (max 6144) tokens, 45.8 tok/s, 92 s
+[strata] thinking: 4233 of budget 4608 (max 6144) tokens, 45.7 tok/s, 93 s
+[strata] thinking: 4274 of budget 4608 (max 6144) tokens, 45.6 tok/s, 94 s
+[strata] thinking: 4312 of budget 4608 (max 6144) tokens, 45.5 tok/s, 95 s
+[strata] thinking: 4351 of budget 4608 (max 6144) tokens, 45.4 tok/s, 96 s
+[strata] thinking: 4384 of budget 4608 (max 6144) tokens, 45.3 tok/s, 97 s
+[strata] thinking: 4424 of budget 4608 (max 6144) tokens, 45.2 tok/s, 98 s
+[strata] thinking: 4458 of budget 4608 (max 6144) tokens, 45.1 tok/s, 99 s
+[strata] thinking: 4490 of budget 4608 (max 6144) tokens, 45.0 tok/s, 100 s
+[strata] thinking: 4531 of budget 4608 (max 6144) tokens, 44.9 tok/s, 101 s
+[strata] thinking: 4594 of budget 4608 (max 6144) tokens, 45.1 tok/s, 102 s
+[strata] thinking budget reached (4608 tokens): wrapping up the thinking
+[strata] answering: 4640 of max 6144 tokens, 45.0 tok/s, 104 s
+[strata] answering: 4702 of max 6144 tokens, 45.2 tok/s, 105 s
+[strata] answering: 4761 of max 6144 tokens, 45.3 tok/s, 106 s
+[strata] answering: 4837 of max 6144 tokens, 45.6 tok/s, 107 s
+[strata] answering: 4904 of max 6144 tokens, 45.8 tok/s, 108 s
+[strata] answering: 4978 of max 6144 tokens, 46.0 tok/s, 109 s
+[strata] answering: 5042 of max 6144 tokens, 46.2 tok/s, 110 s
+[strata] done: 5066 tokens in 110 s (46.1 tok/s) (stop, cancel=False), expert cache 79.7% hit (+14.5% of the routed experts over PCIe)
+[strata] thinking limited to 4608 of max_tokens 6144 so the answer has room ("answer_room": false in the config turns this off)
+[strata] thinking: 13 of budget 4608 (max 6144) tokens, 27.7 tok/s, 1 s
+[strata] thinking: 65 of budget 4608 (max 6144) tokens, 43.0 tok/s, 2 s
+[strata] thinking: 99 of budget 4608 (max 6144) tokens, 39.2 tok/s, 3 s
+[strata] thinking: 138 of budget 4608 (max 6144) tokens, 39.0 tok/s, 4 s
+[strata] thinking: 174 of budget 4608 (max 6144) tokens, 38.3 tok/s, 5 s
+[strata] thinking: 211 of budget 4608 (max 6144) tokens, 37.7 tok/s, 6 s
+[strata] thinking: 263 of budget 4608 (max 6144) tokens, 39.7 tok/s, 7 s
+[strata] thinking: 305 of budget 4608 (max 6144) tokens, 39.7 tok/s, 8 s
+[strata] thinking: 358 of budget 4608 (max 6144) tokens, 41.1 tok/s, 9 s
+[strata] thinking: 404 of budget 4608 (max 6144) tokens, 41.6 tok/s, 10 s
+[strata] thinking: 457 of budget 4608 (max 6144) tokens, 42.2 tok/s, 11 s
+[strata] thinking: 493 of budget 4608 (max 6144) tokens, 41.7 tok/s, 12 s
+[strata] thinking: 535 of budget 4608 (max 6144) tokens, 41.5 tok/s, 13 s
+[strata] thinking: 604 of budget 4608 (max 6144) tokens, 43.2 tok/s, 15 s
+[strata] thinking: 672 of budget 4608 (max 6144) tokens, 44.9 tok/s, 16 s
+[strata] thinking: 721 of budget 4608 (max 6144) tokens, 45.1 tok/s, 17 s
+[strata] thinking: 761 of budget 4608 (max 6144) tokens, 44.7 tok/s, 18 s
+[strata] thinking: 840 of budget 4608 (max 6144) tokens, 46.6 tok/s, 19 s
+[strata] thinking: 889 of budget 4608 (max 6144) tokens, 46.7 tok/s, 20 s
+[strata] thinking: 948 of budget 4608 (max 6144) tokens, 47.2 tok/s, 21 s
+[strata] thinking: 1021 of budget 4608 (max 6144) tokens, 48.3 tok/s, 22 s
+[strata] thinking: 1104 of budget 4608 (max 6144) tokens, 49.7 tok/s, 23 s
+[strata] thinking: 1136 of budget 4608 (max 6144) tokens, 49.0 tok/s, 24 s
+[strata] thinking: 1175 of budget 4608 (max 6144) tokens, 48.5 tok/s, 25 s
+[strata] thinking: 1216 of budget 4608 (max 6144) tokens, 48.2 tok/s, 26 s
+[strata] thinking: 1250 of budget 4608 (max 6144) tokens, 47.6 tok/s, 27 s
+[strata] thinking: 1282 of budget 4608 (max 6144) tokens, 47.0 tok/s, 28 s
+[strata] thinking: 1317 of budget 4608 (max 6144) tokens, 46.5 tok/s, 29 s
+[strata] thinking: 1357 of budget 4608 (max 6144) tokens, 46.3 tok/s, 30 s
+[strata] thinking: 1395 of budget 4608 (max 6144) tokens, 46.0 tok/s, 31 s
+[strata] thinking: 1427 of budget 4608 (max 6144) tokens, 45.5 tok/s, 32 s
+[strata] thinking: 1488 of budget 4608 (max 6144) tokens, 45.9 tok/s, 33 s
+[strata] thinking: 1548 of budget 4608 (max 6144) tokens, 46.3 tok/s, 34 s
+[strata] thinking: 1584 of budget 4608 (max 6144) tokens, 46.0 tok/s, 35 s
+[strata] thinking: 1617 of budget 4608 (max 6144) tokens, 45.6 tok/s, 36 s
+[strata] thinking: 1652 of budget 4608 (max 6144) tokens, 45.3 tok/s, 37 s
+[strata] thinking: 1694 of budget 4608 (max 6144) tokens, 45.1 tok/s, 38 s
+[strata] thinking: 1758 of budget 4608 (max 6144) tokens, 45.5 tok/s, 39 s
+[strata] thinking: 1826 of budget 4608 (max 6144) tokens, 46.0 tok/s, 40 s
+[strata] thinking: 1874 of budget 4608 (max 6144) tokens, 46.0 tok/s, 41 s
+[strata] thinking: 1924 of budget 4608 (max 6144) tokens, 46.1 tok/s, 42 s
+[strata] thinking: 1981 of budget 4608 (max 6144) tokens, 46.3 tok/s, 43 s
+[strata] thinking: 2034 of budget 4608 (max 6144) tokens, 46.5 tok/s, 44 s
+[strata] thinking: 2103 of budget 4608 (max 6144) tokens, 47.0 tok/s, 45 s
+[strata] thinking: 2145 of budget 4608 (max 6144) tokens, 46.9 tok/s, 46 s
+[strata] thinking: 2177 of budget 4608 (max 6144) tokens, 46.5 tok/s, 47 s
+[strata] thinking: 2236 of budget 4608 (max 6144) tokens, 46.7 tok/s, 48 s
+[strata] thinking: 2300 of budget 4608 (max 6144) tokens, 47.0 tok/s, 49 s
+[strata] thinking: 2352 of budget 4608 (max 6144) tokens, 47.1 tok/s, 50 s
+[strata] thinking: 2411 of budget 4608 (max 6144) tokens, 47.3 tok/s, 51 s
+[strata] thinking: 2448 of budget 4608 (max 6144) tokens, 47.1 tok/s, 53 s
+[strata] thinking: 2485 of budget 4608 (max 6144) tokens, 46.9 tok/s, 54 s
+[strata] thinking: 2545 of budget 4608 (max 6144) tokens, 47.1 tok/s, 55 s
+[strata] thinking: 2613 of budget 4608 (max 6144) tokens, 47.5 tok/s, 56 s
+[strata] thinking: 2678 of budget 4608 (max 6144) tokens, 47.7 tok/s, 57 s
+[strata] thinking: 2723 of budget 4608 (max 6144) tokens, 47.7 tok/s, 58 s
+[strata] thinking: 2785 of budget 4608 (max 6144) tokens, 47.9 tok/s, 59 s
+[strata] thinking: 2854 of budget 4608 (max 6144) tokens, 48.2 tok/s, 60 s
+[strata] thinking: 2932 of budget 4608 (max 6144) tokens, 48.7 tok/s, 61 s
+[strata] thinking: 2968 of budget 4608 (max 6144) tokens, 48.5 tok/s, 62 s
+[strata] thinking: 3010 of budget 4608 (max 6144) tokens, 48.3 tok/s, 63 s
+[strata] thinking: 3063 of budget 4608 (max 6144) tokens, 48.4 tok/s, 64 s
+[strata] thinking: 3115 of budget 4608 (max 6144) tokens, 48.4 tok/s, 65 s
+[strata] thinking: 3165 of budget 4608 (max 6144) tokens, 48.4 tok/s, 66 s
+[strata] thinking: 3214 of budget 4608 (max 6144) tokens, 48.4 tok/s, 67 s
+[strata] thinking: 3278 of budget 4608 (max 6144) tokens, 48.6 tok/s, 68 s
+[strata] thinking: 3334 of budget 4608 (max 6144) tokens, 48.7 tok/s, 69 s
+[strata] thinking: 3375 of budget 4608 (max 6144) tokens, 48.6 tok/s, 70 s
+[strata] thinking: 3423 of budget 4608 (max 6144) tokens, 48.6 tok/s, 71 s
+[strata] thinking: 3459 of budget 4608 (max 6144) tokens, 48.4 tok/s, 72 s
+[strata] thinking: 3502 of budget 4608 (max 6144) tokens, 48.3 tok/s, 73 s
+[strata] thinking: 3563 of budget 4608 (max 6144) tokens, 48.4 tok/s, 74 s
+[strata] the thinking repeated the same passages (coverage=0.264) at 3584 tokens: ended as "length" (reasoning_loop_recovery: "stop" in strata-<model>.json; remove it to turn this off)
+[strata] done: 3584 tokens in 74 s (48.4 tok/s) (length, cancel=False), expert cache 80.7% hit (+13.8% of the routed experts over PCIe)
+[strata] the reply reached max tokens while still thinking, so it has no answer: a thinking budget (reasoning_budget_tokens, in the request or in strata-<model>.json for every request) leaves room to answer
+[strata] thinking limited to 4608 of max_tokens 6144 so the answer has room ("answer_room": false in the config turns this off)
+[strata] thinking: 18 of budget 4608 (max 6144) tokens, 38.7 tok/s, 1 s
+[strata] thinking: 68 of budget 4608 (max 6144) tokens, 45.9 tok/s, 2 s
+[strata] thinking: 104 of budget 4608 (max 6144) tokens, 41.6 tok/s, 3 s
+[strata] thinking: 149 of budget 4608 (max 6144) tokens, 42.5 tok/s, 4 s
+[strata] thinking: 191 of budget 4608 (max 6144) tokens, 42.4 tok/s, 5 s
+[strata] thinking: 245 of budget 4608 (max 6144) tokens, 44.2 tok/s, 6 s
+[strata] thinking: 277 of budget 4608 (max 6144) tokens, 42.4 tok/s, 7 s
+[strata] thinking: 316 of budget 4608 (max 6144) tokens, 41.8 tok/s, 8 s
+[strata] thinking: 358 of budget 4608 (max 6144) tokens, 41.7 tok/s, 9 s
+[strata] thinking: 397 of budget 4608 (max 6144) tokens, 41.3 tok/s, 10 s
+[strata] thinking: 440 of budget 4608 (max 6144) tokens, 41.4 tok/s, 11 s
+[strata] thinking: 475 of budget 4608 (max 6144) tokens, 40.8 tok/s, 12 s
+[strata] thinking: 521 of budget 4608 (max 6144) tokens, 41.2 tok/s, 13 s
+[strata] thinking: 572 of budget 4608 (max 6144) tokens, 41.8 tok/s, 14 s
+[strata] thinking: 620 of budget 4608 (max 6144) tokens, 42.2 tok/s, 15 s
+[strata] thinking: 664 of budget 4608 (max 6144) tokens, 42.3 tok/s, 16 s
+[strata] thinking: 714 of budget 4608 (max 6144) tokens, 42.7 tok/s, 17 s
+[strata] thinking: 760 of budget 4608 (max 6144) tokens, 42.9 tok/s, 18 s
+[strata] thinking: 803 of budget 4608 (max 6144) tokens, 42.9 tok/s, 19 s
+[strata] thinking: 852 of budget 4608 (max 6144) tokens, 43.1 tok/s, 20 s
+[strata] thinking: 895 of budget 4608 (max 6144) tokens, 43.0 tok/s, 21 s
+[strata] thinking: 938 of budget 4608 (max 6144) tokens, 43.0 tok/s, 22 s
+[strata] thinking: 984 of budget 4608 (max 6144) tokens, 43.1 tok/s, 23 s
+[strata] thinking: 1031 of budget 4608 (max 6144) tokens, 43.2 tok/s, 24 s
+[strata] thinking: 1069 of budget 4608 (max 6144) tokens, 43.0 tok/s, 25 s
+[strata] thinking: 1100 of budget 4608 (max 6144) tokens, 42.5 tok/s, 26 s
+[strata] thinking: 1156 of budget 4608 (max 6144) tokens, 42.9 tok/s, 27 s
+[strata] thinking: 1203 of budget 4608 (max 6144) tokens, 43.0 tok/s, 28 s
+[strata] thinking: 1263 of budget 4608 (max 6144) tokens, 43.6 tok/s, 30 s
+[strata] thinking: 1328 of budget 4608 (max 6144) tokens, 44.3 tok/s, 31 s
+[strata] thinking: 1403 of budget 4608 (max 6144) tokens, 45.3 tok/s, 32 s
+[strata] thinking: 1468 of budget 4608 (max 6144) tokens, 45.9 tok/s, 33 s
+[strata] thinking: 1549 of budget 4608 (max 6144) tokens, 46.9 tok/s, 34 s
+[strata] thinking: 1619 of budget 4608 (max 6144) tokens, 47.6 tok/s, 35 s
+[strata] thinking: 1685 of budget 4608 (max 6144) tokens, 48.1 tok/s, 36 s
+[strata] thinking: 1763 of budget 4608 (max 6144) tokens, 48.9 tok/s, 37 s
+[strata] thinking: 1797 of budget 4608 (max 6144) tokens, 48.5 tok/s, 38 s
+[strata] thinking: 1834 of budget 4608 (max 6144) tokens, 48.1 tok/s, 39 s
+[strata] thinking: 1873 of budget 4608 (max 6144) tokens, 47.9 tok/s, 40 s
+[strata] thinking: 1927 of budget 4608 (max 6144) tokens, 48.0 tok/s, 41 s
+[strata] thinking: 1987 of budget 4608 (max 6144) tokens, 48.2 tok/s, 42 s
+[strata] thinking: 2054 of budget 4608 (max 6144) tokens, 48.6 tok/s, 43 s
+[strata] thinking: 2118 of budget 4608 (max 6144) tokens, 48.9 tok/s, 44 s
+[strata] thinking: 2198 of budget 4608 (max 6144) tokens, 49.5 tok/s, 45 s
+[strata] thinking: 2279 of budget 4608 (max 6144) tokens, 50.2 tok/s, 46 s
+[strata] thinking: 2365 of budget 4608 (max 6144) tokens, 50.9 tok/s, 47 s
+[strata] thinking: 2447 of budget 4608 (max 6144) tokens, 51.6 tok/s, 48 s
+[strata] thinking: 2510 of budget 4608 (max 6144) tokens, 51.8 tok/s, 49 s
+[strata] thinking: 2558 of budget 4608 (max 6144) tokens, 51.7 tok/s, 50 s
+[strata] thinking: 2598 of budget 4608 (max 6144) tokens, 51.4 tok/s, 51 s
+[strata] thinking: 2640 of budget 4608 (max 6144) tokens, 51.2 tok/s, 52 s
+[strata] thinking: 2675 of budget 4608 (max 6144) tokens, 50.9 tok/s, 53 s
+[strata] thinking: 2709 of budget 4608 (max 6144) tokens, 50.6 tok/s, 54 s
+[strata] thinking: 2750 of budget 4608 (max 6144) tokens, 50.4 tok/s, 55 s
+[strata] thinking: 2794 of budget 4608 (max 6144) tokens, 50.2 tok/s, 56 s
+[strata] thinking: 2847 of budget 4608 (max 6144) tokens, 50.2 tok/s, 57 s
+[strata] thinking: 2904 of budget 4608 (max 6144) tokens, 50.3 tok/s, 58 s
+[strata] thinking: 2964 of budget 4608 (max 6144) tokens, 50.4 tok/s, 59 s
+[strata] thinking: 3031 of budget 4608 (max 6144) tokens, 50.6 tok/s, 60 s
+[strata] thinking: 3096 of budget 4608 (max 6144) tokens, 50.8 tok/s, 61 s
+[strata] thinking: 3169 of budget 4608 (max 6144) tokens, 51.1 tok/s, 63 s
+[strata] thinking: 3243 of budget 4608 (max 6144) tokens, 51.5 tok/s, 64 s
+[strata] thinking: 3313 of budget 4608 (max 6144) tokens, 51.7 tok/s, 65 s
+[strata] thinking: 3395 of budget 4608 (max 6144) tokens, 52.2 tok/s, 66 s
+[strata] thinking: 3428 of budget 4608 (max 6144) tokens, 51.9 tok/s, 67 s
+[strata] thinking: 3461 of budget 4608 (max 6144) tokens, 51.6 tok/s, 68 s
+[strata] answering: 3515 of max 6144 tokens, 51.6 tok/s, 69 s
+[strata] answering: 3563 of max 6144 tokens, 51.5 tok/s, 70 s
+[strata] answering: 3636 of max 6144 tokens, 51.8 tok/s, 71 s
+[strata] answering: 3701 of max 6144 tokens, 51.9 tok/s, 72 s
+[strata] answering: 3761 of max 6144 tokens, 52.0 tok/s, 73 s
+[strata] answering: 3828 of max 6144 tokens, 52.2 tok/s, 74 s
+[strata] done: 3878 tokens in 75 s (52.2 tok/s) (stop, cancel=False), expert cache 82.5% hit (+12.7% of the routed experts over PCIe)

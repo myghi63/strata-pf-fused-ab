@@ -39,15 +39,24 @@ During the run the **server's own reasoning-loop detector is switched on**
    whether a text difference between the arms means anything.
 3. **Loop test** — 14 repetition-inviting prompts (~3.3K tokens each:
    counting, lists, tables, JSON, dialogue, cycles…), thinking on, up to
-   **6,144 tokens**, once greedy and once sampled (Qwen's thinking-mode
-   sampling: `temperature 0.6, top_p 0.95, top_k 20`, `seed 1`).
+   **6,144 tokens**, once greedy and once sampled (`temperature 0.6,
+   top_p 0.95, top_k 20`, `seed 1`). Note: the model card's thinking-mode
+   sampling is `temperature 1.0` with the same top_p / top_k; 0.6 (the older
+   Qwen3 value) is a harder test for loops, the `rep` phase below covers 1.0.
 4. **Long context** — ~187K tokens of *Moby-Dick* (Project Gutenberg #2701,
    public domain, downloaded once into `data/`) with twelve inserted "ship's log
    notes". The task needs the whole text and a long answer: list the notes with
    their chapters, summarize every chapter in order, rank the longest chapters.
-   Sampled, up to 60K output tokens, so prompt + output reach ~247K of the 256K
-   context. Scored on note recall (code and chapter) and chapter coverage
-   (missing / repeated / out of order), plus the same loop checks.
+   Sampled (`temperature 0.6`), up to 60K output tokens, so prompt + output can
+   reach ~247K of the 256K context. Scored on note recall (code and chapter)
+   and chapter coverage (missing / repeated / out of order), plus the same loop
+   checks.
+5. **Loop rate with the server's default sampling** (opt-in phase `rep`) — one
+   loop prompt N times (default `loop_words_a` × 8) **without any sampling
+   field**, so the server applies the model card's sampling (`serve/server.py`,
+   `MODEL_CARD_SAMPLING`: `temperature 1.0, top_p 0.95, top_k 20` with
+   thinking) — what a client such as opencode, which sends none, gets. Run it
+   with `CLIENT_ARGS="--phases rep"` after the main run (it replaces `out/`).
 
 ### What counts as a loop
 
@@ -73,6 +82,12 @@ passages (#728): every 512 output tokens it measures how much of the last
 ends the reply (`"stop"`) or resumes it with the low-effort instruction
 (`"recover"`). It is **off by default** and needs about 2,000 words of
 reasoning before it can fire — which is why the loop test allows 6,144 tokens.
+
+It also fires on legitimate re-drafts: a model that writes a 120-word list,
+then re-writes it to check for duplicates, covers its recent reasoning with
+passages seen three times. In this run most cuts were that (coverage 0.25–0.40),
+while the degenerate loops looked like one short line repeated dozens of times.
+Read the text of every cut before calling it a loop; `report.md` prints it.
 
 `run_all.sh` sets `"reasoning_loop_recovery": "stop"` in the model's
 installed config (`~/.local/share/strata/install/strata-<model>.json`, the
@@ -134,17 +149,21 @@ The API key is read from the preset's `api_key` (or `STRATA_API_KEY`, or
 
 | file | contents |
 | --- | --- |
-| `report.md` / `report.json` | speed, server detector counts, loop table per prompt and mode, repeatability, long-context score |
+| `report.md` / `report.json` | speed, server detector counts, loop table per prompt and mode, repeatability, loop rate (`rep`), long-context score |
 | `kl.md` / `kl.json` | first-token KL in both directions, top-1, per-prompt table |
 | `arm1.engine.log` / `arm0.engine.log` | the engine log lines of each arm |
 | `arm1.server.log` / `arm0.server.log` | the server log lines of each arm |
 | `dumps/fused1.*` / `dumps/fused0.*` | raw float32 logits (248,320 per file) |
-| `out/arm*/{kl,probe,loop,long}/` | full requests, responses and the server events of each request |
+| `out/arm*/{kl,probe,loop,long,rep}/` | full requests, responses and the server events of each request |
+
+`python3 report.py DIR` re-analyses a saved run (DIR holds `out/` and
+`arm*.server.log`), e.g. `python3 report.py results/v2`.
 
 ## How to read it
 
-- **Loops** — the number that matters is arm 1 vs arm 0, per mode. Both 0
-  means the fused path did not cause a loop in this sample.
+- **Loops** — the number that matters is arm 1 vs arm 0, per mode, counting
+  only cuts whose text is a degenerate repetition. Equal counts mean the fused
+  path did not cause a loop in this sample.
 - **Long context** — 12/12 notes with the right chapter and no missing or
   repeated chapter means the ~187K-token prompt arrived intact in that arm.
 - **KL** — `docs/AMD_HIP.md` lists "First-token KL vs MMQ: IQ3_S 0.00284 vs
@@ -183,7 +202,7 @@ The API key is read from the preset's `api_key` (or `STRATA_API_KEY`, or
 | `longctx.py` | builds and scores the ~187K-token Moby-Dick prompt |
 | `report.py` | loop detector, server events, repeatability, long-context score, speed |
 | `kl.py` | first-token KL from `STRATA_DUMP_FIRST_LOGITS` dumps |
-| `results/` | the measured reports (v2 at the top level of RESULTS.md, v1 in `results/v1/`) |
+| `results/` | the measured runs: `v2/` (main), `v2-rep/` (`rep` phase), `v1/` (first run, with corrections) |
 
 ## License
 

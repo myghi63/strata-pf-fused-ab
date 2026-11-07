@@ -12,6 +12,7 @@ Phases (in this order):
   probe  the same prompt three times, greedy, to measure run-to-run repeatability
   loop   14 repetition-inviting prompts, greedy and sampled, up to --loop-max-tokens
   long   one ~187K-token prompt (longctx.py), sampled, up to 60K tokens
+  rep    (opt-in) one loop prompt N times with the server's default sampling, for a loop rate
 
 Every request records the server-log lines written while it ran (the server's loop
 detector, its single-token repeat guard, budget wrap-ups), so a loop the server cut
@@ -173,6 +174,8 @@ def main() -> int:
                     help="the server's loop detector needs ~2,000 words of reasoning before it can fire")
     ap.add_argument("--greedy-repeats", type=int, default=1)
     ap.add_argument("--sampled-seeds", default="1", help="comma-separated seeds for the sampled loop pass")
+    ap.add_argument("--rep-prompt", default="loop_words_a", help="the loop prompt the 'rep' phase repeats")
+    ap.add_argument("--rep-n", type=int, default=8, help="how many times the 'rep' phase sends it")
     ap.add_argument("--server-log", default=None, help="the server log of this launch (to attribute loop events)")
     ap.add_argument("--dumps", default=None,
                     help="dump prefix (e.g. dumps/fused1): the count of files before each KL request is "
@@ -216,6 +219,17 @@ def main() -> int:
                 rec.update(id=p["id"], mode=mode, repeat=k)
                 save(out / "loop" / f"{p['id']}.{mode}{k}.json", rec)
                 print(f"  LOOP  {mode}{k} {p['id']} {brief(rec)}", flush=True)
+
+    if "rep" in phases:
+        # One prompt N times with NO sampling fields: the server applies its own default (the model card's
+        # sampling, temperature 1.0 / top_p 0.95 / top_k 20 for Qwen3.8-Flash-Next with thinking), exactly
+        # what a client like opencode that sends no sampling gets.  Measures the loop RATE per arm.
+        p = next(x for x in LOOP if x["id"] == a.rep_prompt)
+        for k in range(a.rep_n):
+            rec = ask(a.base, key, model, p["text"], a.loop_max_tokens, {}, slog)
+            rec.update(id=p["id"], mode="serverdefault", repeat=k)
+            save(out / "rep" / f"{p['id']}.r{k}.json", rec)
+            print(f"  REP   {k} {p['id']} {brief(rec)}", flush=True)
 
     if "long" in phases:
         longctx.fetch()
