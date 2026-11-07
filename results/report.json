@@ -1,0 +1,1039 @@
+{
+  "speeds": {
+    "1": {
+      "rows": [
+        {
+          "id": "kl_agent_transcript",
+          "tokens": 3853,
+          "prompt_ms": 3609.5,
+          "tok_s": 1067.5,
+          "decode_tok_s": 36.0
+        },
+        {
+          "id": "kl_code_asyncio",
+          "tokens": 3853,
+          "prompt_ms": 3603.4,
+          "tok_s": 1069.3,
+          "decode_tok_s": 31.6
+        },
+        {
+          "id": "kl_en_consensus",
+          "tokens": 3837,
+          "prompt_ms": 3683.2,
+          "tok_s": 1041.8,
+          "decode_tok_s": 25.7
+        },
+        {
+          "id": "kl_json_api",
+          "tokens": 3886,
+          "prompt_ms": 3615.1,
+          "tok_s": 1074.9,
+          "decode_tok_s": 37.8
+        },
+        {
+          "id": "kl_math_svd",
+          "tokens": 3893,
+          "prompt_ms": 3643.0,
+          "tok_s": 1068.6,
+          "decode_tok_s": 33.3
+        },
+        {
+          "id": "kl_pt_navegacao",
+          "tokens": 3834,
+          "prompt_ms": 3558.7,
+          "tok_s": 1077.4,
+          "decode_tok_s": 31.3
+        }
+      ],
+      "mean_tok_s": 1066.6
+    },
+    "0": {
+      "rows": [
+        {
+          "id": "kl_agent_transcript",
+          "tokens": 3853,
+          "prompt_ms": 6032.0,
+          "tok_s": 638.8,
+          "decode_tok_s": 36.1
+        },
+        {
+          "id": "kl_code_asyncio",
+          "tokens": 3853,
+          "prompt_ms": 5999.5,
+          "tok_s": 642.2,
+          "decode_tok_s": 31.8
+        },
+        {
+          "id": "kl_en_consensus",
+          "tokens": 3837,
+          "prompt_ms": 6053.4,
+          "tok_s": 633.9,
+          "decode_tok_s": 27.8
+        },
+        {
+          "id": "kl_json_api",
+          "tokens": 3886,
+          "prompt_ms": 6057.8,
+          "tok_s": 641.5,
+          "decode_tok_s": 37.9
+        },
+        {
+          "id": "kl_math_svd",
+          "tokens": 3893,
+          "prompt_ms": 6052.3,
+          "tok_s": 643.2,
+          "decode_tok_s": 33.3
+        },
+        {
+          "id": "kl_pt_navegacao",
+          "tokens": 3834,
+          "prompt_ms": 5966.7,
+          "tok_s": 642.6,
+          "decode_tok_s": 31.4
+        }
+      ],
+      "mean_tok_s": 640.4
+    }
+  },
+  "loops": {
+    "1": 0,
+    "0": 0
+  },
+  "total": 28,
+  "detail": [
+    {
+      "id": "loop_count_300.r0",
+      "arm1": {
+        "chars": 1325,
+        "words": 288,
+        "zlib": 0.5517,
+        "tail_period": null,
+        "top_line_n": 3,
+        "top_line": "1",
+        "ngram6": 1,
+        "ngram10": 1,
+        "distinct4": 1.0,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "arm0": {
+        "chars": 1539,
+        "words": 325,
+        "zlib": 0.527,
+        "tail_period": null,
+        "top_line_n": 2,
+        "top_line": "1",
+        "ngram6": 2,
+        "ngram10": 2,
+        "distinct4": 0.9286,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "same_text": false,
+      "prefix_chars": 63
+    },
+    {
+      "id": "loop_count_300.r1",
+      "arm1": {
+        "chars": 1147,
+        "words": 264,
+        "zlib": 0.5806,
+        "tail_period": null,
+        "top_line_n": 2,
+        "top_line": "16",
+        "ngram6": 1,
+        "ngram10": 1,
+        "distinct4": 1.0,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "arm0": {
+        "chars": 1111,
+        "words": 259,
+        "zlib": 0.5842,
+        "tail_period": null,
+        "top_line_n": 2,
+        "top_line": "1",
+        "ngram6": 1,
+        "ngram10": 1,
+        "distinct4": 1.0,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "same_text": false,
+      "prefix_chars": 534
+    },
+    {
+      "id": "loop_dialogue_40.r0",
+      "arm1": {
+        "chars": 2246,
+        "words": 406,
+        "zlib": 0.5036,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer user's request in Portuguese likely. User provided long context t",
+        "ngram6": 2,
+        "ngram10": 1,
+        "distinct4": 0.9926,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "arm0": {
+        "chars": 2318,
+        "words": 414,
+        "zlib": 0.5173,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer user's request in Portuguese likely. User provided long context t",
+        "ngram6": 1,
+        "ngram10": 1,
+        "distinct4": 0.9976,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "same_text": false,
+      "prefix_chars": 344
+    },
+    {
+      "id": "loop_dialogue_40.r1",
+      "arm1": {
+        "chars": 2300,
+        "words": 410,
+        "zlib": 0.5117,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "1. Ana: Vamos jantar fora?",
+        "ngram6": 1,
+        "ngram10": 1,
+        "distinct4": 0.9975,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "arm0": {
+        "chars": 2262,
+        "words": 404,
+        "zlib": 0.5053,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer user's request in Portuguese likely. User provided long context t",
+        "ngram6": 2,
+        "ngram10": 1,
+        "distinct4": 0.99,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "same_text": false,
+      "prefix_chars": 0
+    },
+    {
+      "id": "loop_essay_reading.r0",
+      "arm1": {
+        "chars": 3114,
+        "words": 482,
+        "zlib": 0.4997,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer user's request in Portuguese. User provided many texts and then a",
+        "ngram6": 2,
+        "ngram10": 1,
+        "distinct4": 0.9833,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "arm0": {
+        "chars": 2945,
+        "words": 453,
+        "zlib": 0.4886,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer user's request in Portuguese. User provided many texts and then a",
+        "ngram6": 1,
+        "ngram10": 1,
+        "distinct4": 0.9911,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "same_text": false,
+      "prefix_chars": 547
+    },
+    {
+      "id": "loop_essay_reading.r1",
+      "arm1": {
+        "chars": 3164,
+        "words": 481,
+        "zlib": 0.5,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer user's request in Portuguese. User provided many texts and then a",
+        "ngram6": 1,
+        "ngram10": 1,
+        "distinct4": 0.9874,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "arm0": {
+        "chars": 2591,
+        "words": 389,
+        "zlib": 0.4913,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer user's request in Portuguese. User provided many paragraphs and t",
+        "ngram6": 2,
+        "ngram10": 1,
+        "distinct4": 0.9845,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "same_text": false,
+      "prefix_chars": 65
+    },
+    {
+      "id": "loop_explain_compiler.r0",
+      "arm1": {
+        "chars": 3012,
+        "words": 452,
+        "zlib": 0.4934,
+        "tail_period": null,
+        "top_line_n": 2,
+        "top_line": "```",
+        "ngram6": 1,
+        "ngram10": 1,
+        "distinct4": 0.9978,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "arm0": {
+        "chars": 3072,
+        "words": 469,
+        "zlib": 0.498,
+        "tail_period": null,
+        "top_line_n": 2,
+        "top_line": "```",
+        "ngram6": 1,
+        "ngram10": 1,
+        "distinct4": 0.9957,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "same_text": false,
+      "prefix_chars": 180
+    },
+    {
+      "id": "loop_explain_compiler.r1",
+      "arm1": {
+        "chars": 2986,
+        "words": 453,
+        "zlib": 0.4913,
+        "tail_period": null,
+        "top_line_n": 2,
+        "top_line": "```",
+        "ngram6": 2,
+        "ngram10": 1,
+        "distinct4": 0.9867,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "arm0": {
+        "chars": 2658,
+        "words": 403,
+        "zlib": 0.4443,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "Um compilador \u00e9 um programa que traduz um c\u00f3digo-fonte escrito em uma linguagem ",
+        "ngram6": 2,
+        "ngram10": 2,
+        "distinct4": 0.9375,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "same_text": false,
+      "prefix_chars": 39
+    },
+    {
+      "id": "loop_fibonacci.r0",
+      "arm1": {
+        "chars": 1460,
+        "words": 229,
+        "zlib": 0.5418,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer user's request in Portuguese likely. User provided long context t",
+        "ngram6": 1,
+        "ngram10": 1,
+        "distinct4": 0.9867,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "arm0": {
+        "chars": 1371,
+        "words": 201,
+        "zlib": 0.5208,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer user's request in Portuguese likely. User provided long context t",
+        "ngram6": 2,
+        "ngram10": 2,
+        "distinct4": 0.9091,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "same_text": false,
+      "prefix_chars": 371
+    },
+    {
+      "id": "loop_fibonacci.r1",
+      "arm1": {
+        "chars": 1425,
+        "words": 207,
+        "zlib": 0.5256,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer user's request in Portuguese likely. User provided long context t",
+        "ngram6": 2,
+        "ngram10": 1,
+        "distinct4": 0.9755,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "arm0": {
+        "chars": 1382,
+        "words": 227,
+        "zlib": 0.5043,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer user's request in Portuguese likely. User provided long context t",
+        "ngram6": 2,
+        "ngram10": 2,
+        "distinct4": 0.9107,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "same_text": false,
+      "prefix_chars": 371
+    },
+    {
+      "id": "loop_json_50.r0",
+      "arm1": {
+        "chars": 2087,
+        "words": 328,
+        "zlib": 0.4907,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer user's request in Portuguese? User: \"Gere um JSON valido com uma ",
+        "ngram6": 1,
+        "ngram10": 1,
+        "distinct4": 1.0,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "arm0": {
+        "chars": 1783,
+        "words": 276,
+        "zlib": 0.4672,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer user's request. User in Portuguese: \"Gere um JSON valido com uma ",
+        "ngram6": 1,
+        "ngram10": 1,
+        "distinct4": 1.0,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "same_text": false,
+      "prefix_chars": 30
+    },
+    {
+      "id": "loop_json_50.r1",
+      "arm1": {
+        "chars": 1860,
+        "words": 290,
+        "zlib": 0.4624,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer user's request. User in Portuguese: \"Gere um JSON valido com uma ",
+        "ngram6": 1,
+        "ngram10": 1,
+        "distinct4": 1.0,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "arm0": {
+        "chars": 1804,
+        "words": 282,
+        "zlib": 0.4468,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer user's request. User in Portuguese: \"Gere um JSON valido com uma ",
+        "ngram6": 1,
+        "ngram10": 1,
+        "distinct4": 1.0,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "same_text": false,
+      "prefix_chars": 560
+    },
+    {
+      "id": "loop_poem_sea.r0",
+      "arm1": {
+        "chars": 2206,
+        "words": 456,
+        "zlib": 0.5118,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "1. O mar respira na beira do mundo,",
+        "ngram6": 2,
+        "ngram10": 1,
+        "distinct4": 0.9581,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "arm0": {
+        "chars": 2164,
+        "words": 443,
+        "zlib": 0.5333,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer user's request in Portuguese likely. User provided long context t",
+        "ngram6": 1,
+        "ngram10": 1,
+        "distinct4": 1.0,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "same_text": false,
+      "prefix_chars": 0
+    },
+    {
+      "id": "loop_poem_sea.r1",
+      "arm1": {
+        "chars": 2279,
+        "words": 454,
+        "zlib": 0.4252,
+        "tail_period": null,
+        "top_line_n": 2,
+        "top_line": "1 O mar respira na beira do mundo,",
+        "ngram6": 2,
+        "ngram10": 2,
+        "distinct4": 0.7539,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "arm0": {
+        "chars": 2237,
+        "words": 446,
+        "zlib": 0.4604,
+        "tail_period": null,
+        "top_line_n": 2,
+        "top_line": "1 O mar respira na beira do mundo,",
+        "ngram6": 2,
+        "ngram10": 2,
+        "distinct4": 0.8217,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "same_text": false,
+      "prefix_chars": 460
+    },
+    {
+      "id": "loop_process_50.r0",
+      "arm1": {
+        "chars": 2614,
+        "words": 372,
+        "zlib": 0.4901,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer user's request in Portuguese. User provided several paragraphs an",
+        "ngram6": 2,
+        "ngram10": 1,
+        "distinct4": 0.9919,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "arm0": {
+        "chars": 2799,
+        "words": 407,
+        "zlib": 0.508,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "1. Definir a ideia central do livro, identificando o tema, o p\u00fablico-alvo e a pr",
+        "ngram6": 1,
+        "ngram10": 1,
+        "distinct4": 1.0,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "same_text": false,
+      "prefix_chars": 0
+    },
+    {
+      "id": "loop_process_50.r1",
+      "arm1": {
+        "chars": 2585,
+        "words": 372,
+        "zlib": 0.4793,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer user's request in Portuguese likely. User provided several paragr",
+        "ngram6": 2,
+        "ngram10": 1,
+        "distinct4": 0.9892,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "arm0": {
+        "chars": 2460,
+        "words": 363,
+        "zlib": 0.4967,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer user's request in Portuguese likely. User provided several paragr",
+        "ngram6": 1,
+        "ngram10": 1,
+        "distinct4": 1.0,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "same_text": false,
+      "prefix_chars": 561
+    },
+    {
+      "id": "loop_summarize_cycle.r0",
+      "arm1": {
+        "chars": 3025,
+        "words": 470,
+        "zlib": 0.3881,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer in Portuguese likely. User asks: \"Escolha um tema de sua preferen",
+        "ngram6": 2,
+        "ngram10": 1,
+        "distinct4": 0.9807,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "arm0": {
+        "chars": 2814,
+        "words": 460,
+        "zlib": 0.3259,
+        "tail_period": null,
+        "top_line_n": 2,
+        "top_line": "Ciclo 1:",
+        "ngram6": 3,
+        "ngram10": 3,
+        "distinct4": 0.8228,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "same_text": false,
+      "prefix_chars": 43
+    },
+    {
+      "id": "loop_summarize_cycle.r1",
+      "arm1": {
+        "chars": 3011,
+        "words": 457,
+        "zlib": 0.4088,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer in Portuguese likely. User asks: \"Escolha um tema de sua preferen",
+        "ngram6": 2,
+        "ngram10": 1,
+        "distinct4": 0.9824,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "arm0": {
+        "chars": 2951,
+        "words": 459,
+        "zlib": 0.3433,
+        "tail_period": null,
+        "top_line_n": 2,
+        "top_line": "Resumo (3 frases): ...",
+        "ngram6": 3,
+        "ngram10": 3,
+        "distinct4": 0.8268,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "same_text": false,
+      "prefix_chars": 43
+    },
+    {
+      "id": "loop_table_40.r0",
+      "arm1": {
+        "chars": 2009,
+        "words": 274,
+        "zlib": 0.4828,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer user's request in Portuguese likely. User provided long context t",
+        "ngram6": 1,
+        "ngram10": 1,
+        "distinct4": 0.9963,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "arm0": {
+        "chars": 1839,
+        "words": 279,
+        "zlib": 0.5128,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer user's request in Portuguese likely. User provided long context t",
+        "ngram6": 1,
+        "ngram10": 1,
+        "distinct4": 1.0,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "same_text": false,
+      "prefix_chars": 627
+    },
+    {
+      "id": "loop_table_40.r1",
+      "arm1": {
+        "chars": 1605,
+        "words": 237,
+        "zlib": 0.5047,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer user's request in Portuguese likely. User provided long context t",
+        "ngram6": 1,
+        "ngram10": 1,
+        "distinct4": 0.9957,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "arm0": {
+        "chars": 2086,
+        "words": 325,
+        "zlib": 0.4621,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer user's request in Portuguese likely. User provided long context t",
+        "ngram6": 1,
+        "ngram10": 1,
+        "distinct4": 1.0,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "same_text": false,
+      "prefix_chars": 413
+    },
+    {
+      "id": "loop_tcp_steps.r0",
+      "arm1": {
+        "chars": 2956,
+        "words": 474,
+        "zlib": 0.3606,
+        "tail_period": null,
+        "top_line_n": 2,
+        "top_line": "1. Estabelecimento de conex\u00e3o.",
+        "ngram6": 3,
+        "ngram10": 3,
+        "distinct4": 0.8896,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "arm0": {
+        "chars": 2896,
+        "words": 464,
+        "zlib": 0.3726,
+        "tail_period": null,
+        "top_line_n": 3,
+        "top_line": "1. Estabelecimento de conex\u00e3o",
+        "ngram6": 3,
+        "ngram10": 3,
+        "distinct4": 0.8373,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "same_text": false,
+      "prefix_chars": 267
+    },
+    {
+      "id": "loop_tcp_steps.r1",
+      "arm1": {
+        "chars": 3052,
+        "words": 484,
+        "zlib": 0.3614,
+        "tail_period": null,
+        "top_line_n": 2,
+        "top_line": "1. Estabelecimento de conex\u00e3o.",
+        "ngram6": 3,
+        "ngram10": 3,
+        "distinct4": 0.8794,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "arm0": {
+        "chars": 3016,
+        "words": 486,
+        "zlib": 0.3468,
+        "tail_period": null,
+        "top_line_n": 2,
+        "top_line": "Longa: O cliente escolhe um n\u00famero de sequ\u00eancia inicial e envia um segmento TCP ",
+        "ngram6": 3,
+        "ngram10": 3,
+        "distinct4": 0.8489,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "same_text": false,
+      "prefix_chars": 267
+    },
+    {
+      "id": "loop_translate_30.r0",
+      "arm1": {
+        "chars": 2298,
+        "words": 377,
+        "zlib": 0.621,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer user's request in Portuguese? User: \"Traduza a frase 'O livro est",
+        "ngram6": 1,
+        "ngram10": 1,
+        "distinct4": 0.9786,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "arm0": {
+        "chars": 2477,
+        "words": 405,
+        "zlib": 0.4853,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer user's request in Portuguese? User: \"Traduza a frase 'O livro est",
+        "ngram6": 2,
+        "ngram10": 1,
+        "distinct4": 0.9602,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "same_text": false,
+      "prefix_chars": 306
+    },
+    {
+      "id": "loop_translate_30.r1",
+      "arm1": {
+        "chars": 2429,
+        "words": 382,
+        "zlib": 0.6661,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer user's request in Portuguese? User: \"Traduza a frase 'O livro est",
+        "ngram6": 1,
+        "ngram10": 1,
+        "distinct4": 0.9868,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "arm0": {
+        "chars": 2409,
+        "words": 373,
+        "zlib": 0.472,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer user's request in Portuguese? User: \"Traduza a frase 'O livro est",
+        "ngram6": 2,
+        "ngram10": 1,
+        "distinct4": 0.9378,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "same_text": false,
+      "prefix_chars": 222
+    },
+    {
+      "id": "loop_while_python.r0",
+      "arm1": {
+        "chars": 1503,
+        "words": 239,
+        "zlib": 0.5063,
+        "tail_period": null,
+        "top_line_n": 4,
+        "top_line": "```",
+        "ngram6": 1,
+        "ngram10": 1,
+        "distinct4": 1.0,
+        "triggers": [],
+        "loop": false,
+        "finish": "stop"
+      },
+      "arm0": {
+        "chars": 1464,
+        "words": 236,
+        "zlib": 0.5082,
+        "tail_period": null,
+        "top_line_n": 2,
+        "top_line": "```python",
+        "ngram6": 1,
+        "ngram10": 1,
+        "distinct4": 0.9914,
+        "triggers": [],
+        "loop": false,
+        "finish": "stop"
+      },
+      "same_text": false,
+      "prefix_chars": 325
+    },
+    {
+      "id": "loop_while_python.r1",
+      "arm1": {
+        "chars": 1537,
+        "words": 252,
+        "zlib": 0.4912,
+        "tail_period": null,
+        "top_line_n": 2,
+        "top_line": "```python",
+        "ngram6": 1,
+        "ngram10": 1,
+        "distinct4": 0.992,
+        "triggers": [],
+        "loop": false,
+        "finish": "stop"
+      },
+      "arm0": {
+        "chars": 1507,
+        "words": 243,
+        "zlib": 0.4937,
+        "tail_period": null,
+        "top_line_n": 2,
+        "top_line": "```python",
+        "ngram6": 1,
+        "ngram10": 1,
+        "distinct4": 0.9917,
+        "triggers": [],
+        "loop": false,
+        "finish": "stop"
+      },
+      "same_text": false,
+      "prefix_chars": 166
+    },
+    {
+      "id": "loop_words_a.r0",
+      "arm1": {
+        "chars": 2191,
+        "words": 339,
+        "zlib": 0.4331,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer user's request in Portuguese: \"Liste 120 palavras em portugues qu",
+        "ngram6": 1,
+        "ngram10": 1,
+        "distinct4": 0.994,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "arm0": {
+        "chars": 2304,
+        "words": 364,
+        "zlib": 0.4097,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer user's request in Portuguese: \"Liste 120 palavras em portugues qu",
+        "ngram6": 2,
+        "ngram10": 2,
+        "distinct4": 0.9501,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "same_text": false,
+      "prefix_chars": 896
+    },
+    {
+      "id": "loop_words_a.r1",
+      "arm1": {
+        "chars": 2149,
+        "words": 362,
+        "zlib": 0.4728,
+        "tail_period": null,
+        "top_line_n": 1,
+        "top_line": "We need answer user's request in Portuguese: \"Liste 120 palavras em portugues qu",
+        "ngram6": 1,
+        "ngram10": 1,
+        "distinct4": 0.9944,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "arm0": {
+        "chars": 2112,
+        "words": 357,
+        "zlib": 0.4015,
+        "tail_period": null,
+        "top_line_n": 2,
+        "top_line": "1 abacaxi",
+        "ngram6": 2,
+        "ngram10": 2,
+        "distinct4": 0.8757,
+        "triggers": [],
+        "loop": false,
+        "finish": "length"
+      },
+      "same_text": false,
+      "prefix_chars": 896
+    }
+  ],
+  "within_arm": {
+    "1": {
+      "same": 0,
+      "diff": 14
+    },
+    "0": {
+      "same": 0,
+      "diff": 14
+    }
+  }
+}
