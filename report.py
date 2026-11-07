@@ -1,20 +1,23 @@
 #!/usr/bin/env python3
-"""Analyse the two arms: repetition loops, arm-to-arm divergence and prompt speed.
+"""Analyse the two arms: repetition loops, run-to-run repeatability, long context and prompt speed.
 
   python3 report.py            # reads out/arm1 and out/arm0, writes report.md/report.json
 
-A "loop" here is the degenerate repetition the maintainer described: the model
-starts repeating a token, a line, a phrase or a whole block and does not leave
-it. Three independent signals are used, so a single one cannot flag a prompt:
-  * the tail is exactly periodic (period <= 300 characters, at least 3 repeats);
-  * one line (or one 10-word phrase) repeats 8+ times;
+A "loop" is degenerate repetition: the model repeats a token, a line, a phrase or a whole
+block and does not leave it. A generation counts as looped if ANY of these fires:
+  * the server's own detectors cut it (reasoning_loop_recovery "stop": "the thinking repeated
+    the same passages"; repeat_stop_tokens: "repeated one token"), from the server-log lines
+    client.py attributed to that request;
+  * the reasoning or the answer has an exactly periodic tail (period <= 300 characters, 3 repeats);
+  * one line repeats 8+ times, a 10-word phrase 6+ times or a 6-word phrase 12+ times;
   * the text compresses absurdly well (zlib ratio < 0.16 on 1,200+ characters).
-`finish == "length"` is reported separately: hitting max_tokens is not a loop.
+Reasoning and answer are checked separately. `finish == "length"` alone is not a loop.
 """
 from __future__ import annotations
 
 import json
 import pathlib
+import re
 import statistics
 import sys
 import zlib
@@ -22,6 +25,10 @@ from collections import Counter
 
 HERE = pathlib.Path(__file__).resolve().parent
 OUT = HERE / "out"
+sys.path.insert(0, str(HERE))
+import longctx  # noqa: E402
+
+SERVER_LOOP_RE = re.compile(r"the thinking repeated the same passages|repeated reasoning detected|repeated one token")
 
 
 def tail_period(s: str, max_period: int = 400) -> int | None:
@@ -42,14 +49,23 @@ def ngram_top(words: list[str], n: int) -> int:
     return c.most_common(1)[0][1]
 
 
+def worst_zlib(text: str, win: int = 4000, step: int = 2000) -> float:
+    """Lowest compression ratio over 4 KB windows (a loop in the middle of a long text shows here)."""
+    if len(text) <= win:
+        return len(zlib.compress(text.encode("utf-8"), 9)) / max(1, len(text.encode("utf-8")))
+    best = 1.0
+    for i in range(0, len(text) - win + 1, step):
+        seg = text[i:i + win].encode("utf-8")
+        best = min(best, len(zlib.compress(seg, 9)) / len(seg))
+    return best
+
+
 def metrics(text: str) -> dict:
     lines = [ln.strip() for ln in text.splitlines() if ln.strip()]
     lc = Counter(lines)
     top_line, top_line_n = lc.most_common(1)[0] if lc else ("", 0)
     words = text.split()
-    n4 = len(words) - 3
-    distinct4 = (len({tuple(words[i:i + 4]) for i in range(n4)}) / n4) if n4 > 0 else 0.0
-    ratio = len(zlib.compress(text.encode("utf-8"), 9)) / max(1, len(text))
+    ratio = worst_zlib(text) if text else 1.0
     tp = tail_period(text)
     n10 = ngram_top(words, 10)
     n6 = ngram_top(words, 6)
@@ -64,172 +80,38 @@ def metrics(text: str) -> dict:
         triggers.append(f"6-gram x{n6}")
     if ratio < 0.16 and len(text) > 1200:
         triggers.append(f"zlib {ratio:.3f}")
-    return {
-        "chars": len(text),
-        "words": len(words),
-        "zlib": round(ratio, 4),
-        "tail_period": tp,
-        "top_line_n": top_line_n,
-        "top_line": top_line[:80],
-        "ngram6": n6,
-        "ngram10": n10,
-        "distinct4": round(distinct4, 4),
-        "triggers": triggers,
-        "loop": bool(triggers),
-    }
+    return {"chars": len(text), "words": len(words), "zlib_min": round(ratio, 4), "tail_period": tp,
+            "top_line_n": top_line_n, "top_line": top_line[:80], "ngram6": n6, "ngram10": n10,
+            "triggers": triggers}
 
 
-def text_of(rec: dict) -> tuple[str, str]:
-    ch = rec["response"].get("choices") or [{}]
-    msg = ch[0].get("message") or {}
-    content = msg.get("content") or ""
-    reason = msg.get("reasoning_content") or msg.get("reasoning") or ""
-    return content, reason
+def parts(rec: dict) -> tuple[str, str]:
+    msg = ((rec["response"].get("choices") or [{}])[0].get("message")) or {}
+    return msg.get("content") or "", msg.get("reasoning_content") or msg.get("reasoning") or ""
 
 
 def finish_of(rec: dict) -> str:
-    ch = rec["response"].get("choices") or [{}]
-    return ch[0].get("finish_reason") or "?"
+    return ((rec["response"].get("choices") or [{}])[0].get("finish_reason")) or "?"
 
 
-def timings_of(rec: dict) -> dict:
-    t = rec["response"].get("timings") or {}
-    return t if isinstance(t, dict) else {}
+def tokens_of(rec: dict) -> int:
+    return int((rec["response"].get("usage") or {}).get("completion_tokens") or 0)
 
 
-def load_arm(arm: str) -> dict:
-    d = OUT / f"arm{arm}"
-    loops, kls = {}, {}
-    for p in sorted((d / "loop").glob("*.json")):
-        loops[p.stem] = json.loads(p.read_text())
-    for p in sorted((d / "kl").glob("*.json")):
-        kls[p.stem] = json.loads(p.read_text())
-    return {"loop": loops, "kl": kls}
+def judge(rec: dict) -> dict:
+    content, reasoning = parts(rec)
+    mr, mc = metrics(reasoning), metrics(content)
+    server = [ln for ln in rec.get("server_events", []) if SERVER_LOOP_RE.search(ln)]
+    signals = ["server: " + re.sub(r"^.*?\[strata\] ", "", s)[:70] for s in server]
+    signals += [f"reasoning {t}" for t in mr["triggers"]] + [f"answer {t}" for t in mc["triggers"]]
+    return {"finish": finish_of(rec), "tokens": tokens_of(rec), "answered": bool(content.strip()),
+            "reasoning": mr, "answer": mc, "server_events": rec.get("server_events", []),
+            "signals": signals, "loop": bool(signals)}
 
 
-def speed_table(kls: dict) -> dict:
-    rows = []
-    for name, rec in kls.items():
-        t = timings_of(rec)
-        pn = t.get("prompt_n")
-        ms = t.get("prompt_ms")
-        pps = t.get("prompt_per_second")
-        if pn and ms:
-            rows.append({"id": name, "tokens": pn, "prompt_ms": round(ms, 1),
-                         "tok_s": pps if pps is not None else round(pn / (ms / 1000), 1),
-                         "decode_tok_s": t.get("predicted_per_second")})
-    return {"rows": rows,
-            "mean_tok_s": round(statistics.mean(r["tok_s"] for r in rows), 1) if rows else None}
-
-
-def main() -> int:
-    if not (OUT / "arm1").exists() or not (OUT / "arm0").exists():
-        raise SystemExit(f"missing {OUT}/arm1 or arm0; run run_all.sh first")
-    arms = {a: load_arm(a) for a in ("1", "0")}
-    md = ["# STRATA_PF_FUSED A/B", ""]
-
-    # ---- speed (from the KL requests: long prompt, max_tokens=1)
-    md += ["## Prompt speed (from the KL requests)", "",
-           "| arm | prompts | mean tok/s | median tok/s | mean prompt ms |",
-           "| --- | ---: | ---: | ---: | ---: |"]
-    speeds = {}
-    for a in ("1", "0"):
-        s = speed_table(arms[a]["kl"])
-        speeds[a] = s
-        vals = [r["tok_s"] for r in s["rows"] if r["tok_s"]]
-        med = round(statistics.median(vals), 1) if vals else None
-        mean_ms = round(statistics.mean(r["prompt_ms"] for r in s["rows"]), 1) if s["rows"] else None
-        md.append(f"| {a} | {len(vals)} | {s['mean_tok_s']} | {med} | {mean_ms} |")
-    if speeds["1"]["mean_tok_s"] and speeds["0"]["mean_tok_s"]:
-        md.append("")
-        md.append(f"fused on/off speed ratio: **{speeds['1']['mean_tok_s'] / speeds['0']['mean_tok_s']:.3f}x**")
-    md.append("")
-
-    # ---- loops
-    md += ["## Repetition loops (greedy, up to 700 tokens, 2 repeats)", "",
-           "| prompt | arm1 finish | arm1 signals | arm0 finish | arm0 signals | same text |",
-           "| --- | --- | --- | --- | --- | --- |"]
-    loop_count = {"1": 0, "0": 0}
-    total = 0
-    detail = []
-    names = sorted(set(arms["1"]["loop"]) | set(arms["0"]["loop"]))
-    for name in names:
-        r1 = arms["1"]["loop"].get(name)
-        r0 = arms["0"]["loop"].get(name)
-        if not r1 or not r0:
-            continue
-        c1, x1 = text_of(r1)
-        c0, x0 = text_of(r0)
-        m1 = metrics(c1 + ("\n" + x1 if x1 else ""))
-        m0 = metrics(c0 + ("\n" + x0 if x0 else ""))
-        total += 1
-        for a, m in (("1", m1), ("0", m0)):
-            if m["loop"]:
-                loop_count[a] += 1
-        f1, f0 = c1 + ("\n" + x1 if x1 else ""), c0 + ("\n" + x0 if x0 else "")
-        same = "yes" if f1 == f0 else f"no (prefix {common_prefix(f1, f0)} ch)"
-        md.append(f"| {name} | {finish_of(r1)} | {'; '.join(m1['triggers']) or '-'} | "
-                  f"{finish_of(r0)} | {'; '.join(m0['triggers']) or '-'} | {same} |")
-        detail.append({"id": name, "arm1": {**m1, "finish": finish_of(r1)},
-                       "arm0": {**m0, "finish": finish_of(r0)}, "same_text": f1 == f0,
-                       "prefix_chars": common_prefix(f1, f0)})
-    md += ["", f"**Loops: arm1 (fused on) {loop_count['1']}/{total} generations, "
-              f"arm0 (fused off) {loop_count['0']}/{total}.**", ""]
-
-    srv = {}
-    for a in ("1", "0"):
-        p = OUT / f"arm{a}.server_loops"
-        try:
-            srv[a] = int(p.read_text().strip() or 0)
-        except Exception:  # noqa: BLE001
-            srv[a] = None
-    if any(v is not None for v in srv.values()):
-        md += [f"Server's own reasoning-loop recoveries (`the thinking repeated the same passages`): "
-               f"arm1 {srv['1']}, arm0 {srv['0']}.", ""]
-
-    # ---- within-arm determinism: how much of the arm-to-arm text difference is noise
-    md += ["## Within-arm repeatability (r0 vs r1, same arm, same prompt)", "",
-           "| arm | identical repeats | different repeats |", "| --- | ---: | ---: |"]
-    det = {}
-    for a in ("1", "0"):
-        same = diff = 0
-        for name, rec in arms[a]["loop"].items():
-            if not name.endswith(".r0"):
-                continue
-            other = arms[a]["loop"].get(name[:-3] + ".r1")
-            if not other:
-                continue
-            f0 = "".join(text_of(rec))
-            f1 = "".join(text_of(other))
-            if f0 == f1:
-                same += 1
-            else:
-                diff += 1
-        det[a] = {"same": same, "diff": diff}
-        md.append(f"| {a} | {same} | {diff} |")
-    md += ["", "Greedy decoding here is not bit-reproducible across requests (the streamed expert cache "
-           "changes what is resident), so an arm-to-arm text difference alone does not implicate "
-           "`STRATA_PF_FUSED`. Only a difference in the *loop rate* is evidence.", ""]
-
-    # ---- the raw text of anything that looped, for eyeballing
-    md += ["## Outputs that looped (first 600 characters)", ""]
-    any_loop = False
-    for row in detail:
-        for a in ("1", "0"):
-            if row[f"arm{a}"]["loop"]:
-                any_loop = True
-                rec = arms[a]["loop"][row["id"]]
-                c, x = text_of(rec)
-                md += [f"### {row['id']} - arm{a}", "```", (c or x)[:600].replace("```", "'''"), "```", ""]
-    if not any_loop:
-        md += ["None. No repetition loop in either arm.", ""]
-
-    (HERE / "report.md").write_text("\n".join(md), encoding="utf-8")
-    (HERE / "report.json").write_text(json.dumps(
-        {"speeds": speeds, "loops": loop_count, "total": total, "detail": detail,
-         "within_arm": det}, indent=2), encoding="utf-8")
-    print("\n".join(md))
-    return 0
+def load(arm: str, phase: str) -> dict:
+    d = OUT / f"arm{arm}" / phase
+    return {p.stem: json.loads(p.read_text()) for p in sorted(d.glob("*.json"))} if d.exists() else {}
 
 
 def common_prefix(a: str, b: str) -> int:
@@ -238,6 +120,158 @@ def common_prefix(a: str, b: str) -> int:
     while i < n and a[i] == b[i]:
         i += 1
     return i
+
+
+def server_totals(arm: str) -> dict:
+    p = HERE / f"arm{arm}.server.log"
+    txt = p.read_text(errors="replace") if p.exists() else ""
+    return {"loop_stop": txt.count("the thinking repeated the same passages"),
+            "loop_recover": txt.count("repeated reasoning detected"),
+            "token_repeat": txt.count("repeated one token"),
+            "recovery_mode": (re.findall(r'reasoning_loop_recovery[^\n]*', txt) or [""])[0][:120],
+            "log_found": p.exists()}
+
+
+def main() -> int:
+    if not (OUT / "arm1").exists() or not (OUT / "arm0").exists():
+        raise SystemExit(f"missing {OUT}/arm1 or arm0; run run_all.sh first")
+    md = ["# STRATA_PF_FUSED A/B", ""]
+    js: dict = {}
+
+    # ---- prompt speed (KL requests: ~3.85K tokens, max_tokens=4)
+    md += ["## Prompt speed (the KL requests)", "",
+           "| arm | prompts | prompt tokens | mean tok/s | median tok/s | mean prompt ms |",
+           "| --- | ---: | ---: | ---: | ---: | ---: |"]
+    speeds = {}
+    for a in ("1", "0"):
+        rows = []
+        for name, rec in load(a, "kl").items():
+            t = rec["response"].get("timings") or {}
+            if t.get("prompt_n") and t.get("prompt_ms"):
+                rows.append({"id": name, "tokens": t["prompt_n"], "cache_n": t.get("cache_n"),
+                             "prompt_ms": t["prompt_ms"],
+                             "tok_s": t.get("prompt_per_second") or t["prompt_n"] / (t["prompt_ms"] / 1000)})
+        speeds[a] = rows
+        if rows:
+            v = [r["tok_s"] for r in rows]
+            md.append(f"| {a} | {len(rows)} | {min(r['tokens'] for r in rows)}-{max(r['tokens'] for r in rows)} | "
+                      f"{statistics.mean(v):.1f} | {statistics.median(v):.1f} | "
+                      f"{statistics.mean(r['prompt_ms'] for r in rows):.1f} |")
+    if speeds.get("1") and speeds.get("0"):
+        ratio = statistics.mean(r["tok_s"] for r in speeds["1"]) / statistics.mean(r["tok_s"] for r in speeds["0"])
+        md += ["", f"fused on/off prompt speed ratio: **{ratio:.3f}x**"]
+        js["speed_ratio"] = ratio
+    md.append("")
+    js["speeds"] = speeds
+
+    # ---- server detectors
+    tot = {a: server_totals(a) for a in ("1", "0")}
+    js["server_totals"] = tot
+    md += ["## Server loop detectors (whole server log of each arm)", "",
+           "| arm | reasoning loop, stop | reasoning loop, recover | one token repeated |",
+           "| --- | ---: | ---: | ---: |"]
+    for a in ("1", "0"):
+        t = tot[a]
+        md.append(f"| {a} | {t['loop_stop']} | {t['loop_recover']} | {t['token_repeat']} |"
+                  if t["log_found"] else f"| {a} | (no server log) | | |")
+    md.append("")
+
+    # ---- loops
+    js["loop"] = {}
+    md += ["## Repetition loops (short prompts)", ""]
+    loops = {"1": load("1", "loop"), "0": load("0", "loop")}
+    names = sorted(set(loops["1"]) | set(loops["0"]))
+    modes = sorted({n.rsplit(".", 1)[1] for n in names})
+    summary = []
+    for mode in modes:
+        cnt = {"1": [0, 0, 0, 0], "0": [0, 0, 0, 0]}          # loops, total, hit length, answered
+        md += [f"### {mode}", "",
+               "| prompt | arm1 finish | arm1 tokens | arm1 signals | arm0 finish | arm0 tokens | arm0 signals |",
+               "| --- | --- | ---: | --- | --- | ---: | --- |"]
+        for name in [n for n in names if n.endswith("." + mode)]:
+            row = {}
+            for a in ("1", "0"):
+                rec = loops[a].get(name)
+                if rec:
+                    j = judge(rec)
+                    row[a] = j
+                    c = cnt[a]
+                    c[0] += j["loop"]; c[1] += 1; c[2] += j["finish"] == "length"; c[3] += j["answered"]
+            js["loop"][name] = row
+            cell = lambda a: (f"{row[a]['finish']} | {row[a]['tokens']} | {'; '.join(row[a]['signals']) or '-'}"
+                              if a in row else "- | - | -")
+            md.append(f"| {name.rsplit('.', 1)[0]} | {cell('1')} | {cell('0')} |")
+        md.append("")
+        for a in ("1", "0"):
+            l, n, ln, ans = cnt[a]
+            summary.append(f"| {mode} | {a} | **{l}/{n}** | {ln}/{n} | {ans}/{n} |")
+    md += ["### Summary", "", "| mode | arm | loops | hit max_tokens | wrote an answer |",
+           "| --- | --- | ---: | ---: | ---: |"] + summary + [""]
+
+    # ---- repeatability probe
+    md += ["## Greedy repeatability (same prompt, same server, 3 requests)", "",
+           "| arm | identical pairs | common prefix (chars) 0-1 / 1-2 | draft accepted / drafted |",
+           "| --- | ---: | --- | --- |"]
+    js["probe"] = {}
+    for a in ("1", "0"):
+        recs = [r for _, r in sorted(load(a, "probe").items())]
+        if len(recs) < 2:
+            continue
+        txt = ["".join(reversed(parts(r))) for r in recs]
+        same = sum(txt[i] == txt[i + 1] for i in range(len(txt) - 1))
+        pre = [common_prefix(txt[i], txt[i + 1]) for i in range(len(txt) - 1)]
+        dr = [f"{(r['response'].get('timings') or {}).get('draft_n_accepted')}/"
+              f"{(r['response'].get('timings') or {}).get('draft_n')}" for r in recs]
+        cache = [(r["response"].get("timings") or {}).get("cache_n") for r in recs]
+        js["probe"][a] = {"identical_pairs": same, "prefix": pre, "draft": dr, "cache_n": cache}
+        md.append(f"| {a} | {same}/{len(txt) - 1} | {' / '.join(map(str, pre))} | {', '.join(dr)} |")
+    md += ["", "The 2nd and 3rd requests reuse the cached prompt (conversation cache), so a difference between "
+           "them comes from decoding, not from the prompt path. The draft acceptance counts differ between "
+           "requests; speculative decoding is the likely source, but this run does not isolate it "
+           "(`--drafting off` would).", ""]
+
+    # ---- long context
+    md += ["## Long context (~187K-token prompt, sampled, up to 60K tokens)", "",
+           "| arm | prompt tokens | prompt tok/s | output tokens | decode tok/s | finish | notes found / right chapter | "
+           "chapters missing / repeated | loop signals |",
+           "| --- | ---: | ---: | ---: | ---: | --- | --- | --- | --- |"]
+    js["long"] = {}
+    for a in ("1", "0"):
+        rec = load(a, "long").get("long_mobydick")
+        if not rec:
+            continue
+        j = judge(rec)
+        content, _ = parts(rec)
+        s = longctx.score(content, rec["meta"])
+        t = rec["response"].get("timings") or {}
+        js["long"][a] = {**j, "score": s, "timings": t}
+        md.append(f"| {a} | {t.get('prompt_n')} | {t.get('prompt_per_second', 0):.0f} | {j['tokens']} | "
+                  f"{t.get('predicted_per_second', 0):.1f} | {j['finish']} | {s['notes_found']}/12, "
+                  f"{s['notes_chapter_ok']}/12 | {len(s['chapters_missing'])} / {len(s['chapters_repeated'])} | "
+                  f"{'; '.join(j['signals']) or '-'} |")
+    md.append("")
+
+    # ---- the text of anything that looped
+    md += ["## Outputs flagged as loops (last 500 characters)", ""]
+    flagged = False
+    for name, row in js["loop"].items():
+        for a, j in row.items():
+            if j["loop"]:
+                flagged = True
+                c, r = parts(loops[a][name])
+                md += [f"### {name} - arm{a}", "", "Signals: " + "; ".join(j["signals"]), "", "```",
+                       (r if not c.strip() else c)[-500:].replace("```", "'''"), "```", ""]
+    for a, j in js["long"].items():
+        if j["loop"]:
+            flagged = True
+            md += [f"### long_mobydick - arm{a}", "", "Signals: " + "; ".join(j["signals"]), ""]
+    if not flagged:
+        md += ["None.", ""]
+
+    (HERE / "report.md").write_text("\n".join(md), encoding="utf-8")
+    (HERE / "report.json").write_text(json.dumps(js, indent=2, ensure_ascii=False), encoding="utf-8")
+    print("\n".join(md))
+    return 0
 
 
 if __name__ == "__main__":

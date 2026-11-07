@@ -16,3 +16,5 @@
 # python
 __pycache__/
 *.pyc
+/data/
+/.model-config.backup.json

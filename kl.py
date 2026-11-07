@@ -85,8 +85,8 @@ def main() -> int:
         md.append(f"| {r['id']} | {r['kl_fused_mmq']:.6f} | {r['kl_mmq_fused']:.6f} | "
                   f"{'yes' if r['top1_same'] else 'no'} |")
     md.append("")
-    md.append("Reference from docs/AMD_HIP.md, IQ3_S, pooled 24 prompts: "
-              "PF_FUSED first-token KL 0.00284 vs 0.00332 (both directions).")
+    md.append("Reference from docs/AMD_HIP.md (STRATA_PF_FUSED, pooled 24 prompts): "
+              "\"First-token KL vs MMQ: IQ3_S 0.00284 vs 0.00332\" (the doc does not say what each number is).")
     (HERE / "kl.md").write_text("\n".join(md), encoding="utf-8")
     (HERE / "kl.json").write_text(json.dumps(
         {"rows": rows, "mean_fused_mmq": float(ab.mean()), "mean_mmq_fused": float(ba.mean()),

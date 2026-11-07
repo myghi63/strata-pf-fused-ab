@@ -1,17 +1,20 @@
 # strata-pf-fused-ab
 
 A small, self-contained A/B harness for **`STRATA_PF_FUSED`** (Strata's fused
-int8 prompt-expert kernels) on a single GPU. It answers two questions with
+int8 prompt-expert kernels) on a single GPU. It answers three questions with
 numbers:
 
 1. Does turning the fused prompt path on make the model fall into repetition
-   loops?
-2. How far does it move the model's first-token distribution (KL), and how much
-   prompt speed does it buy?
+   loops, with greedy and with sampled decoding, in long reasoning?
+2. Does it damage a very long prompt (~187K tokens)?
+3. How far does it move the first-token distribution (KL), and how much prompt
+   speed does it buy?
 
 It was written to answer the maintainer's question in
 [Strata PR #2392](https://github.com/Niko1221/Strata/pull/2392) and was run on
-an RX 7800 XT (gfx1101). The measured numbers are in [RESULTS.md](RESULTS.md).
+an RX 7800 XT (gfx1101). The measured numbers are in [RESULTS.md](RESULTS.md);
+the first, lighter run (v1) and its corrections are in
+[results/v1/](results/v1/RESULTS.md).
 
 ## What it measures
 
@@ -23,55 +26,88 @@ Two server starts, one per arm, with **everything identical except
 | 1 | `1` (fused) |
 | 0 | `0` (MMQ) |
 
-Each arm runs the same fixed prompt set:
+During the run the **server's own reasoning-loop detector is switched on**
+(`"reasoning_loop_recovery": "stop"`, see below). Each arm runs, in order:
 
-1. **First-token KL** — 6 long prompts, `max_tokens=4`. The engine dumps the
-   logits of the first generated window (`STRATA_DUMP_FIRST_LOGITS`) and `kl.py`
-   computes `KL(fused‖mmq)`, `KL(mmq‖fused)` and top-1 agreement. This is the
-   same measurement and layout as the repository's `tools/par/kl_logits.py`.
-2. **Greedy loop test** — 14 prompts that invite repetition (counting, lists,
-   tables, JSON, dialogue, long essays…), greedy, up to 700 tokens, 2 repeats.
-   `report.py` uses three independent signals so a single one cannot flag a
-   prompt: exactly periodic tail, a line / 10-word n-gram repeated 8+ times, or
-   an abnormally high zlib compression ratio. Hitting `max_tokens`
-   (`finish_reason=length`) is reported separately — it is not a loop.
-3. **Prompt speed** — read from the same 6 KL requests
-   (`timings.prompt_per_second`).
-4. **The server's own loop detector** — Strata counts reasoning-loop recoveries
-   (`the thinking repeated the same passages`); the script copies that count per
-   arm.
-5. **Within-arm repeatability** — the two repeats of each prompt are compared.
-   Greedy decoding in this build is **not** bit-reproducible across requests
-   (the streamed expert cache changes what is resident), so a text difference
-   between arms alone does not implicate `STRATA_PF_FUSED`. Only a difference in
-   the loop *rate* is evidence.
+1. **First-token KL** — 6 prompts of 3.83–3.89K tokens, `max_tokens=4`. The
+   engine dumps the logits of the first generated window
+   (`STRATA_DUMP_FIRST_LOGITS`) and `kl.py` computes `KL(fused‖mmq)`,
+   `KL(mmq‖fused)` and top-1 agreement (the layout of the repository's
+   `tools/par/kl_logits.py`). Prompt speed is read from the same requests.
+2. **Repeatability probe** — one prompt three times, greedy, 400 tokens. Shows
+   whether greedy output is reproducible on this build at all, which decides
+   whether a text difference between the arms means anything.
+3. **Loop test** — 14 repetition-inviting prompts (~3.3K tokens each:
+   counting, lists, tables, JSON, dialogue, cycles…), thinking on, up to
+   **6,144 tokens**, once greedy and once sampled (Qwen's thinking-mode
+   sampling: `temperature 0.6, top_p 0.95, top_k 20`, `seed 1`).
+4. **Long context** — ~187K tokens of *Moby-Dick* (Project Gutenberg #2701,
+   public domain, downloaded once into `data/`) with twelve inserted "ship's log
+   notes". The task needs the whole text and a long answer: list the notes with
+   their chapters, summarize every chapter in order, rank the longest chapters.
+   Sampled, up to 60K output tokens, so prompt + output reach ~247K of the 256K
+   context. Scored on note recall (code and chapter) and chapter coverage
+   (missing / repeated / out of order), plus the same loop checks.
 
-## Why the prompts are ~4K tokens
+### What counts as a loop
 
-The fused prompt path only runs on a streamed chunk of
-`stream_all_min()` tokens or more — 1024 by default
-(`src/prefill/prefill.cpp`, `fused_layout()`). With ~600-token prompts **both**
-arms run MMQ, the first-token KL comes out exactly `0.0`, and the run measures
-nothing. The first version of this harness fell into that trap; the committed
-version prefixes every prompt with the same neutral ~3.3K-token context (the six
-KL texts concatenated) and keeps the question / loop instruction at the end, so
-every request is 3.8–3.9K tokens.
+A generation is flagged if **any** of these fires (reasoning and answer are
+checked separately):
 
-The script checks this for you: it reports the fused-expert marker per arm and
-the KL prompt sizes, and warns if the marker never appeared in arm 1.
+- the **server** cut it: `the thinking repeated the same passages`
+  (`reasoning_loop_recovery`), `repeated reasoning detected` (recover mode) or
+  `repeated one token` (`repeat_stop_tokens`, on by default at 256). `client.py`
+  attributes each server-log line to the request that was running;
+- an exactly periodic tail (period ≤ 300 characters, 3 repeats);
+- one line 8+ times, one 10-word phrase 6+ times or one 6-word phrase 12+ times;
+- a 4 KB window that compresses absurdly well (zlib ratio < 0.16).
+
+Hitting `max_tokens` (`finish_reason=length`) alone is **not** a loop; it is
+reported separately, together with whether the model got to write an answer.
+
+### The server's loop detector
+
+`serve/server.py` has an opt-in detector for reasoning that repeats whole
+passages (#728): every 512 output tokens it measures how much of the last
+2,000 words is covered by 12-word passages seen three times; at ≥ 25% it either
+ends the reply (`"stop"`) or resumes it with the low-effort instruction
+(`"recover"`). It is **off by default** and needs about 2,000 words of
+reasoning before it can fire — which is why the loop test allows 6,144 tokens.
+
+`run_all.sh` sets `"reasoning_loop_recovery": "stop"` in the model's
+installed config (`~/.local/share/strata/install/strata-<model>.json`, the
+file `strata launch` copies its settings from), checks that the run config
+picked it up, and restores the original file when it exits — also on Ctrl-C
+or an error. `"stop"` is used instead of `"recover"` because recover would
+hide a loop by steering the model out of it. `LOOP_RECOVERY=off` leaves the
+file alone.
+
+## Why the prompts are 3.3K tokens or more
+
+The fused prompt path only runs on a streamed chunk of `stream_all_min()`
+tokens or more — 1024 by default (`src/prefill/prefill.cpp`,
+`fused_layout()`). With ~600-token prompts **both** arms run MMQ, the KL comes
+out exactly `0.0`, and the run measures nothing. Every short prompt is
+therefore prefixed with the same neutral ~3.3K-token context, with the question
+at the end. The script reports the fused-expert marker per arm and the KL
+prompt sizes, and warns if the marker never appeared in arm 1.
+
+Different prompts do not share the conversation cache (each one is read in
+full); an identical prompt sent again is served from it, which is why the
+repeatability probe isolates decoding from the prompt path.
 
 ## Requirements
 
 - Strata installed and able to serve the model (`strata launch`).
-- A saved launch preset that serves it. The examples use `iq3_s-256k-final`;
-  set `PRESET` to yours.
-- One GPU, enough VRAM for the preset. Keep the preset's VRAM reserve
-  (`--vram-reserve-mib`) as it is; the harness does not change it.
-- `python3` with `numpy`.
+- A saved launch preset that serves it with at least 256K context. The examples
+  use `iq3_s-256k-final`; set `PRESET` to yours.
+- One GPU, enough VRAM for the preset. The preset's VRAM reserve is not
+  changed.
+- `python3` with `numpy`; network access once, for the book.
 
-The harness changes **nothing** in the preset: `STRATA_PF_FUSED` and
-`STRATA_DUMP_FIRST_LOGITS` are passed as per-start `--set` overrides, so the
-preset file is untouched.
+`STRATA_PF_FUSED` and `STRATA_DUMP_FIRST_LOGITS` are per-start `--set`
+overrides, so the preset file is untouched. The only file changed during the run
+is the model's installed config (the loop detector), and it is restored.
 
 ## Quick start
 
@@ -83,12 +119,13 @@ PRESET=iq3_s-256k-final bash run_all.sh --yes
 PRESET=iq3_s-256k-final bash run_all.sh --yes --restore
 ```
 
-Without `--yes` the script only prints what it would do and exits, so it cannot
-take down a server by accident.
+Without `--yes` the script only prints what it would do and exits.
 
-Runtime: ~25–35 minutes on an RX 7800 XT (two engine loads + 6 KL requests +
-28 generations per arm, each request with a ~4K-token prompt). Disk: ~15 MB
-(the logits dumps).
+Runtime on an RX 7800 XT: roughly 3–4 hours (two engine loads; per arm 6 KL
+requests, 3 probe requests, 28 generations of up to 6,144 tokens and one
+~187K-token prompt with up to 60K output tokens). `CLIENT_ARGS` passes options
+to `client.py`, e.g. `CLIENT_ARGS="--loop-max-tokens 3072 --phases kl,loop"`
+for a shorter run, or `--sampled-seeds 1,2,3` for more sampled passes.
 
 The API key is read from the preset's `api_key` (or `STRATA_API_KEY`, or
 `--key`). It is never written by this harness.
@@ -97,57 +134,58 @@ The API key is read from the preset's `api_key` (or `STRATA_API_KEY`, or
 
 | file | contents |
 | --- | --- |
-| `report.md` / `report.json` | loop table per prompt, arm 1 vs arm 0, speed, within-arm repeatability |
+| `report.md` / `report.json` | speed, server detector counts, loop table per prompt and mode, repeatability, long-context score |
 | `kl.md` / `kl.json` | first-token KL in both directions, top-1, per-prompt table |
 | `arm1.engine.log` / `arm0.engine.log` | the engine log lines of each arm |
-| `arm1.server.log` / `arm0.server.log` | the server log lines of each arm (includes reasoning-loop recoveries) |
+| `arm1.server.log` / `arm0.server.log` | the server log lines of each arm |
 | `dumps/fused1.*` / `dumps/fused0.*` | raw float32 logits (248,320 per file) |
-| `out/arm*/...` | full requests and responses |
+| `out/arm*/{kl,probe,loop,long}/` | full requests, responses and the server events of each request |
 
 ## How to read it
 
-- **KL** — compare with the reference for IQ3_S in `docs/AMD_HIP.md`
-  (mean `0.00284` / `0.00332` over 24 prompts). The same order of magnitude
-  (≈0.001–0.005) means the fused path is not moving the distribution more than
-  expected. **Exactly 0** means both arms ran the same path (prompts too short).
-- **Top-1** — how many prompts pick the same first token. It is expected to be
-  high; on this model the first token is always the same word because of the
-  chat template, so the KL is the informative number.
-- **Loops** — the number that matters is arm 1 vs arm 0. If arm 1 loops and
-  arm 0 does not, the report reproduces on your card. If both are 0, the fused
-  path did not cause a loop in this sample.
-- **Repeatability** — if the two repeats inside the same arm already differ,
-  the arm-to-arm text comparison is noise; only the loop rate counts.
-- **Speed** — `fused / mmq`. The docs report +19.1% at 4K and +8.4% at 16K on an
-  RTX 5070; a different card can gain much more (see RESULTS.md).
+- **Loops** — the number that matters is arm 1 vs arm 0, per mode. Both 0
+  means the fused path did not cause a loop in this sample.
+- **Long context** — 12/12 notes with the right chapter and no missing or
+  repeated chapter means the ~187K-token prompt arrived intact in that arm.
+- **KL** — `docs/AMD_HIP.md` lists "First-token KL vs MMQ: IQ3_S 0.00284 vs
+  0.00332" for `STRATA_PF_FUSED` (pooled 24 prompts, Coder IQ1_M setup). The
+  same order of magnitude means the fused path is not moving the distribution
+  more than expected. **Exactly 0** means both arms ran the same path.
+- **Top-1** — expected to be high; the first token is nearly always the same
+  word because of the chat template, so the KL is the informative number.
+- **Repeatability** — if greedy repeats on the same server already differ, the
+  arm-to-arm text comparison is noise and only loop rates and scores count.
+- **Speed** — `fused / mmq`. `docs/AMD_HIP.md` reports +19.1% at 4K
+  (Coder IQ1_M, ROCm 7.14); a different card and model can gain much more.
 
 ## Caveats
 
-- 6 KL prompts, not 24; 14 loop prompts × 2 repeats. This is a sample, not a
-  benchmark.
-- It is **first-token KL**, not teacher-forced KL over all positions. For all
-  positions, the engine's `--dump-logits` writes one line per position, but that
-  needs tokenizing the text and running the engine outside the server.
+- 6 KL prompts, not 24; first-token KL only, not teacher-forced over all
+  positions (the engine's `--dump-logits` does that, outside the server).
+- One run per arm; 28 short generations and one long one per arm is a sample,
+  not a benchmark.
 - The test runs with the production stack (dflash2 + speculative decoding). If a
   loop appears, repeat that prompt with `--drafting off` to separate the
   drafter's effect from `STRATA_PF_FUSED`.
-- `STRATA_HIP_PROMPT_F16` and `STRATA_PF_GEMM` stay on in both arms: the
-  maintainer confirmed those are the correct gfx11 path.
-- With a 700-token cap the model may still be thinking when it hits the limit,
-  so the loop test can cover the reasoning text but not the final answer.
+- Single requests only: a multi-turn agent session with tool calls, where loops
+  are often reported, is not simulated.
+- `STRATA_HIP_PROMPT_F16` and `STRATA_PF_GEMM` stay on in both arms (the
+  maintainer confirmed those are the gfx11 path). `docs/AMD_HIP.md` lists
+  `STRATA_PF_FUSED` as a gfx12 default; on gfx11 it is opt-in.
 
 ## Files
 
 | file | role |
 | --- | --- |
-| `run_all.sh` | orchestrates both arms: stop, launch with `--set`, client, logs, analysis |
-| `client.py` | sends the fixed prompt set, saves responses, timings and dump indices |
-| `prompts.py` | the 6 KL prompts, the 14 loop prompts, and the long-context padding |
-| `report.py` | loop detector, arm comparison, speed, within-arm repeatability |
+| `run_all.sh` | orchestrates both arms: detector on, stop, launch with `--set`, client, logs, analysis, restore |
+| `client.py` | sends the prompt set (kl, probe, loop, long), saves responses, timings, dump indices and server events |
+| `prompts.py` | the 6 KL prompts, the 14 loop prompts, and the ~3.3K-token padding |
+| `longctx.py` | builds and scores the ~187K-token Moby-Dick prompt |
+| `report.py` | loop detector, server events, repeatability, long-context score, speed |
 | `kl.py` | first-token KL from `STRATA_DUMP_FIRST_LOGITS` dumps |
-| `results/` | the measured report and KL tables from the RX 7800 XT run |
-| `docs/pr-comment.md` | the comment posted to PR #2392 |
+| `results/` | the measured reports (v2 at the top level of RESULTS.md, v1 in `results/v1/`) |
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT — see [LICENSE](LICENSE). *Moby-Dick* is public domain (Project Gutenberg
+#2701); the text is downloaded at run time, not shipped.
