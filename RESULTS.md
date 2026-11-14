@@ -136,6 +136,31 @@ draft acceptance differs on every request, which points at speculative
 decoding; it was not isolated (`--drafting off`). Either way, a text difference
 between the arms is not evidence about `STRATA_PF_FUSED`.
 
+## Tool-name margin (agentic probe, engine 0.1.59)
+
+The failure that matters in agent work — the model writing `bash` or `ash` where
+the request declared `shell` — is rare: the server log has **2 rejected tool
+calls in 2,371 generations (0.08%)**, both at long context (48,490 and 182,798
+tokens), both recovered. `agentic.py` measures the same decision with the
+server's `logprobs` at ~54K tokens, where the fused path is active.
+
+| probe (~54K tokens) | margin arm1 | margin arm0 | Δlogp shell | Δlogp bash | KL (candidates) |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| `long_code` | 9.46 | 7.98 | +0.0018 | — | 0.00015 |
+| `long_bash` | 5.02 | 3.72 | +0.0336 | −1.2699 | 0.00957 |
+
+`margin` is `logprob(shell) − logprob(best wrong name)`. The largest on-path
+change in the `shell` logprob is 0.034 nats; the only large move is `bash`
+going **down** by 1.27 nats in the fused arm. To turn a 0.08% event into a
+common one needs ~4.6 nats of bias, over 100× the measured effect. In 18 real
+tool calls per arm (10 probes + 8 nontrivial commands), both arms were 18/18
+`shell` with 18/18 `bash -n` clean, up to ~54K tokens.
+
+The short probes are a control: `fused_layout()` needs at least 1,024 prompt
+tokens, and `neutral` (119 tokens) returned identical logits in both arms.
+
+Full table and caveats: [results/agentic/report.md](results/agentic/report.md).
+
 ## Interpretation
 
 On this card, with this model and preset:

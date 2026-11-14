@@ -1,15 +1,45 @@
-Re-ran the `STRATA_PF_FUSED` A/B with a heavier test and corrected my first write-up (it claimed the server's loop detector fired 0 times, but `reasoning_loop_recovery` is off by default, and a 700-token cap never reaches the ~2,000 words it needs). Full numbers: https://github.com/myghi63/strata-pf-fused-ab/blob/main/RESULTS.md
+Following up with the data I promised, now on engine **0.1.59** (the loop/KL run
+was 0.1.57). Nothing here asks you to re-open anything — the concern is already
+withdrawn — but the numbers are a useful record for anyone who finds the flag.
 
-Setup: RX 7800 XT (gfx1101), IQ3_S, 256K native context, engine 0.1.57, dflash2, `STRATA_HIP_PROMPT_F16=1` and `STRATA_PF_GEMM=1` in both arms; only `STRATA_PF_FUSED` changes, fresh server start per arm, `"reasoning_loop_recovery": "stop"` on for the run. Fused marker present in the `=1` engine log only.
+**Setup:** RX 7800 XT (gfx1101), IQ3_S, 256K native context, dflash2,
+`STRATA_HIP_PROMPT_F16=1` and `STRATA_PF_GEMM=1` in both arms; only
+`STRATA_PF_FUSED` changes, fresh server per arm, fused marker present in the
+`=1` engine log only. Full harness and tables:
+https://github.com/myghi63/strata-pf-fused-ab
 
-**Loops, 14 repetition-inviting prompts × (greedy + temperature 0.6), up to 6,144 tokens:** the detector cut 1/14 per mode in each arm. Reading the texts, each arm had exactly **one degenerate loop**, on the same prompt (list 120 Portuguese words starting with "a", no repeats): with fused in greedy (`62 afogar? no.` ×150, coverage 1.000), without fused in sampled (`Let's use "absurdo"? no.` over and over). The other cuts were re-drafts of long lists (coverage 0.28–0.32).
+**Loops (0.1.57).** 14 repetition-inviting prompts × (greedy + temperature
+0.6), up to 6,144 tokens: the detector cut 1/14 per mode in each arm, and each
+arm had exactly one degenerate loop, on the same prompt (list 120 Portuguese
+words starting with "a", no repeats) — with fused in greedy, without fused in
+sampled. The same prompt × 8 per arm with no sampling fields (so the server
+applies the model card's temperature 1.0 / top_p 0.95 / top_k 20): **0/8
+degenerate loops in both arms**. So the loop follows the prompt and the
+sampling, not the flag.
 
-**Same prompt × 8 per arm with no sampling fields** (so the server applies `MODEL_CARD_SAMPLING`, temperature 1.0 / top_p 0.95 / top_k 20): **0/8 degenerate loops in both arms**; the detector cut 2/8 (fused) and 4/8 (MMQ) runs, all of them the model re-writing its word list (coverage 0.25–0.36). So the detector also fires on legitimate re-drafts of list tasks.
+**First-token KL (0.1.57, 6 prompts):** mean 0.00318 / 0.00294, top-1 6/6, same
+range as the doc's IQ3_S figure.
 
-**Long context:** 186,578-token prompt (Moby-Dick ch. 1–80 + 12 inserted notes), both arms recalled 12/12 notes with the right chapter and summarized all 80 chapters in order, no loop. Prompt 1,044 vs 719 tok/s.
+**Tool-name decision (0.1.59).** The failure that matters in agent work is the
+model writing `bash` or `ash` where the request declared `shell`. The server log
+has 2 rejected calls in 2,371 generations (0.08%), both at long context (48,490
+and 182,798 tokens), both recovered. Measuring the same decision with
+`logprobs` at ~54K tokens (where the fused path is active):
 
-**Speed:** 1.67× at ~3.85K tokens (1,071 vs 639 tok/s), 1.45× at 187K; decode unchanged.
+| probe (~54K tokens) | margin fused | margin MMQ | Δlogp shell | Δlogp bash | KL (candidates) |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| code context | 9.46 | 7.98 | +0.0018 | — | 0.00015 |
+| code + `bash` prior | 5.02 | 3.72 | +0.0336 | −1.2699 | 0.00957 |
 
-**First-token KL** (6 prompts): 0.00318 / 0.00294, top-1 6/6, same range as the doc's IQ3_S figure.
+`margin` = `logprob(shell) − logprob(best wrong name)`. The largest on-path
+change in the `shell` logprob is 0.034 nats; the only large move is `bash`
+going **down** by 1.27 nats with fused. Turning a 0.08% event into a common one
+needs ~4.6 nats of bias. In 18 real tool calls per arm (10 probes + 8
+nontrivial commands), both arms were 18/18 `shell` with 18/18 `bash -n` clean.
 
-So on this card I can reproduce a reasoning loop, but it happens with and without `STRATA_PF_FUSED`, only below the model card's temperature, and on a prompt that invites it. @skuridin, what sampling were you using when you saw the loops (greedy / temperature 0, or another client's defaults)? If you have a prompt that loops with fused and not with MMQ, I can run it through the same harness (`CLIENT_ARGS="--phases rep --rep-prompt …"`).
+**Speed (0.1.57):** 1.67× at ~3.85K tokens (1,071 vs 639 tok/s), 1.45× at 187K;
+decode unchanged.
+
+My read: on this card the flag is free at the output level, and the rare wrong
+tool name is context adherence plus the client's sampling (OpenCode sends none,
+so the server's temperature-1.0 default applies), not the fused kernel.

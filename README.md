@@ -97,6 +97,46 @@ or an error. `"stop"` is used instead of `"recover"` because recover would
 hide a loop by steering the model out of it. `LOOP_RECOVERY=off` leaves the
 file alone.
 
+### Tool-name margin (agentic probe)
+
+The loop and KL tests answer "does it loop" and "how far did the distribution
+move on average". A third failure mode matters in agent work: the model
+writing `bash` (or `ash`) where the request declared `shell`. It is rare — 2
+rejected tool calls in 2,371 generations on the test card — so counting it
+directly would need thousands of requests per arm.
+
+`agentic.py` measures the same decision where it is cheap. With thinking off,
+the model writes the tool call as one line of JSON in the answer, so the name
+token is normal content and the server's `logprobs` give its whole
+distribution. The number is the margin:
+
+    logprob(shell) - logprob(best wrong name)
+
+A perturbation of KL ~0.003 nats changes a logprob by ~0.003 nats. If `shell`
+wins by several nats in both arms, the flag cannot flip the decision unless
+the two names were already tied to within ~0.05 nats — and then a flip would
+be common at temperature 1.0, not rare.
+
+The probes are: neutral; a `bash` prior; an `ash` prior; a ~54K-token code
+context; and the same long context with the `bash` prior. Each is sent through
+the JSON path and through the real tool-call path (`tools` declared,
+`tool_choice: auto`), and `bash -n` checks the command's syntax. A final phase
+sends eight ordinary nontrivial commands per arm through the real tool path
+with no sampling fields, and runs `bash -n` on each.
+
+**The short probes are a control.** `fused_layout()` needs at least 1,024
+prompt tokens, so a 119–404-token prompt never reaches the fused path; the
+`neutral` probe returning identical logits in both arms confirms the arms
+differ only in the flag. Only the ~54K-token probes exercise it.
+
+```bash
+bash run_agentic.sh --yes
+```
+
+It stops the server twice and restores the preset at the end. Output:
+`agentic/report.txt` and the raw responses in `agentic/out/`; the published
+table is [results/agentic/report.md](results/agentic/report.md).
+
 ## Why the prompts are 3.3K tokens or more
 
 The fused prompt path only runs on a streamed chunk of `stream_all_min()`
@@ -202,6 +242,8 @@ The API key is read from the preset's `api_key` (or `STRATA_API_KEY`, or
 | `longctx.py` | builds and scores the ~187K-token Moby-Dick prompt |
 | `report.py` | loop detector, server events, repeatability, long-context score, speed |
 | `kl.py` | first-token KL from `STRATA_DUMP_FIRST_LOGITS` dumps |
+| `agentic.py` | tool-name margin probe (JSON path + real tool-call path, `bash -n`) |
+| `run_agentic.sh` | runs the tool-name probe in both arms and restores the preset |
 | `results/` | the measured runs: `v2/` (main), `v2-rep/` (`rep` phase), `v1/` (first run, with corrections) |
 
 ## License
